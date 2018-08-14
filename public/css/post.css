@@ -1,0 +1,313 @@
+* {
+  border: 0;
+  box-sizing: border-box;
+  outline: none;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  overflow: hidden;
+}
+
+button {
+  background-color: inherit;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+::-moz-scrollbar {
+  display: none;
+}
+
+/* ---------------------------------------------------------------------------*/
+/* ---------------------------------------------------------------------------*/
+
+:root {
+  --header-height: 60px;
+  --section-height: 60px;
+  --main-height: calc(100% - 120px);
+  /* ------------------------------ */
+  --auth-header-section-button-width: 30px;
+  /* ------------------------------ */
+  --unauth-header-section-button-width: 30px;
+  --unauth-header-section-link-width: 60px;
+}
+
+/* ---------------------------------------------------------------------------*/
+/* ---------------------------------------------------------------------------*/
+
+.auth-header-section {
+  display: flex;
+  margin: auto;
+  max-width: 600px;
+  padding: 10px;
+}
+
+.auth-header-section-button {
+  background-color: inherit;
+  background-image: url(../assets/icons/angle-left-light-white.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 30px 30px;
+  display: block;
+  height: 40px;
+  width: var(--auth-header-section-button-width);
+}
+
+.auth-header-section-title {
+  font-family: sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  flex: 1;
+  margin-right: var(--auth-header-section-button-width);
+  padding-top: 10px;
+  text-align: center;
+}
+
+.auth-section-form {
+  display: flex;
+  height: 100%;
+  padding: 5px;
+  width: 100%;
+}
+
+.auth-section-form-textarea {
+  font-size: 16px;
+  flex: 1;
+  height: 35px;
+  resize: none;
+  padding: 8px;
+  overflow: auto;
+  white-space: nowrap;
+}
+
+.auth-section-form-button {
+  background-color: inherit;
+  color: rgb(3, 21, 13);
+  display: block;
+  font-size: 16px;
+  height: 35px;
+  margin-left: 15px;
+  width: 50px;
+}
+
+/* ---------------------------------------------------------------------------*/
+/* ---------------------------------------------------------------------------*/
+
+.unauth-header-section {
+  display: flex;
+  margin: auto;
+  max-width: 600px;
+  padding: 10px;
+}
+
+.unauth-header-section-button {
+  background-color: inherit;
+  background-image: url(../assets/icons/angle-left-light-white.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 30px 30px;
+  display: block;
+  height: 40px;
+  width: var(--unauth-header-section-button-width);
+}
+
+.unauth-header-section-title {
+  font-family: sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  flex: 1;
+  margin-left: 15px;
+  padding-top: 10px;
+  text-align: center;
+}
+
+.unauth-header-section-link {
+  background-color: inherit;
+  background-image: url(../assets/icons/sign-in-alt-light-white.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 32px 32px;
+  display: block;
+  height: 40px;
+  width: var(--unauth-header-section-link-width);
+}
+
+.unauth-header-section-link:link,
+.unauth-header-section-link:visited,
+.unauth-header-section-link:hover,
+.unauth-header-section-link:active {
+  background-color: inherit;
+  color: #000;
+  text-decoration: none;
+}
+
+.unauth-section-link {
+  background-color: rgb(45, 189, 157);
+  border-radius: 10px;
+  color: rgb(255, 255, 255);
+  display: block;
+  font-family: sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  height: 33px;
+  max-width: 400px;
+  margin: auto;
+  text-align: center;
+  padding: 4px;
+  width: 90%;
+}
+
+
+.unauth-section-link:link,
+.unauth-section-link:visited,
+.unauth-section-link:hover,
+.unauth-section-link:active {
+  background-color: rgb(45, 189, 157);
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+}
+
+
+/* ---------------------------------------------------------------------------*/
+/* ---------------------------------------------------------------------------*/
+
+.header {
+  background: linear-gradient(45deg, #2DBD9D 0%, #72DE93 100%);
+  color: rgb(255, 255, 255);
+  height: var(--header-height);
+  width: 100%;
+}
+
+.main {
+  display: block;
+  height: var(--main-height);
+  overflow: hidden;
+  margin: auto;
+  max-width: 600px;
+  width: 100%;
+}
+
+.main-container {
+  box-sizing: content-box;
+  height: 100%;
+  overflow-y: scroll;
+  width: 100%;
+}
+
+.main-article {
+  display: flex;
+  padding: 10px;
+  width: 100%;
+}
+
+.main-article-section-header-image {
+  border-radius: 50%;
+  display: block;
+  height: 35px;
+  width: 35px;
+}
+
+.main-article-content-text {
+  font-family: sans-serif;
+  margin-left: 6px;
+  margin-top: 4px;
+  word-wrap: break-word;
+  width: calc(100% - 41px);
+}
+
+.main-article-section-header-title {
+  color: rgb(41, 43, 44);
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.main-article-content {
+  color: rgb(41, 43, 44);
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+.main-article-container {
+  display: block;
+  width: 35px;
+}
+
+.main-section {
+  display: flex;
+  padding: 10px;
+}
+
+.main-section-image {
+  border: 1px solid rgb(230, 230, 230);
+  border-radius: 50%;
+  display: block;
+  height: 70px;
+  margin-top: 10px;
+  width: 70px;
+}
+
+.main-section-container {
+  flex: 1;
+}
+
+.main-section-container-content {
+  color: rgb(3, 21, 13);
+  font-family: sans-serif;
+  font-size: 25px;
+  font-weight: 300;
+  line-height: 1.5;
+  letter-spacing: -0.8px;
+  padding-right: 5px;
+  word-wrap: break-word;
+  /* overflow: auto; <---- These were not included in the unauth css file,
+  white-space: nowrap;    delete if they dont work
+  width: 100%; */
+}
+
+.main-section-secondary-container {
+  display: flex;
+  margin-top: 10px;
+}
+
+.main-section-secondary-container-icon {
+  background-image: url(../assets/icons/map-marker-alt-light-colored.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  display: block;
+  height: 20px;
+  width: 20px;
+}
+
+.main-section-secondary-container-title {
+  color: rgb(41, 43, 44);
+  flex: 1;
+  font-family: sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+  letter-spacing: 0.3px;
+  margin-left: 3px;
+}
+
+.main-section-template,
+.main-article-template {
+  display: none;
+}
+
+.section {
+  display: block;
+  height: var(--section-height);
+  margin: auto;
+  max-width: 600px;
+  padding: 10px;
+  width: 100%;
+}

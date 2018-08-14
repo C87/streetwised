@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PWA">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="/css/auth/avatar.css">
+  </head>
+  <body>
+    <header class="header">
+      <section class="header-section">
+        <h1 class="header-section-title">{{ username }}</h1>
+      </section>
+    </header>
+    <main class="main">
+      <form class="main-form">
+        <h3 class="main-form-alert"></h3>
+        <input type="file" name="avatar" class="main-form-hidden-input">
+        <div class="main-form-container">
+          <div class="main-form-container-buffer"></div>
+          <div class="main-form-container-button">
+            <button class="main-form-container-button-image">Choose Profile Picture</button>
+          </div>
+          <div class="buffer-button"></div>
+        </div>
+        <div class="main-form-crop-container">
+          <img class="main-form-crop-container-image">
+          <div class="main-form-crop-container-boundary"></div>
+        </div>
+        <div class="main-form-crop-zoom">
+          <button class="main-form-crop-zoom-in"></button>
+          <button class="main-form-crop-zoom-out"></button>
+        </div>
+        <div class="main-form-button-container">
+          <button class="main-form-button-container-cancel">Skip</button>
+          <button class="main-form-button-container-save">Save</button>
+        </div>
+      </form>
+    </main>
+    <script src="/js/auth/avatar.js" charset="utf-8"></script>
+  </body>
+</html>

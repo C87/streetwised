@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>{{ title }}</title>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.46.0/mapbox-gl.css' rel='stylesheet' />
+    <link rel="stylesheet" href="/css/home.css">
+  </head>
+  <body>
+    <div class="modal">
+      <section class="modal-content">
+        <div class="modal-content-banner">
+          <div class="modal-content-banner-icon"></div>
+        </div>
+        <img class="modal-content-image">
+        <h1 class="modal-content-title"></h1>
+        <div class="content-container">
+          <p class="modal-content-text"></p>
+        </div>
+        <div class="modal-content-container">
+          <div class="modal-content-container-icon"></div>
+          <p class="modal-content-container-title"></p>
+        </div>
+        <div class="modal-content-buttons">
+          <i class="modal-content-buttons-icon"></i>
+          <a class="modal-content-buttons-link">
+            <div class="modal-content-buttons-link-icon"></div>
+            <p class="modal-content-buttons-link-content"></p>
+          </a>
+        </div>
+      </section>
+      {% if authDialog %}
+        {% include authDialog %}
+      {% endif %}
+    </div>
+    <header class="header">
+    {% include header %}
+    </header>
+    <section class="preview-container">
+      <section class="preview-section">
+        <img class="preview-section-image-template">
+      </section>
+    </section>
+    <main id="main">
+      <div class="mapboxgl-marker">
+        <div class="mapboxgl-point"></div>
+      </div>
+      <div class="mapboxgl-zoom">
+        <button class="mapboxgl-zoom-in"></button>
+        <button class="mapboxgl-zoom-out"></button>
+      </div>
+    </main>
+    <section class="view-section">
+      <div class="view-container">
+        <article class="view-section-article-full-template">
+          <header class="view-section-article-header">
+            <img class="view-section-article-header-image">
+            <h1 class="view-section-article-header-title"></h1>
+          </header>
+          <p class="view-section-article-content"></p>
+          <div class="view-section-article-container">
+            <div class="view-section-article-container-badge"></div>
+            <img class="view-section-article-container-image">
+            <h1 class="view-section-article-container-title"></h1>
+          </div>
+          <p class="view-section-article-secondary-content"></p>
+          <footer class="view-section-article-footer">
+            <div class="view-section-article-footer-icon"></div>
+            <p class="view-section-article-footer-location"></p>
+            <a class="view-section-article-footer-link">
+              <div class="view-section-article-footer-link-icon"></div>
+              <p class="view-section-article-footer-link-content"></p>
+            </a>
+          </footer>
+        </article>
+        <article class="view-section-article-partial-template">
+          <header class="view-section-article-header">
+            <img class="view-section-article-header-image">
+            <h1 class="view-section-article-header-title"></h1>
+          </header>
+          <p class="view-section-article-content"></p>
+          <footer class="view-section-article-footer">
+            <div class="view-section-article-footer-icon"></div>
+            <p class="view-section-article-footer-location"></p>
+            <a class="view-section-article-footer-link">
+              <div class="view-section-article-footer-link-icon"></div>
+              <p class="view-section-article-footer-link-content"></p>
+            </a>
+          </footer>
+        </article>
+      </div>
+    </section>
+    <section class="menu-section">
+      <header class="menu-section-header">
+        <button class="menu-section-header-search enable"></button>
+        <button class="menu-section-header-button">View All</button>
+        <input type="text" class="menu-section-header-input" placeholder="Search Location">
+        <button class="menu-section-header-geo"></button>
+      </header>
+      <ul class="menu-section-list">
+        <li class="menu-section-list-item-template"></li>
+      </ul>
+    </section>
+    <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v0.46.0/mapbox-gl.js"></script>
+    <script src="/js/map.js" charset="utf-8"></script>
+    <script src="{{ script }}" charset="utf-8"></script>
+  </body>
+</html>
