@@ -54,5 +54,14 @@ typings/
 # Yarn Integrity file
 .yarn-integrity
 
+#Babel
+.babelrc
+
+# ESlint
+.eslintrc.js
+
 # dotenv environment variables file
 .env
+
+# CodeKit3
+.codekit3

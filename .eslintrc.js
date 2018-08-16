@@ -10,5 +10,6 @@ module.exports = {
         'no-use-before-define': 'off',
         'consistent-return': 'off',
         'no-param-reassign': 'off',
+        'comma-dangle': 'off',
     },
 };

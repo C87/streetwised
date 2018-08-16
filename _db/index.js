@@ -2,18 +2,11 @@ const mongoose = require('mongoose');
 
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
-const db = {
-  user: process.env.DB_USER,
-  host: process.env.DB_HOST,
-  name: process.env.DB_NAME,
-};
-
-// const dbUrl = `mongodb://${db.login}@${db.host}/${db.name}`;
-const dbUrl = `mongodb://${db.host}/${db.name}`;
+const dbUrl = process.env.DB_URL;
 
 mongoose.connect(dbUrl)
-  .then(() => {
-    console.log('DB Connection:', db.name);
+  .then((db) => {
+    console.log('_db/index.js: DB Connected', /* db.connections */);
   }).catch((err) => {
-    console.log('DB Connection Error:', err.message);
+    console.log('_db/index.js: DB Connection Error', /* err */);
   });

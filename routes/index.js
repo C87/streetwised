@@ -26,7 +26,7 @@ router
   .route('/session-login')
   .post(
     aws.none, validate.username, validate.password, query.user,
-    bcrypt.compare, redirect.home,
+    bcrypt.compare, redirect.home
   );
 
 router
@@ -34,7 +34,7 @@ router
   .post(
     aws.none, validate.email, validate.password, validate.username,
     validate.name, query.email, query.username, bcrypt.hash,
-    create.user, redirect.avatar,
+    create.user, redirect.avatar
   );
 
 // -----------------------------------------------------------------------------
