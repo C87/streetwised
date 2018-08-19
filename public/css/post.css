@@ -35,6 +35,7 @@ button {
   --header-link-width: 40px;
   --header-title-width: calc(100% - 90px);
   --main-height: calc(100% - 120px);
+  --section-height: 60px;
 }
 
 /* ---------------------------------------------------------------------------*/

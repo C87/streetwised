@@ -52,8 +52,13 @@ app.update = (comment) => {
   app.container.scrollTo(0, app.container.scrollHeight);
 };
 
+form.input.addEventListener('click', () => {
+  app.main.style.height = 'calc(100% - 120px)';
+});
+
 form.button.addEventListener('click', (e) => {
   e.preventDefault();
+  app.main.style.height = 'calc(100% - 120px)';
   if (!form.input.value) return;
 
   const fd = new FormData(form.element);
