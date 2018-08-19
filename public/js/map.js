@@ -34,16 +34,16 @@ data.canvas = (res) => {
 };
 
 data.preview = (res) => {
-  const arr = document.querySelectorAll('.preview-section-image');
+  const arr = document.querySelectorAll('.preview-image');
   if (arr.length !== 0) {
     arr.forEach((el) => {
       el.remove();
     });
   }
   res.features.forEach((el) => {
-    const img = document.querySelector('.preview-section-image-template').cloneNode(true);
-    img.classList.remove('preview-section-image-template');
-    img.classList.add('preview-section-image');
+    const img = document.querySelector('.preview-image-template').cloneNode(true);
+    img.classList.remove('preview-image-template');
+    img.classList.add('preview-image');
     img.src = el.properties.user.avatar;
     img.dataset.user = el.properties.user.username;
     img.dataset.post = el.properties.text;
@@ -52,14 +52,14 @@ data.preview = (res) => {
     img.dataset.lat = el.geometry.coordinates[1];
     img.dataset.url = `${el.properties.user.username}/posts/${el._id}`;
     img.dataset.comments = el.properties.comments.length;
-    img.onclick = app.previewModal;
-    document.querySelector('.preview-section').appendChild(img);
+    img.onclick = app.modal.display;
+    document.querySelector('.preview').appendChild(img);
   });
   return res;
 };
 
 data.view = (res) => {
-  const arr = document.querySelectorAll('.view-section-article');
+  const arr = document.querySelectorAll('.view-article');
   if (arr.length !== 0) {
     arr.forEach((el) => {
       el.remove();
@@ -67,29 +67,29 @@ data.view = (res) => {
   }
   res.features.forEach((el) => {
     if (el.properties.response) {
-      const template = document.querySelector('.view-section-article-full-template').cloneNode(true);
-      template.classList.remove('view-section-article-full-template');
-      template.classList.add('view-section-article');
-      template.querySelector('.view-section-article-header-image').src = el.properties.user.avatar;
-      template.querySelector('.view-section-article-header-title').textContent = el.properties.user.username;
-      template.querySelector('.view-section-article-content').textContent = el.properties.text;
-      template.querySelector('.view-section-article-container-image').src = el.properties.response.user.avatar;
-      template.querySelector('.view-section-article-container-title').textContent = el.properties.response.user.username;
-      template.querySelector('.view-section-article-secondary-content').textContent = el.properties.response.text;
-      template.querySelector('.view-section-article-footer-location').textContent = el.properties.location;
-      template.querySelector('.view-section-article-footer-link').href = `${el.properties.user.username}/posts/${el._id}`;
-      template.querySelector('.view-section-article-footer-link-content').textContent = el.properties.comments.length;
+      const template = document.querySelector('.view-article-full-template').cloneNode(true);
+      template.classList.remove('view-article-full-template');
+      template.classList.add('view-article');
+      template.querySelector('.view-article-header-image').src = el.properties.user.avatar;
+      template.querySelector('.view-article-header-title').textContent = el.properties.user.username;
+      template.querySelector('.view-article-content').textContent = el.properties.text;
+      template.querySelector('.view-article-container-image').src = el.properties.response.user.avatar;
+      template.querySelector('.view-article-container-title').textContent = el.properties.response.user.username;
+      template.querySelector('.view-article-secondary-content').textContent = el.properties.response.text;
+      template.querySelector('.view-article-footer-location').textContent = el.properties.location;
+      template.querySelector('.view-article-footer-link').href = `${el.properties.user.username}/posts/${el._id}`;
+      template.querySelector('.view-article-footer-link-content').textContent = el.properties.comments.length;
       document.querySelector('.view-container').appendChild(template);
     } else if (!el.properties.response) {
-      const template = document.querySelector('.view-section-article-partial-template').cloneNode(true);
-      template.classList.remove('view-section-article-partial-template');
-      template.classList.add('view-section-article');
-      template.querySelector('.view-section-article-header-image').src = el.properties.user.avatar;
-      template.querySelector('.view-section-article-header-title').textContent = el.properties.user.username;
-      template.querySelector('.view-section-article-content').textContent = el.properties.text;
-      template.querySelector('.view-section-article-footer-location').textContent = el.properties.location;
-      template.querySelector('.view-section-article-footer-link').href = `${el.properties.user.username}/posts/${el._id}`;
-      template.querySelector('.view-section-article-footer-link-content').textContent = el.properties.comments.length;
+      const template = document.querySelector('.view-article-partial-template').cloneNode(true);
+      template.classList.remove('view-article-partial-template');
+      template.classList.add('view-article');
+      template.querySelector('.view-article-header-image').src = el.properties.user.avatar;
+      template.querySelector('.view-article-header-title').textContent = el.properties.user.username;
+      template.querySelector('.view-article-content').textContent = el.properties.text;
+      template.querySelector('.view-article-footer-location').textContent = el.properties.location;
+      template.querySelector('.view-article-footer-link').href = `${el.properties.user.username}/posts/${el._id}`;
+      template.querySelector('.view-article-footer-link-content').textContent = el.properties.comments.length;
       document.querySelector('.view-container').appendChild(template);
     }
   });
@@ -101,7 +101,7 @@ data.view = (res) => {
 
 map.load = (res) => {
   map.element = new mapboxgl.Map({
-    container: 'main',
+    container: 'mapboxgl',
     style: 'https://maps.tilehosting.com/c/d5517948-b81a-4374-9547-6de2bf4279d8/styles/basic/style.json?key=BJinYMSawaKJNsgs0dR4',
     center: res.center,
     zoom: 12,
@@ -163,9 +163,12 @@ data.geocode = () => {
     body: fd,
   }).then(res => res.json())
     .then((res) => {
-      document.querySelector('.header-location').textContent = res;
-      const dialogLocation = document.querySelector('.auth-modal-dialog-container-title');
-      if (dialogLocation) { dialogLocation.textContent = res; }
+      document.querySelector('.header-section-container-title').textContent = res;
+      const ask = document.querySelector('.ask-form-textarea');
+      if (ask) {
+        ask.placeholder = `Ask a question from ${res}.`;
+        document.querySelector('.ask-container-title').textContent = res;
+      }
     })
     .catch(err => console.log(err));
 };

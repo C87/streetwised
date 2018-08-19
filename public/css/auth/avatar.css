@@ -40,19 +40,19 @@ button {
 }
 
 .header {
-  background: linear-gradient(45deg, #2DBD9D 0%, #72DE93 100%);
-  color: rgb(255, 255, 255);
+  background: linear-gradient(45deg, rgb(31, 152, 172) 0%, rgb(47, 184, 205) 100%);
   height: var(--header-height);
+  padding: 10px;
   width: 100%;
 }
 
 .header-section {
   margin: auto;
   max-width: 600px;
-  padding: 10px;
 }
 
 .header-section-title {
+  color: rgb(255, 255, 255);
   font-family: sans-serif;
   font-size: 20px;
   font-weight: 400;
@@ -166,7 +166,7 @@ button {
 }
 
 .main-form-container-button-image {
-  background-color: rgb(45, 189, 157);
+  background-color: rgb(31, 152, 172);
   color: rgb(255, 255, 255);
   border-radius: 10px;
   display: block;
@@ -191,7 +191,7 @@ button {
 .main-form-button-container-cancel,
 .main-form-button-container-save {
   background-color: inherit;
-  border: 1px solid rgb(45, 189, 157);
+  border: 1px solid rgb(31, 152, 172);
   border-radius: 10px;
   display: inline-block;
   font-size: 16px;
@@ -202,11 +202,11 @@ button {
 }
 
 .main-form-button-container-cancel {
-  color: rgb(45, 189, 157);
+  color: rgb(31, 152, 172);
 }
 
 .main-form-button-container-save {
-  background-color: rgb(45, 189, 157);
+  background-color: rgb(31, 152, 172);
   color: rgb(255, 255, 255);
 }
 

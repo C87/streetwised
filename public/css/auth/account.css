@@ -26,8 +26,9 @@ body {
 }
 
 .header {
-  background: linear-gradient(45deg, #2DBD9D 0%, #72DE93 100%);
+  background: linear-gradient(45deg, rgb(31, 152, 172) 0%, rgb(47, 184, 205) 100%);
   height: var(--header-height);
+  padding: 10px;
   width: 100%;
 }
 
@@ -35,7 +36,6 @@ body {
   display: flex;
   margin: auto;
   max-width: 600px;
-  padding: 10px;
 }
 
 .header-section-button {

@@ -24,24 +24,27 @@ module.exports.avatar = (req, res) => {
 module.exports.home = (req, res) => {
   if (req.session.userId) {
     return res.status(200).render('home.html', {
-      authDialog: '_partials/home/auth/dialog.html',
-      header: '_partials/home/auth/header.html',
+      ask: '_partials/home/auth/ask.html',
+      headerClass: 'auth-header-section-link',
+      menuOption: '_partials/home/auth/menu-button.html',
       script: '/js/auth/home.js',
       title: tabBar,
+      user: req.sessionusername
     });
   }
   res.status(200).render('home.html', {
-    header: '_partials/home/unauth/header.html',
+    headerClass: 'unauth-header-section-link',
+    menuOption: '_partials/home/unauth/menu-button.html',
+    intro: '_partials/home/unauth/intro.html',
     script: '/js/unauth/home.js',
     title: tabBar,
+    unauthIntro: '_partials/home/unauth/intro.html',
   });
 };
 
 module.exports.post = (req, res) => {
   if (req.session.userId) {
     return res.status(200).render('post.html', {
-      header: '_partials/post/auth/header.html',
-      id: req.params.postId,
       section: '_partials/post/auth/section.html',
       script: '/js/auth/post.js',
       title: tabBar,
@@ -49,11 +52,10 @@ module.exports.post = (req, res) => {
     });
   }
   res.status(200).render('post.html', {
-    header: '_partials/post/unauth/header.html',
-    id: req.params.postId,
     section: '_partials/post/unauth/section.html',
     script: '/js/unauth/post.js',
     title: tabBar,
     user: req.params.username,
+    unauthLink: '_partials/post/unauth/header.html'
   });
 };

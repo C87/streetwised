@@ -31,45 +31,15 @@ button {
 
 :root {
   --header-height: 60px;
-  --section-height: 60px;
+  --header-button-width: 20px;
+  --header-link-width: 40px;
+  --header-title-width: calc(100% - 90px);
   --main-height: calc(100% - 120px);
-  /* ------------------------------ */
-  --auth-header-section-button-width: 30px;
-  /* ------------------------------ */
-  --unauth-header-section-button-width: 30px;
-  --unauth-header-section-link-width: 60px;
 }
 
 /* ---------------------------------------------------------------------------*/
 /* ---------------------------------------------------------------------------*/
 
-.auth-header-section {
-  display: flex;
-  margin: auto;
-  max-width: 600px;
-  padding: 10px;
-}
-
-.auth-header-section-button {
-  background-color: inherit;
-  background-image: url(../assets/icons/angle-left-light-white.svg);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 30px 30px;
-  display: block;
-  height: 40px;
-  width: var(--auth-header-section-button-width);
-}
-
-.auth-header-section-title {
-  font-family: sans-serif;
-  font-size: 20px;
-  font-weight: 400;
-  flex: 1;
-  margin-right: var(--auth-header-section-button-width);
-  padding-top: 10px;
-  text-align: center;
-}
 
 .auth-section-form {
   display: flex;
@@ -101,61 +71,14 @@ button {
 /* ---------------------------------------------------------------------------*/
 /* ---------------------------------------------------------------------------*/
 
-.unauth-header-section {
-  display: flex;
-  margin: auto;
-  max-width: 600px;
-  padding: 10px;
-}
-
-.unauth-header-section-button {
-  background-color: inherit;
-  background-image: url(../assets/icons/angle-left-light-white.svg);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 30px 30px;
-  display: block;
-  height: 40px;
-  width: var(--unauth-header-section-button-width);
-}
-
-.unauth-header-section-title {
-  font-family: sans-serif;
-  font-size: 20px;
-  font-weight: 400;
-  flex: 1;
-  margin-left: 15px;
-  padding-top: 10px;
-  text-align: center;
-}
-
-.unauth-header-section-link {
-  background-color: inherit;
-  background-image: url(../assets/icons/sign-in-alt-light-white.svg);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 32px 32px;
-  display: block;
-  height: 40px;
-  width: var(--unauth-header-section-link-width);
-}
-
-.unauth-header-section-link:link,
-.unauth-header-section-link:visited,
-.unauth-header-section-link:hover,
-.unauth-header-section-link:active {
-  background-color: inherit;
-  color: #000;
-  text-decoration: none;
-}
 
 .unauth-section-link {
-  background-color: rgb(45, 189, 157);
+  background-color: rgb(31, 152, 172);
   border-radius: 10px;
   color: rgb(255, 255, 255);
   display: block;
   font-family: sans-serif;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 400;
   height: 33px;
   max-width: 400px;
@@ -170,7 +93,7 @@ button {
 .unauth-section-link:visited,
 .unauth-section-link:hover,
 .unauth-section-link:active {
-  background-color: rgb(45, 189, 157);
+  background-color: rgb(31, 152, 172);
   color: rgb(255, 255, 255);
   text-decoration: none;
 }
@@ -180,11 +103,65 @@ button {
 /* ---------------------------------------------------------------------------*/
 
 .header {
-  background: linear-gradient(45deg, #2DBD9D 0%, #72DE93 100%);
-  color: rgb(255, 255, 255);
+  background: linear-gradient(45deg, rgb(31, 152, 172) 0%, rgb(47, 184, 205) 100%);
   height: var(--header-height);
+  padding: 10px;
   width: 100%;
 }
+
+.header-section {
+  display: flex;
+  margin: auto;
+  max-width: 600px;
+}
+
+.header-section-button {
+  background-color: inherit;
+  background-image: url(../assets/icons/angle-left-light-white.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 30px 30px;
+  display: block;
+  height: calc(var(--header-height) - 20px);
+  width: var(--header-button-width);
+}
+
+.header-section-title {
+  color: rgb(255, 255, 255);
+  font-family: sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  height: calc(var(--header-height) - 30px);
+  margin-left: 20px;
+  margin-top: 10px;
+  text-align: center;
+  width: var(--header-title-width);
+}
+
+.header-section-link {
+  background-color: inherit;
+  background-image: url(../assets/icons/sign-in-alt-light-white.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 32px 32px;
+  display: block;
+  height: calc(var(--header-height) - 20px);
+  margin-left: 5px;
+  margin-right: 5px;
+  width: var(--header-link-width);
+}
+
+.header-section-link:link,
+.header-section-link:visited,
+.header-section-link:hover,
+.header-section-link:active {
+  background-color: inherit;
+  color: #000;
+  text-decoration: none;
+}
+
+/* -------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------- */
 
 .main {
   display: block;

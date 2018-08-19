@@ -10,8 +10,8 @@ const spacesEndpoint = new AWS.Endpoint('ams3.digitaloceanspaces.com');
 
 const s3 = new AWS.S3({
   endpoint: spacesEndpoint,
-  accessKeyId: 'QVKGYG4O4NM5OPXFD6PJ',
-  secretAccessKey: 'xlB91dEFLbH4nm600ngziNyxGQ+3z90GDybCiOnfciM',
+  accessKeyId: 'FMEKUZ7SAV2FQUO4PYQ4',
+  secretAccessKey: process.env.SPACES_KEY_SECRET,
 });
 
 // -----------------------------------------------------------------------------
@@ -87,7 +87,7 @@ module.exports.avatar = (req, res, next) => {
     .crop(image.capture, image.capture, image.left, image.top)
     .toBuffer((err, buffer) => {
       const params = {
-        Bucket: 'image-store',
+        Bucket: 'streetwised',
         Key: res.locals.path,
         Body: buffer,
         ContentType: 'image/jpeg',

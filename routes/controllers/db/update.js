@@ -6,7 +6,7 @@ module.exports.avatar = (req, res, next) => {
   User
     .findById(req.session.userId, 'avatar')
     .then((user) => {
-      user.avatar = `https://image-store.ams3.digitaloceanspaces.com/${res.locals.path}`;
+      user.avatar = `https://streetwised.ams3.digitaloceanspaces.com/${res.locals.path}`;
       user
         .save()
         .then((doc) => {

@@ -1,7 +1,7 @@
 const app = {
   container: document.querySelector('.main-container'),
   commentsTemplate: document.querySelector('.main-article-template'),
-  header: document.querySelector('.auth-header-section-title'),
+  header: document.querySelector('.header-section-title'),
   main: document.querySelector('.main'),
   mainTemplate: document.querySelector('.main-section-template'),
 };
@@ -12,7 +12,7 @@ const form = {
   input: document.querySelector('.auth-section-form-textarea'),
 };
 
-document.querySelector('.auth-header-section-button').addEventListener('click', () => {
+document.querySelector('.header-section-button').addEventListener('click', () => {
   window.history.back();
 });
 
@@ -48,8 +48,8 @@ app.update = (comment) => {
   template.querySelector('.main-article-section-header-title').textContent = comment.user;
   template.querySelector('.main-article-section-header-image').src = comment.avatar;
   template.querySelector('.main-article-content').textContent = comment.text;
-  app.main.appendChild(template);
-  app.main.scrollTo(0, app.main.scrollHeight);
+  app.container.appendChild(template);
+  app.container.scrollTo(0, app.container.scrollHeight);
 };
 
 form.button.addEventListener('click', (e) => {

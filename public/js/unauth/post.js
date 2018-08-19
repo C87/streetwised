@@ -1,12 +1,12 @@
 const app = {
   container: document.querySelector('.main-container'),
   commentsTemplate: document.querySelector('.main-article-template'),
-  header: document.querySelector('.unauth-header-section-title'),
+  header: document.querySelector('.header-section-title'),
   main: document.querySelector('.main'),
   mainTemplate: document.querySelector('.main-section-template'),
 };
 
-document.querySelector('.unauth-header-section-button').addEventListener('click', () => {
+document.querySelector('.header-section-button').addEventListener('click', () => {
   window.history.back();
 });
 

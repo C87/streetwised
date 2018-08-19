@@ -64,4 +64,4 @@ typings/
 .env
 
 # CodeKit3
-.codekit3
+config.codekit3

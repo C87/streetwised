@@ -9,7 +9,13 @@
     <link rel="stylesheet" href="/css/post.css">
   </head>
   <header class="header">
-    {% include header %}
+    <section class="header-section">
+      <button class="header-section-button"></button>
+      <h1 class="header-section-title">{{ user }}</h1>
+      {% if unauthLink %}
+        {% include unauthLink %}
+      {% endif %}
+    </section>
   </header>
   <main class="main">
     <div class="main-container">
@@ -31,7 +37,7 @@
         </p>
         <div class="main-article-container"></div>
       </article>
-    </div>    
+    </div>
   </main>
   <section class="section">
   {% include section %}

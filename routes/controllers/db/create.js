@@ -117,7 +117,7 @@ module.exports.upvote = (req, res, next) => {
 
 module.exports.user = (req, res, next) => {
   const newUser = new User({
-    avatar: 'https://image-store.ams3.digitaloceanspaces.com/streetwised/generic-avatar',
+    avatar: 'https://streetwised.ams3.digitaloceanspaces.com/streetwised/generic-avatar',
     name: req.body.name,
     username: req.body.username,
     email: req.body.email,
