@@ -32,12 +32,9 @@ form.handleFile = (e) => {
   const file = e.target.files[0];
   image.element.file = file;
 
-  console.log(file);
-
   const reader = new FileReader();
   reader.readAsDataURL(file);
   reader.addEventListener('load', (event) => {
-    console.log(event);
     image.element.src = event.target.result;
   });
 };
@@ -71,7 +68,6 @@ width to fit the width of the cropBox, if the image is a landscape we need to
 asjust the shorter height to fit the height of the cropBox. */
 
 image.element.addEventListener('load', (e) => {
-  console.log(e);
   // Display container and zoom buttons
   image.container.style.display = 'block';
   button.zoomContainer.style.display = 'flex';
@@ -79,7 +75,6 @@ image.element.addEventListener('load', (e) => {
   button.buffer.classList.add('check-circle');
   // Primary image dimension
   image.dimension = e.target.naturalHeight > e.target.naturalWidth ? 'width' : 'height';
-  console.log(image);
   image.adjust();
 });
 

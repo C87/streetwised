@@ -86,6 +86,7 @@ module.exports.avatar = (req, res, next) => {
     .resizeExact(image.width, image.height)
     .crop(image.capture, image.capture, image.left, image.top)
     .toBuffer((err, buffer) => {
+      console.log('PASSED: aws.avatar.gm,', buffer);
       const params = {
         Bucket: 'streetwised',
         Key: res.locals.path,
@@ -97,7 +98,7 @@ module.exports.avatar = (req, res, next) => {
         .putObject(params)
         .promise()
         .then((data) => {
-          console.log('PASSED: aws.avatar,', data);
+          console.log('PASSED: aws.avatar.s3,', data);
           next();
         })
         .catch(error => console.log(error));
