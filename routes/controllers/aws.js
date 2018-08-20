@@ -82,6 +82,8 @@ module.exports.avatar = (req, res, next) => {
 
   res.locals.path = `avatars/${req.session.username}.jpeg`;
 
+  console.log('PASSED: aws.avatar.req,', req.file.buffer);
+
   gm(req.file.buffer)
     .resizeExact(image.width, image.height)
     .crop(image.capture, image.capture, image.left, image.top)
