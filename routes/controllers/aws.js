@@ -89,6 +89,7 @@ module.exports.avatar = (req, res, next) => {
     .resizeExact(image.width, image.height)
     .crop(image.capture, image.capture, image.left, image.top)
     .toBuffer((err, buffer) => {
+      if (err) { console.log('Error,', err); }
       console.log('PASSED: aws.avatar.gm,', buffer);
       const params = {
         Bucket: 'streetwised',
