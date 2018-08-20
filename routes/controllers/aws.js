@@ -80,7 +80,7 @@ module.exports.avatar = (req, res, next) => {
   if (image.top > (image.height - image.capture)) image.top = image.height - image.capture;
   if (image.left > (image.width - image.capture)) image.left = image.width - image.capture;
 
-  res.locals.path = `avatars/${req.session.username}`;
+  res.locals.path = `avatars/${req.session.username}.jpeg`;
 
   gm(req.file.buffer)
     .resizeExact(image.width, image.height)
