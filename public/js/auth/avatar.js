@@ -74,7 +74,7 @@ image.element.addEventListener('load', (e) => {
   button.buffer.classList.remove('spinner');
   button.buffer.classList.add('check-circle');
   // Primary image dimension
-  image.dimension = e.path[0].naturalHeight > e.path[0].naturalWidth ? 'width' : 'height';
+  image.dimension = e.target.naturalHeight > e.target.naturalWidth ? 'width' : 'height';
   image.adjust();
 });
 
