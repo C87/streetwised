@@ -77,6 +77,8 @@ module.exports.avatar = (req, res, next) => {
     capture: imageArray[4],
   };
 
+  console.log(image);
+
   if (image.top > (image.height - image.capture)) image.top = image.height - image.capture;
   if (image.left > (image.width - image.capture)) image.left = image.width - image.capture;
 
