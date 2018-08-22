@@ -946,12 +946,13 @@ button {
   font-weight: 400;
   line-height: 1.5;
   text-align: left;
+  margin-bottom: 10px;
 }
 
 .intro-section-subtitle {
-  margin-top: 30px;
+  /* margin-top: 30px;
   margin-left: 10px;
-  width: 300px;
+  width: 300px; */
 }
 
 .intro-section-subtitle-text {
@@ -996,7 +997,7 @@ button {
   font-size: 20px;
   height: 35px;
   margin: auto;
-  margin-top: 30px;
+  margin-top: 20px;
   text-align: center;
   width: 300px;
 }
