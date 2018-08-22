@@ -74,7 +74,7 @@ asjust the shorter height to fit the height of the cropBox. */
 image.element.addEventListener('load', (e) => {
   // Display container and zoom buttons
   image.container.style.display = 'block';
-  // button.zoomContainer.style.display = 'flex';
+  button.zoomContainer.style.display = 'flex';
   button.buffer.classList.remove('spinner');
   button.buffer.classList.add('check-circle');
   // Primary image dimension
