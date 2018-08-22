@@ -48,10 +48,10 @@ image.adjust = () => {
   // Resize image
   image.resize(image.boundarySize + 100);
   // Adjust margins
-  image.left = 0 - ((image.element.width - image.boundarySize) / 2);
-  image.top = 0 - ((image.element.height - image.boundarySize) / 2);
-  image.element.style.marginLeft = `${image.left}px`;
-  image.element.style.marginTop = `${image.top}px`;
+  // image.left = 0 - ((image.element.width - image.boundarySize) / 2);
+  // image.top = 0 - ((image.element.height - image.boundarySize) / 2);
+  // image.element.style.marginLeft = `${image.left}px`;
+  // image.element.style.marginTop = `${image.top}px`;
 };
 
 image.resize = (size) => {
@@ -70,7 +70,7 @@ asjust the shorter height to fit the height of the cropBox. */
 image.element.addEventListener('load', (e) => {
   // Display container and zoom buttons
   image.container.style.display = 'block';
-  button.zoomContainer.style.display = 'flex';
+  // button.zoomContainer.style.display = 'flex';
   button.buffer.classList.remove('spinner');
   button.buffer.classList.add('check-circle');
   // Primary image dimension
