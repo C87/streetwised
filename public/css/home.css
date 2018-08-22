@@ -987,50 +987,6 @@ button {
   background-image: url(../assets/icons/comment-check-light.svg);
 }
 
-/* .intro-section-ul {
-  margin: auto;
-  margin-top: 30px;
-  width: 350px;
-}
-
-.intro-section-li {
-  color: rgb(3, 21, 13);
-  font-family: sans-serif;
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 40px;
-  list-style: none;
-  vertical-align: middle;
-}
-
-.intro-section-li-location,
-.intro-section-li-question,
-.intro-section-li-response {
-  background-position: center;
-  background-repeat: no-repeat;
-  display: inline-block;
-  height: 40px;
-  line-height: 40px;
-  margin-right: 2px;
-  width: 25px;
-  vertical-align: middle;
-}
-
-.intro-section-li-location {
-  background-image: url(../assets/icons/location-light.svg);
-  background-size: 16px 16px;
-}
-
-.intro-section-li-question {
-  background-image: url(../assets/icons/question-light.svg);
-  background-size: 16px 16px;
-}
-
-.intro-section-li-response {
-  background-image: url(../assets/icons/comment-light.svg);
-  background-size: 16px 16px;
-} */
-
 .intro-section-button {
   background-color: rgb(31, 152, 172);
   color: rgb(255, 255, 255);
