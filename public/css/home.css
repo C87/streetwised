@@ -928,7 +928,7 @@ button {
   border-left: 1px solid rgb(230, 230, 230);
   border-right: 1px solid rgb(230, 230, 230);
   border-top: 1px solid rgb(230, 230, 230);
-  bottom: 0;
+  top: 0;
   height: 300px;
   left: 0;
   margin: auto;
