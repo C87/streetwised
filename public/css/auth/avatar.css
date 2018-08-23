@@ -9,13 +9,12 @@
 html, body {
   height: 100%;
   position: fixed;
+  background: rgb(31, 152, 172);
+  background: linear-gradient(45deg, rgb(31, 152, 172) 0%, rgb(47, 184, 205) 100%);
   width: 100%;
 }
 
 body {
-  background: rgb(31, 152, 172);
-  background: linear-gradient(45deg, rgb(31, 152, 172) 0%, rgb(47, 184, 205) 100%);
-  color: rgb(255, 255, 255);
   overflow: hidden;
 }
 
