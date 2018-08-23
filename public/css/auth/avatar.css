@@ -13,6 +13,8 @@ html, body {
 }
 
 body {
+  background: linear-gradient(45deg, rgb(31, 152, 172) 0%, rgb(47, 184, 205) 100%);
+  color: rgb(255, 255, 255);
   overflow: hidden;
 }
 
@@ -34,7 +36,7 @@ button {
 }
 
 .check-circle {
-  background-image: url(../../assets/icons/check-circle-light.svg);
+  background-image: url(../../assets/icons/check-circle-light-white.svg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: 20px 20px;
@@ -42,7 +44,6 @@ button {
 }
 
 .header {
-  background: linear-gradient(45deg, rgb(31, 152, 172) 0%, rgb(47, 184, 205) 100%);
   height: var(--header-height);
   padding: 10px;
   width: 100%;
@@ -107,26 +108,22 @@ button {
 }
 
 .main-form-crop-container {
-  border: 2px solid green;
   height: 300px;
   width: 300px;
-  /* border-radius: 50%; */
   display: none;
-  /* height: 200px;
-  width: 200px; */
   margin: auto;
   position: relative;
   overflow: hidden;
 }
 
 .main-form-crop-container-boundary {
-  border: 1px solid rgb(230, 230, 230);
+  border-radius: 50%;
+  box-shadow: 0 0 300px 300px rgba(255, 255, 255, 0.6);
   cursor: move;
   display: block;
   height: 200px;
-  width: 200px;
-  border-radius: 50%;
   position: absolute;
+  width: 200px;
 }
 
 .main-form-crop-container-image {
@@ -171,7 +168,7 @@ button {
 }
 
 .main-form-container-button-image {
-  background-color: rgb(31, 152, 172);
+  border: 1px solid rgb(255, 255, 255);
   color: rgb(255, 255, 255);
   border-radius: 10px;
   display: block;
@@ -196,7 +193,7 @@ button {
 .main-form-button-container-cancel,
 .main-form-button-container-save {
   background-color: inherit;
-  border: 1px solid rgb(31, 152, 172);
+  border: 1px solid rgb(255, 255, 255);
   border-radius: 10px;
   display: inline-block;
   font-size: 16px;
@@ -207,11 +204,11 @@ button {
 }
 
 .main-form-button-container-cancel {
-  color: rgb(31, 152, 172);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .main-form-button-container-save {
-  background-color: rgb(31, 152, 172);
   color: rgb(255, 255, 255);
 }
 
@@ -237,7 +234,7 @@ button {
 }
 
 .times-circle {
-  background-image: url(../../assets/icons/times-circle-light-denied.svg);
+  background-image: url(../../assets/icons/times-circle-light-denied-white.svg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: 20px 20px;
