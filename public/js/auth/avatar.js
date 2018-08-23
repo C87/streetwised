@@ -61,7 +61,7 @@ image.resize = (size) => {
   if (image.dimension === 'height') image.element.style.height = `${size}px`;
   if (image.dimension === 'width') image.element.style.width = `${size}px`;
   const imageEl = document.querySelector('.main-form-crop-container-image');
-  console.log(imageEl.offsetWidth);
+  // console.log(imageEl.offsetWidth);
 };
 
 // -----------------------------------------------------------------------------
@@ -94,7 +94,7 @@ image.disableDrag = () => {
 };
 
 image.enableDrag = (x, y) => {
-  console.log(x, y);
+  // console.log(x, y);
   image.startX = x;
   image.startY = y;
   image.element.setAttribute('drag', true);
@@ -106,7 +106,7 @@ image.drag = (x, y) => {
   image.activeY = image.top + (y - image.startY);
   image.element.style.marginLeft = `${image.activeX}px`;
   image.element.style.marginTop = `${image.activeY}px`;
-  console.log(image);
+  // console.log(image);
 };
 
 // -----------------------------------------------------------------------------
