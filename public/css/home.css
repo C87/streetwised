@@ -205,6 +205,7 @@ button {
 /* ---------------------------------------------------------------------------*/
 
 .header {
+  background: rgb(31, 152, 172);
   background: linear-gradient(45deg, rgb(31, 152, 172) 0%, rgb(47, 184, 205) 100%);
   height: var(--header-height);
   padding: 10px;
@@ -510,6 +511,7 @@ button {
 }
 
 .ask-header {
+  background: rgb(31, 152, 172);
   background: linear-gradient(45deg, rgb(31, 152, 172) 0%, rgb(47, 184, 205) 100%);
   color: rgb(255, 255, 255);
   height: var(--header-height);
