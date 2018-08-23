@@ -23,8 +23,8 @@ button {
 }
 
 :root {
-  --header-height: 60px;
-  --main-height: calc(100% - 60px);
+  /* --header-height: 60px; */
+  --main-height: calc(100%);
   --main-form-section-height: (100% - 110px);
   --header-section-link-width: 30px;
   --header-section-title-width: calc(100% - 30px);
@@ -43,7 +43,7 @@ button {
   display: block;
 }
 
-.header {
+/* .header {
   height: var(--header-height);
   padding: 10px;
   width: 100%;
@@ -61,7 +61,7 @@ button {
   font-weight: 400;
   padding-top: 10px;
   text-align: center;
-}
+} */
 
 .main {
   display: block;
