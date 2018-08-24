@@ -7,15 +7,13 @@
     <meta charset="utf-8">
     <title>{{ title }}</title>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.46.0/mapbox-gl.css' rel='stylesheet' />
-    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" media="(max-width: 599px)" href="/css/home-min.css">
+		<link rel="stylesheet" media="(min-width: 600px)" href="/css/home-max.css">
   </head>
   <body>
     {% if intro %}
       {% include intro %}
     {% endif %}
-    <div class="modal">
-      {% include "_partials/home/content.html" %}
-    </div>
     <header class="header">
       <section class="header-section">
         <i class="header-section-icon"></i>
@@ -25,40 +23,54 @@
         <a href="/account" class="{{ headerClass }}"></a>
       </section>
     </header>
-    {% include "_partials/home/map.html" %}
-    <section class="question-section">
-      <img class="question-section-image" src="https://streetwised.ams3.digitaloceanspaces.com/avatars/_test_shaun">
-      <div class="question-section-title-container">
-        <h3 class="question-section-title">_test_shaun</h3>
-      </div>
-      <div class="question-section-options">
-        <i class="question-section-options-next"></i>
-        <a class="question-section-options-comments">
-          <span class="question-section-options-comments-icon"></span>
-          <span class="question-section-options-comments-count">0</span>
-        </a>
-        <i class="question-section-options-travel"></i>
-      </div>
-      <div class="question-section-content-container">
-        <h5 class="question-section-content">Git has this great feature whereby you can execute arbitrary scripts whenever something happens on your git repository. A common use case for.</h5>
-      </div>
-    </section>
-    {% include "_partials/home/search.html" %}
-    {% if ask %}
-      {% include ask %}
-    {% endif %}
-    {% include "_partials/home/questions.html" %}
-    <section class="preview-container">
-      <section class="preview">
-        <img class="preview-image-template">
+    <main class="main">
+      {% include "_partials/home/map.html" %}
+      {% include "_partials/home/search.html" %}
+      <section class="insight">
+        <article class="insight-article">
+          <header class="insight-article-banner">
+            <img class="insight-article-banner-image">
+            <div class="insight-article-banner-title-container">
+              <h2 class="insight-article-banner-title"></h2>
+            </div>
+            <div class="insight-article-banner-options">
+              <p class="insight-article-banner-options-distance">
+                <span class="insight-article-banner-options-distance-icon"></span>
+                <span class="insight-article-banner-options-distance-text">1m</span>
+              </p>
+              <a href="/" class="insight-article-banner-options-link">
+                <span class="insight-article-banner-options-link-icon"></span>
+                <span class="insight-article-banner-options-link-text"></span>
+              </a>
+            </div>
+          </header>
+          <div class="insight-article-content-container">
+            <p class="insight-article-content"></p>
+          </div>
+        </article>
       </section>
-    </section>
-    <section class="menu">
-      <button class="menu-questions">See all questions</button>
-      {% include menuOption %}
-    </section>
+      <div class="view-container">
+        <section class="view">
+          <article class="view-article-template">
+            <img class="view-article-image">
+            <h1 class="view-article-title"></h1>
+            <p class="view-article-content"></p>
+            <p class="view-article-distance"></p>
+            <p class="view-article-location"></p>
+            <a href="#" class="view-article-link">
+              <span class="view-article-link-icon"></span>
+              <span class="view-article-link-text"></span>
+            </a>
+          </article>
+        </section>
+      </div>
+      <section class="menu">
+        <a href="/questions" class="menu-questions">See all questions</a>
+        <a href="{{ route }}" class="menu-ask">Ask a question</a>
+      </section>
+    </main>
     <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v0.46.0/mapbox-gl.js"></script>
     <script src="/js/map.js" charset="utf-8"></script>
-    <script src="{{ script }}" charset="utf-8"></script>
+    <script src="/js/home.js" charset="utf-8"></script>
   </body>
 </html>

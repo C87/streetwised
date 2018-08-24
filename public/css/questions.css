@@ -1,0 +1,319 @@
+* {
+  border: 0;
+  box-sizing: border-box;
+  outline: none;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  position: fixed;
+  width: 100%;
+}
+
+body {
+  overflow: hidden;
+}
+
+button {
+  background-color: inherit;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+::-moz-scrollbar {
+  display: none;
+}
+
+:root {
+  --header-height: 45px;
+  --menu-section-height: 50px;
+  --view-height: calc(100% - 95px);
+}
+
+/* ---------------------------------------------------------------------------*/
+/* ---------------------------------------------------------------------------*/
+
+
+.header {
+  background: rgb(31, 152, 172);
+  background: linear-gradient(45deg, rgb(31, 152, 172) 0%, rgb(47, 184, 205) 100%);
+  height: var(--header-height);
+  padding: 5px 10px;
+  width: 100%;
+}
+
+.header-section {
+  height: calc(var(--header-height) - 10px);
+  margin: auto;
+  max-width: 600px;
+  width: 100%;
+}
+
+.header-section-icon {
+  background-image: url(../assets/icons/map-marker-alt-light-white.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 14px 14px;
+  display: inline-block;
+  height: calc(var(--header-height) - 10px);
+  width: 15px;
+}
+
+.header-section-container {
+  display: inline-block;
+  height: calc(var(--header-height) - 10px);
+  overflow: hidden;
+  width: calc(100% - 19px);
+}
+
+.header-section-container-title {
+  background-color: inherit;
+  box-sizing: content-box;
+  color: rgb(255, 255, 255);
+  display: block;
+  font-family: sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  height: 16px;
+  margin-top: 12px;
+  overflow: hidden;
+  width: 100%;
+  white-space: nowrap;
+}
+
+/* ---------------------------------------------------------------------------*/
+/* ---------------------------------------------------------------------------*/
+
+
+.view {
+  display: block;
+  height: var(--view-height);
+  overflow: hidden;
+  margin: auto;
+  max-width: 600px;
+  width: 100%;
+}
+
+.view-container {
+  box-sizing: content-box;
+  height: 100%;
+  overflow-y: scroll;
+  width: 100%;
+}
+
+.view-article {
+  border: 1px solid rgb(45, 189, 157);
+  border: 1px solid rgba(45, 189, 157, 0.2);
+  padding: 10px;
+  width: 100%;
+}
+
+.view-article-full-template,
+.view-article-partial-template {
+  display: none;
+}
+
+.view-article-header {
+  display: flex;
+  width: 100%;
+}
+
+.view-article-header-image {
+  border: 1px solid rgb(230, 230, 230);
+  border-radius: 50%;
+  display: block;
+  height: 40px;
+  width: 40px;
+}
+
+.view-article-header-title {
+  color: rgb(3, 21, 13);
+  display: block;
+  flex: 1;
+  font-family: sans-serif;
+  font-size: 19px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  margin-left: 5px;
+  padding-top: 9px;
+}
+
+.view-article-content {
+  color: rgb(41, 43, 44);
+  font-family: sans-serif;
+  font-size: 23px;
+  font-weight: 300;
+  margin-left: 45px;
+  word-wrap: break-word;
+  width: calc(100% - 45px);
+}
+
+.view-article-container {
+  display: flex;
+  height: 30px;
+  margin-top: 10px;
+  margin-left: 45px;
+  width: calc(100% - 45px);
+}
+
+.view-article-container-badge {
+  background-image: url(../assets/icons/comment-check-light.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  display: block;
+  height: 20px;
+  margin-top: 5px;
+  width: 20px;
+}
+
+.view-article-container-image {
+  border: 1px solid rgb(230, 230, 230);
+  border-radius: 50%;
+  display: block;
+  height: 20px;
+  margin-left: 5px;
+  margin-top: 5px;
+  width: 20px;
+}
+
+.view-article-container-title {
+  display: block;
+  flex: 1;
+  font-family: sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  height: 30px;
+  margin-left: 5px;
+  margin-top: 7px;
+}
+
+.view-article-secondary-content {
+  font-family: sans-serif;
+  font-size: 16px;
+  font-weight: 100;
+  margin-left: 50px;
+  margin-right: 30px;
+  width: calc(100% - 80px);
+}
+
+.view-article-footer {
+  display: flex;
+  height: 20px;
+  margin-left: 45px;
+  margin-top: 15px;
+  width: calc(100% - 45px);
+}
+
+.view-article-footer-icon {
+  background-image: url(../assets/icons/map-marker-alt-light-colored.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 16px 16px;
+  display: block;
+  height: 16px;
+  width: 16px;
+}
+
+.view-article-footer-location {
+  color: rgb(41, 43, 44);
+  flex: 1;
+  font-family: sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.4px;
+  margin-left: 3px;
+  overflow: hidden;
+}
+
+.view-article-footer-link {
+  display: flex;
+  width: 60px;
+}
+
+.view-article-footer-link:link,
+.view-article-footer-link:visited,
+.view-article-footer-link:hover,
+.view-article-footer-link:active {
+  background-color: inherit;
+  color: #000;
+  text-decoration: none;
+}
+
+.view-article-footer-link-icon {
+  display: block;
+  background-image: url(../assets/icons/comment-light-colored.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 18px 18px;
+  display: block;
+  height: 18px;
+  width: 18px;
+}
+
+.view-article-footer-link-content {
+  color: rgb(41, 43, 44);
+  font-family: sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  margin-left: 5px;
+}
+
+/* -------------------------------------------------------------------------  */
+/* ------------------------------------------------------------------------   */
+
+.menu {
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  height: var(--menu-section-height);
+  margin: auto;
+  max-width: 600px;
+  width: calc(100% - 10px);
+}
+
+.menu-questions,
+.menu-ask {
+  border-radius: 4px;
+  border: 1px solid rgb(31, 152, 172);
+  display: block;
+  font-family: sans-serif;
+  font-size: 16px;
+  line-height: 30px;
+  margin: auto;
+  text-align: center;
+  min-width: 150px;
+  vertical-align: middle;
+  width: 50%;
+}
+
+.menu-questions {
+  color: rgb(31, 152, 172);
+  margin-right: 4px;
+}
+
+.menu-questions:link,
+.menu-questions:visited,
+.menu-questions:hover,
+.menu-question:active {
+  color: rgb(31, 152, 172);
+  text-decoration: none;
+}
+
+.menu-ask {
+  background-color: rgb(31, 152, 172);
+  color: rgb(255, 255, 255);
+  margin-left: 4px;
+}
+
+.menu-ask:link,
+.menu-ask:visited,
+.menu-ask:hover,
+.menu-ask:active {
+  text-decoration: none;
+  background-color: rgb(31, 152, 172);
+  color: rgb(255, 255, 255);
+}

@@ -60,12 +60,20 @@ router
   .get(render.avatar);
 
 router
+  .route('/ask')
+  .get(render.ask);
+
+router
   .route('/')
   .get(render.home);
 
 router
   .route('/logout')
   .get(redirect.logout);
+
+router
+  .route('/questions')
+  .get(render.questions);
 
 router
   .route('/:username/posts/:postId')

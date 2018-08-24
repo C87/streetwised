@@ -21,24 +21,38 @@ module.exports.avatar = (req, res) => {
   res.redirect('/account');
 };
 
+module.exports.ask = (req, res) => {
+  if (req.session.userId) {
+    return res.status(200).render('ask.html', {
+      location: req.session.location,
+      title: tabBar,
+      username: req.session.username,
+    });
+  }
+  res.redirect('/account');
+};
+
 module.exports.home = (req, res) => {
   if (req.session.userId) {
     return res.status(200).render('home.html', {
-      ask: '_partials/home/auth/ask.html',
       headerClass: 'auth-header-section-link',
-      menuOption: '_partials/home/auth/menu-button.html',
-      script: '/js/auth/home.js',
+      route: '/ask',
       title: tabBar,
-      user: req.sessionusername
     });
   }
   res.status(200).render('home.html', {
     headerClass: 'unauth-header-section-link',
-    menuOption: '_partials/home/unauth/menu-button.html',
-    intro: '_partials/home/unauth/intro.html',
-    script: '/js/unauth/home.js',
+    intro: '_partials/home/intro.html',
+    route: '/account',
     title: tabBar,
-    unauthIntro: '_partials/home/unauth/intro.html',
+  });
+};
+
+module.exports.questions = (req, res) => {
+  res.render('questions.html', {
+    location: req.session.location,
+    script: '/js/questions.js',
+    title: tabBar,
   });
 };
 

@@ -33,32 +33,17 @@ data.canvas = (res) => {
   });
 };
 
-data.preview = (res) => {
-  const arr = document.querySelectorAll('.preview-image');
-  if (arr.length !== 0) {
-    arr.forEach((el) => {
-      el.remove();
-    });
+data.insight = (res) => {
+  if (res.features[0]) {
+    document.querySelector('.insight-article-banner-image').src = res.features[0].properties.user.avatar;
+    document.querySelector('.insight-article-banner-title').textContent = res.features[0].properties.user.username;
+    document.querySelector('.insight-article-content').textContent = res.features[0].properties.text;
+    document.querySelector('.insight-article-banner-options-link-text').textContent = res.features[0].properties.comments.length;
   }
-  res.features.forEach((el) => {
-    const img = document.querySelector('.preview-image-template').cloneNode(true);
-    img.classList.remove('preview-image-template');
-    img.classList.add('preview-image');
-    img.src = el.properties.user.avatar;
-    img.dataset.user = el.properties.user.username;
-    img.dataset.post = el.properties.text;
-    img.dataset.location = el.properties.location;
-    img.dataset.lng = el.geometry.coordinates[0];
-    img.dataset.lat = el.geometry.coordinates[1];
-    img.dataset.url = `${el.properties.user.username}/posts/${el._id}`;
-    img.dataset.comments = el.properties.comments.length;
-    img.onclick = app.modal.display;
-    document.querySelector('.preview').appendChild(img);
-  });
   return res;
 };
 
-data.view = (res) => {
+data.preview = (res) => {
   const arr = document.querySelectorAll('.view-article');
   if (arr.length !== 0) {
     arr.forEach((el) => {
@@ -66,32 +51,19 @@ data.view = (res) => {
     });
   }
   res.features.forEach((el) => {
-    if (el.properties.response) {
-      const template = document.querySelector('.view-article-full-template').cloneNode(true);
-      template.classList.remove('view-article-full-template');
-      template.classList.add('view-article');
-      template.querySelector('.view-article-header-image').src = el.properties.user.avatar;
-      template.querySelector('.view-article-header-title').textContent = el.properties.user.username;
-      template.querySelector('.view-article-content').textContent = el.properties.text;
-      template.querySelector('.view-article-container-image').src = el.properties.response.user.avatar;
-      template.querySelector('.view-article-container-title').textContent = el.properties.response.user.username;
-      template.querySelector('.view-article-secondary-content').textContent = el.properties.response.text;
-      template.querySelector('.view-article-footer-location').textContent = el.properties.location;
-      template.querySelector('.view-article-footer-link').href = `${el.properties.user.username}/posts/${el._id}`;
-      template.querySelector('.view-article-footer-link-content').textContent = el.properties.comments.length;
-      document.querySelector('.view-container').appendChild(template);
-    } else if (!el.properties.response) {
-      const template = document.querySelector('.view-article-partial-template').cloneNode(true);
-      template.classList.remove('view-article-partial-template');
-      template.classList.add('view-article');
-      template.querySelector('.view-article-header-image').src = el.properties.user.avatar;
-      template.querySelector('.view-article-header-title').textContent = el.properties.user.username;
-      template.querySelector('.view-article-content').textContent = el.properties.text;
-      template.querySelector('.view-article-footer-location').textContent = el.properties.location;
-      template.querySelector('.view-article-footer-link').href = `${el.properties.user.username}/posts/${el._id}`;
-      template.querySelector('.view-article-footer-link-content').textContent = el.properties.comments.length;
-      document.querySelector('.view-container').appendChild(template);
-    }
+    const article = document.querySelector('.view-article-template').cloneNode(true);
+    article.classList.remove('view-article-template');
+    article.classList.add('view-article');
+    article.querySelector('.view-article-image').src = el.properties.user.avatar;
+    article.querySelector('.view-article-title').textContent = el.properties.user.username;
+    article.querySelector('.view-article-content').textContent = el.properties.text;
+    article.querySelector('.view-article-location').textContent = el.properties.location;
+    article.querySelector('.view-article-location').dataset.lng = el.geometry.coordinates[0];
+    article.querySelector('.view-article-location').dataset.lat = el.geometry.coordinates[1];
+    article.querySelector('.view-article-link').href = `${el.properties.user.username}/posts/${el._id}`;
+    article.querySelector('.view-article-link-text').textContent = el.properties.comments.length;
+    article.onclick = insight;
+    document.querySelector('.view').appendChild(article);
   });
   return res;
 };
@@ -148,7 +120,7 @@ data.dbQuery = () => {
     body: fd,
   }).then(res => res.json())
     .then(res => data.preview(res))
-    .then(res => data.view(res))
+    .then(res => data.insight(res))
     .then(res => data.canvas(res))
     .then(() => data.geocode())
     .catch(err => console.log(err));

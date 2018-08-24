@@ -1,0 +1,184 @@
+* {
+  border: 0;
+  box-sizing: border-box;
+  outline: none;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  position: fixed;
+  width: 100%;
+}
+
+body {
+  overflow: hidden;
+}
+
+button {
+  background-color: inherit;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+::-moz-scrollbar {
+  display: none;
+}
+
+:root {
+  --header-height: 45px;
+  --main-height: calc(100% - 45px);
+}
+
+.header {
+  background: rgb(31, 152, 172);
+  background: linear-gradient(45deg, rgb(31, 152, 172) 0%, rgb(47, 184, 205) 100%);
+  height: var(--header-height);
+  padding: 5px 10px;
+  width: 100%;
+}
+
+.header-section {
+  height: calc(var(--header-height) - 10px);
+  margin: auto;
+  max-width: 600px;
+  width: 100%;
+}
+
+.header-section-icon {
+  background-image: url(../../assets/icons/angle-left-light-white.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  display: inline-block;
+  height: calc(var(--header-height) - 10px);
+  width: 20px;
+}
+
+.header-section-container {
+  display: inline-block;
+  height: calc(var(--header-height) - 10px);
+  margin-right: 20px;
+  overflow: hidden;
+  width: calc(100% - 53px);
+}
+
+.header-section-container-title {
+  background-color: inherit;
+  box-sizing: content-box;
+  color: rgb(255, 255, 255);
+  display: block;
+  font-family: sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  height: 16px;
+  margin-top: 12px;
+  overflow: hidden;
+  text-align: center;
+  width: 100%;
+  white-space: nowrap;
+}
+
+.main {
+  height: var(--main-height);
+  margin: auto;
+  max-width: 600px;
+  width: 100%;
+}
+
+.main-form {
+  display: block;
+  height: 300px;
+  overflow: hidden;
+  margin: auto;
+  margin-bottom: 15px;
+  margin-top: 30px;
+  width: 250px;
+}
+
+.main-form-textarea {
+  box-sizing: content-box;
+  font-family: sans-serif;
+  line-height: 1.5;
+  font-size: 20px;
+  height: 300px;
+  overflow-y: scroll;
+  resize: none;
+  width: 250px;
+}
+
+.main-form-textarea::placeholder {
+  color: rgb(0, 0, 0);
+  font-family: sans-serif;
+  line-height: 1.5;
+  font-size: 20px;
+}
+
+.main-container {
+  display: flex;
+  height: 50px;
+  overflow: hidden;
+  margin: auto;
+  width: 300px;
+}
+
+.main-container-icon {
+  background-image: url(../../assets/icons/map-marker-alt-light-colored.svg);
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  display: block;
+  height: 50px;
+  width: 30px;
+}
+
+.main-container-title {
+  box-sizing: content-box;
+  color: rgb(41, 43, 44);
+  flex: 1;
+  font-family: sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.2;
+  overflow: hidden;
+  margin-left: 3px;
+  margin-top: 5px;
+}
+
+.main-buttons {
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  height: 40px;
+  margin: auto;
+  margin-top: 30px;
+  max-width: 600px;
+  width: 280px;
+}
+
+.main-buttons-cancel,
+.main-buttons-post {
+  border-radius: 4px;
+  border: 1px solid rgb(31, 152, 172);
+  display: block;
+  font-family: sans-serif;
+  font-size: 18px;
+  height: 32px;
+  margin: auto;
+  margin-top: 0;
+  text-align: center;
+  width: 50%;
+}
+
+.main-buttons-cancel {
+  color: rgb(31, 152, 172);
+  margin-right: 4px;
+}
+
+.main-buttons-post {
+  background-color: rgb(31, 152, 172);
+  color: rgb(255, 255, 255);
+  margin-left: 4px;
+}

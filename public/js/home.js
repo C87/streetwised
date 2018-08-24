@@ -1,16 +1,17 @@
 const app = {
-  ask: {
-    element: document.querySelector('.ask'),
-    return: document.querySelector('.ask-header-section-icon'),
-    textarea: document.querySelector('.ask-form-textarea'),
-  },
   header: {
     element: document.querySelector('.header'),
-    title: document.querySelector('.header-container-title'),
   },
   intro: {
     element: document.querySelector('.intro'),
     button: document.querySelector('.intro-section-button'),
+  },
+  insight: {
+    comments: document.querySelector('.insight-article-banner-options-link-text'),
+    content: document.querySelector('.insight-article-content'),
+    element: document.querySelector('.insight'),
+    image: document.querySelector('.insight-article-banner-image'),
+    title: document.querySelector('.insight-article-banner-title'),
   },
   map: {
     element: document.querySelector('#mapboxgl'),
@@ -19,18 +20,8 @@ const app = {
     zoomIn: document.querySelector('.mapboxgl-zoom-in'),
     zoomOut: document.querySelector('.mapboxgl-zoom-out'),
   },
-  modal: {
-    element: document.querySelector('.modal'),
-    return: document.querySelector('.modal-content-banner-close'),
-  },
   menu: {
     element: document.querySelector('.menu'),
-    view: document.querySelector('.menu-questions'),
-  },
-  preview: {
-    container: document.querySelector('.preview-container'),
-    element: document.querySelector('.preview'),
-    image: document.querySelectorAll('.preview-image'),
   },
   search: {
     element: document.querySelector('.search'),
@@ -39,38 +30,34 @@ const app = {
     return: document.querySelector('.search-header-section-icon'),
   },
   view: {
+    article: document.querySelectorAll('.view-article'),
     container: document.querySelector('.view-container'),
     element: document.querySelector('.view'),
+    image: document.querySelectorAll('.view-article-image'),
   },
 };
 
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
 
-app.preview.element.style.paddingBottom = `${app.preview.element.offsetHeight - app.preview.element.clientHeight}px`;
+app.view.element.style.paddingBottom = `${app.view.element.offsetHeight - app.view.element.clientHeight}px`;
 
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
-app.modal.display = (e) => {
-  app.modal.element.style.display = 'block';
-  document.querySelector('.modal-content-image').src = e.target.src;
-  document.querySelector('.modal-content-title').textContent = e.target.dataset.user;
-  document.querySelector('.modal-content-text').textContent = e.target.dataset.post;
-  document.querySelector('.modal-content-container-title').textContent = e.target.dataset.location;
-  document.querySelector('.modal-content-banner-comments-count').textContent = e.target.dataset.comments;
-  document.querySelector('.modal-content-banner-comments').href = e.target.dataset.url;
-  document.querySelector('.modal-content-banner-travel').dataset.lng = e.target.dataset.lng;
-  document.querySelector('.modal-content-banner-travel').dataset.lat = e.target.dataset.lat;
-  document.querySelector('.modal-content-banner-travel').onclick = app.modal.fly;
-  document.querySelector('.modal-content').style.display = 'block';
-  const text = document.querySelector('.modal-content-text');
-  text.style.paddingRight = `${text.offsetWidth - text.clientWidth}px`;
-};
+// app.insight.display = (e) => {
+function insight(e) {
+  const el = this;
+  app.insight.title.textContent = el.querySelector('.view-article-title').textContent;
+  app.insight.content.textContent = el.querySelector('.view-article-content').textContent;
+  app.insight.image.src = el.querySelector('.view-article-image').src;
+  app.insight.comments.textContent = el.querySelector('.view-article-link-text').textContent;
+  console.log(this);
+}
 
 
 app.enableGeo = () => {
   app.map.geo.classList.forEach((el) => {
-    // Will run first time, if request in rejected then add disabled to class
+    // Will run first time, if request is rejected then add disabled to class
     if (el === 'enabled') {
       app.map.geo.classList.remove('mapboxgl-options-geo');
       app.map.geo.classList.add('mapboxgl-options-spinner');
@@ -104,7 +91,8 @@ app.enableGeo = () => {
 app.enableSearch = () => {
   app.header.element.style.display = 'none';
   app.map.element.style.display = 'none';
-  app.preview.container.style.display = 'none';
+  app.insight.element.style.display = 'none';
+  app.view.container.style.display = 'none';
   app.menu.element.style.display = 'none';
   app.search.element.style.display = 'block';
 };
@@ -120,32 +108,9 @@ app.disableSearch = () => {
   app.search.element.style.display = 'none';
   app.header.element.style.display = 'block';
   app.map.element.style.display = 'block';
-  app.preview.container.style.display = 'block';
+  app.insight.element.style.display = 'block';
+  app.view.container.style.display = 'block';
   app.menu.element.style.display = 'flex';
-};
-
-app.toggleView = () => {
-  if (app.menu.view.textContent === 'See all questions') {
-    app.map.element.style.display = 'none';
-    app.preview.container.style.display = 'none';
-    app.view.element.style.display = 'block';
-    app.menu.view.textContent = 'Explore map';
-    app.view.container.style.width = `${app.view.container.offsetWidth + (app.view.container.offsetWidth - app.view.container.clientWidth)}px`;
-  } else if (app.menu.view.textContent === 'Explore map') {
-    app.view.element.style.display = 'none';
-    app.map.element.style.display = 'block';
-    app.preview.container.style.display = 'block';
-    app.menu.view.textContent = 'See all questions';
-  }
-};
-
-app.modal.fly = (e) => {
-  app.modal.remove();
-  app.fly([parseFloat(e.target.dataset.lng), parseFloat(e.target.dataset.lat)]);
-};
-
-app.modal.remove = () => {
-  app.modal.element.style.display = 'none';
 };
 
 app.search.fly = (e) => {
@@ -174,7 +139,7 @@ app.intro.findLocation = () => {
   app.enableGeo();
   setTimeout(() => {
     app.intro.remove();
-  }, 2000);
+  }, 1000);
 };
 
 // -----------------------------------------------------------------------------
@@ -215,18 +180,18 @@ data.reverseGeo = (value) => {
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
 
-app.intro.button.addEventListener('click', app.intro.findLocation);
-app.intro.element.addEventListener('click', (e) => { if (e.target.className === 'intro') app.intro.remove(); });
+if (app.intro.button) {
+  app.intro.button.addEventListener('click', app.intro.findLocation);
+  app.intro.element.addEventListener('click', (e) => { if (e.target.className === 'intro') app.intro.remove(); });
+}
 
 app.map.geo.addEventListener('click', app.enableGeo);
 app.map.search.addEventListener('click', app.enableSearch);
 app.map.zoomIn.addEventListener('click', () => map.element.zoomIn());
 app.map.zoomOut.addEventListener('click', () => map.element.zoomOut());
-app.menu.view.addEventListener('click', app.toggleView);
 app.search.return.addEventListener('click', app.disableSearch);
 app.search.input.addEventListener('keyup', () => { if (app.search.input.value.length > 3) data.reverseGeo(app.search.input.value); });
-app.modal.element.addEventListener('click', (e) => { if (e.target.className === 'modal') app.modal.remove(); });
-app.modal.return.addEventListener('click', app.modal.remove);
+
 
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------

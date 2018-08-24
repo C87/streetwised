@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>{{ title }}</title>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.46.0/mapbox-gl.css' rel='stylesheet' />
+    <link rel="stylesheet" href="/css/auth/ask.css">
+  </head>
+  <body>
+    <header class="header">
+      <section class="header-section">
+        <i class="header-section-icon"></i>
+        <div class="header-section-container">
+          <h1 class="header-section-container-title">{{ username }}</h1>
+        </div>
+      </section>
+    </header>
+    <main class="main">
+      <form class="main-form">
+        <textarea class="main-form-textarea" name="text" placeholder="Ask a question from {{ location }}"></textarea>
+      </form>
+      <div class="main-container">
+        <div class="main-container-icon"></div>
+        <p class="main-container-title">{{ location }}</p>
+      </div>
+      <div class="main-buttons">
+        <button class="main-buttons-cancel">Cancel</button>
+        <button class="main-buttons-post">Post</button>
+      </div>
+    </main>
+    <script src="/js/auth/ask.js" charset="utf-8"></script>
+  </body>
+</html>
