@@ -126,9 +126,10 @@ button {
 #mapboxgl {
   height: var(--mapboxgl-section-height);
   margin: auto;
-  padding-top: 5px;
+  /* padding-top: 5px; */
   max-width: 600px;
-  width: calc(100% - 10px);
+  width: 100%;
+  /* width: calc(100% - 10px); */
 }
 
 .mapboxgl-marker {
