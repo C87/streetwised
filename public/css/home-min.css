@@ -379,6 +379,7 @@ button {
   background: linear-gradient(45deg, rgb(31, 152, 172) 0%, rgb(47, 184, 205) 100%);
   border-radius: 10px 10px 0 0;
   height: 30px;
+  position: relative;
 }
 
 .insight-article-banner-image {
@@ -651,6 +652,7 @@ button {
 /* ------------------------------------------------------------------------   */
 
 .intro {
+  background-color: rgba(0, 0, 0, 0.1);
   display: block;
   height: 100%;
   position: fixed;
@@ -666,9 +668,10 @@ button {
   border-top: 1px solid rgb(230, 230, 230);
   bottom: 0;
   height: 300px;
+  max-height: 100%;
   left: 0;
   margin: auto;
-  max-width: 400px;
+  max-width: 600px;
   padding: 20px;
   position: absolute;
   right: 0;

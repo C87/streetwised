@@ -27,6 +27,16 @@ module.exports.email = (req, res, next) => {
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
 
+module.exports.location = (req, res, next) => {
+  if (!req.session.coordinates || !req.session.geoBoundBox) {
+    return res.redirect('/');
+  }
+  next();
+};
+
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+
 module.exports.name = (req, res, next) => {
   if (!req.body.name) {
     const err = new Error('Name required.');

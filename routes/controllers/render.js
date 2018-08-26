@@ -49,8 +49,12 @@ module.exports.home = (req, res) => {
 };
 
 module.exports.questions = (req, res) => {
+  let href = '/account';
+  if (req.session.userId) { href = '/ask'; }
+
   res.render('questions.html', {
     location: req.session.location,
+    route: href,
     script: '/js/questions.js',
     title: tabBar,
   });

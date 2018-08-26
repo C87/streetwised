@@ -38,6 +38,7 @@ data.insight = (res) => {
     document.querySelector('.insight-article-banner-image').src = res.features[0].properties.user.avatar;
     document.querySelector('.insight-article-banner-title').textContent = res.features[0].properties.user.username;
     document.querySelector('.insight-article-content').textContent = res.features[0].properties.text;
+    document.querySelector('.insight-article-banner-options-link').href = `${res.features[0].properties.user.username}/posts/${res.features[0]._id}`;
     document.querySelector('.insight-article-banner-options-link-text').textContent = res.features[0].properties.comments.length;
   }
   return res;
@@ -57,7 +58,7 @@ data.preview = (res) => {
     article.querySelector('.view-article-image').src = el.properties.user.avatar;
     article.querySelector('.view-article-title').textContent = el.properties.user.username;
     article.querySelector('.view-article-content').textContent = el.properties.text;
-    article.querySelector('.view-article-location').textContent = el.properties.location;
+    article.querySelector('.view-article-location-text').textContent = el.properties.location;
     article.querySelector('.view-article-location').dataset.lng = el.geometry.coordinates[0];
     article.querySelector('.view-article-location').dataset.lat = el.geometry.coordinates[1];
     article.querySelector('.view-article-link').href = `${el.properties.user.username}/posts/${el._id}`;

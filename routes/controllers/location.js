@@ -24,8 +24,7 @@ module.exports.geocode = (req, res, next) => {
 
 module.exports.params = (req, res, next) => {
   req.session.coordinates = [parseFloat(req.body.lng), parseFloat(req.body.lat)];
-
-  res.locals.box = [
+  req.session.geoBoundBox = [
     [parseFloat(req.body.sw_lng), parseFloat(req.body.sw_lat)],
     [parseFloat(req.body.ne_lng), parseFloat(req.body.ne_lat)],
   ];

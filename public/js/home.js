@@ -11,6 +11,7 @@ const app = {
     content: document.querySelector('.insight-article-content'),
     element: document.querySelector('.insight'),
     image: document.querySelector('.insight-article-banner-image'),
+    link: document.querySelector('.insight-article-banner-options-link'),
     title: document.querySelector('.insight-article-banner-title'),
   },
   map: {
@@ -44,12 +45,12 @@ app.view.element.style.paddingBottom = `${app.view.element.offsetHeight - app.vi
 
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
-// app.insight.display = (e) => {
 function insight(e) {
   const el = this;
   app.insight.title.textContent = el.querySelector('.view-article-title').textContent;
   app.insight.content.textContent = el.querySelector('.view-article-content').textContent;
   app.insight.image.src = el.querySelector('.view-article-image').src;
+  app.insight.link.href = el.querySelector('.view-article-link').href;
   app.insight.comments.textContent = el.querySelector('.view-article-link-text').textContent;
   console.log(this);
 }

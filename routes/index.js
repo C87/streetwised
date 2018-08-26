@@ -45,6 +45,10 @@ router
   .get(location.review, res.location);
 
 router
+  .route('/questions.json')
+  .get(read.all, res.points);
+
+router
   .route('/:username/posts/:postId.json')
   .get(read.post);
 
@@ -73,7 +77,7 @@ router
 
 router
   .route('/questions')
-  .get(render.questions);
+  .get(validate.location, render.questions);
 
 router
   .route('/:username/posts/:postId')

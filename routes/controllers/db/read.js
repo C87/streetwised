@@ -11,7 +11,7 @@ module.exports.all = (req, res, next) => {
     .find()
     .where('geometry.coordinates')
     .within({
-      box: res.locals.box,
+      box: req.session.geoBoundBox,
     })
     .sort({
       'properties.date': '-1',
