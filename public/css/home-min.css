@@ -117,8 +117,8 @@ button {
 }
 
 .mapboxgl-marker {
-  border: 1px solid rgba(4, 100, 234, 0.8);
-  background-color: rgba(55, 136, 250, 0.2);
+  border: 1px solid rgba(31, 152, 172, 1);
+  background-color: rgba(31, 152, 172, 0.2);
   border-radius: 50%;
   display: flex;
   height: 70px;
@@ -134,7 +134,7 @@ button {
 
 .mapboxgl-point {
   border: 2px solid #ffffff;
-  background-color: rgba(4, 100, 234, 1);
+  background-color: rgba(31, 152, 172, 1);
   border-radius: 50%;
   height: 12px;
   margin: auto;
