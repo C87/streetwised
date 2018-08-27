@@ -1,4 +1,7 @@
 const app = {
+  controller: {
+    element: document.querySelector('.controller'),
+  },
   header: {
     element: document.querySelector('.header'),
   },
@@ -7,12 +10,15 @@ const app = {
     button: document.querySelector('.intro-section-button'),
   },
   insight: {
-    comments: document.querySelector('.insight-article-banner-options-link-text'),
-    content: document.querySelector('.insight-article-content'),
+    comments: document.querySelector('.insight-route-text'),
+    content: document.querySelector('.insight-content'),
     element: document.querySelector('.insight'),
-    image: document.querySelector('.insight-article-banner-image'),
-    link: document.querySelector('.insight-article-banner-options-link'),
-    title: document.querySelector('.insight-article-banner-title'),
+    image: document.querySelector('.insight-image'),
+    link: document.querySelector('.insight-route'),
+    name: document.querySelector('.insight-name'),
+  },
+  main: {
+    element: document.querySelector('.main'),
   },
   map: {
     element: document.querySelector('#mapboxgl'),
@@ -41,18 +47,17 @@ const app = {
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
 
-app.view.element.style.paddingBottom = `${app.view.element.offsetHeight - app.view.element.clientHeight}px`;
+// app.view.element.style.paddingBottom = `${app.view.element.offsetHeight - app.view.element.clientHeight}px`;
 
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
 function insight(e) {
   const el = this;
-  app.insight.title.textContent = el.querySelector('.view-article-title').textContent;
+  app.insight.name.textContent = el.querySelector('.view-article-title').textContent;
   app.insight.content.textContent = el.querySelector('.view-article-content').textContent;
   app.insight.image.src = el.querySelector('.view-article-image').src;
   app.insight.link.href = el.querySelector('.view-article-link').href;
   app.insight.comments.textContent = el.querySelector('.view-article-link-text').textContent;
-  console.log(this);
 }
 
 
@@ -90,11 +95,6 @@ app.enableGeo = () => {
 };
 
 app.enableSearch = () => {
-  app.header.element.style.display = 'none';
-  app.map.element.style.display = 'none';
-  app.insight.element.style.display = 'none';
-  app.view.container.style.display = 'none';
-  app.menu.element.style.display = 'none';
   app.search.element.style.display = 'block';
 };
 
@@ -107,11 +107,6 @@ app.disableSearch = () => {
   }
   app.search.input.value = '';
   app.search.element.style.display = 'none';
-  app.header.element.style.display = 'block';
-  app.map.element.style.display = 'block';
-  app.insight.element.style.display = 'block';
-  app.view.container.style.display = 'block';
-  app.menu.element.style.display = 'flex';
 };
 
 app.search.fly = (e) => {

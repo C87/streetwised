@@ -35,13 +35,13 @@ module.exports.ask = (req, res) => {
 module.exports.home = (req, res) => {
   if (req.session.userId) {
     return res.status(200).render('home.html', {
-      headerClass: 'auth-header-section-link',
+      headerClass: 'auth',
       route: '/ask',
       title: tabBar,
     });
   }
   res.status(200).render('home.html', {
-    headerClass: 'unauth-header-section-link',
+    headerClass: 'unauth',
     intro: '_partials/home/intro.html',
     route: '/account',
     title: tabBar,

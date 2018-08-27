@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <title>{{ title }}</title>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.46.0/mapbox-gl.css' rel='stylesheet' />
@@ -14,66 +14,26 @@
     {% if intro %}
       {% include intro %}
     {% endif %}
+    {% include "_partials/home/search.html" %}
     <header class="header">
       <section class="header-section">
-        <i class="header-section-icon"></i>
-        <div class="header-section-container">
-          <h1 class="header-section-container-title"></h1>
-        </div>
-        <a href="/account" class="{{ headerClass }}"></a>
+        <h1 class="header-section-title">Streetwised</h1>
+        <a href="/account" class="header-section-route {{ headerClass }}"></a>
       </section>
     </header>
     <main class="main">
       {% include "_partials/home/map.html" %}
-      {% include "_partials/home/search.html" %}
-      <section class="insight">
-        <article class="insight-article">
-          <header class="insight-article-banner">
-            <img class="insight-article-banner-image">
-            <div class="insight-article-banner-title-container">
-              <h2 class="insight-article-banner-title"></h2>
-            </div>
-            <div class="insight-article-banner-options">
-              <p class="insight-article-banner-options-distance">
-                <span class="insight-article-banner-options-distance-icon"></span>
-                <span class="insight-article-banner-options-distance-text"></span>
-              </p>
-              <a href="/" class="insight-article-banner-options-link">
-                <span class="insight-article-banner-options-link-icon"></span>
-                <span class="insight-article-banner-options-link-text"></span>
-              </a>
-            </div>
-          </header>
-          <div class="insight-article-content-container">
-            <p class="insight-article-content"></p>
-          </div>
-        </article>
-      </section>
-      <div class="view-container">
-        <section class="view">
-          <article class="view-article-template">
-            <img class="view-article-image">
-            <h1 class="view-article-title"></h1>
-            <p class="view-article-content"></p>
-            <p class="view-article-location">
-              <span class="view-article-location-icon"></span>
-              <span class="view-article-location-text"></span>
-            </p>
-            <p class="view-article-distance">
-              <span class="view-article-distance-icon"></span>
-              <span class="view-article-distance-text"></span>
-            </p>
-            <a href="/" class="view-article-link">
-              <span class="view-article-link-icon"></span>
-              <span class="view-article-link-text"></span>
-            </a>
-          </article>
+      <div class="controller">
+        <section class="info">
+          <h2 class="info-location">Searching location</h2>
+        </section>
+        {% include "_partials/home/view.html" %}
+        {% include "_partials/home/insight.html" %}
+        <section class="menu">
+          <a href="/questions" class="menu-questions">See all questions</a>
+          <a href="{{ route }}" class="menu-ask">Ask a question</a>
         </section>
       </div>
-      <section class="menu">
-        <a href="/questions" class="menu-questions">See all questions</a>
-        <a href="{{ route }}" class="menu-ask">Ask a question</a>
-      </section>
     </main>
     <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v0.46.0/mapbox-gl.js"></script>
     <script src="/js/map.js" charset="utf-8"></script>

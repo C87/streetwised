@@ -35,11 +35,11 @@ data.canvas = (res) => {
 
 data.insight = (res) => {
   if (res.features[0]) {
-    document.querySelector('.insight-article-banner-image').src = res.features[0].properties.user.avatar;
-    document.querySelector('.insight-article-banner-title').textContent = res.features[0].properties.user.username;
-    document.querySelector('.insight-article-content').textContent = res.features[0].properties.text;
-    document.querySelector('.insight-article-banner-options-link').href = `${res.features[0].properties.user.username}/posts/${res.features[0]._id}`;
-    document.querySelector('.insight-article-banner-options-link-text').textContent = res.features[0].properties.comments.length;
+    document.querySelector('.insight-image').src = res.features[0].properties.user.avatar;
+    document.querySelector('.insight-name').textContent = res.features[0].properties.user.username;
+    document.querySelector('.insight-content').textContent = res.features[0].properties.text;
+    document.querySelector('.insight-route').href = `/${res.features[0].properties.user.username}/posts/${res.features[0]._id}`;
+    document.querySelector('.insight-route-text').textContent = res.features[0].properties.comments.length;
   }
   return res;
 };
@@ -77,7 +77,7 @@ map.load = (res) => {
     container: 'mapboxgl',
     style: 'https://maps.tilehosting.com/c/d5517948-b81a-4374-9547-6de2bf4279d8/styles/basic/style.json?key=BJinYMSawaKJNsgs0dR4',
     center: res.center,
-    zoom: 12,
+    zoom: 5,
     maxZoom: 15,
     // maxBounds: res.maxBounds,
     attributionControl: false,
@@ -136,12 +136,12 @@ data.geocode = () => {
     body: fd,
   }).then(res => res.json())
     .then((res) => {
-      document.querySelector('.header-section-container-title').textContent = res;
-      const ask = document.querySelector('.ask-form-textarea');
-      if (ask) {
-        ask.placeholder = `Ask a question from ${res}.`;
-        document.querySelector('.ask-container-title').textContent = res;
-      }
+      document.querySelector('.info-location').textContent = res;
+      // const ask = document.querySelector('.ask-form-textarea');
+      // if (ask) {
+      //   ask.placeholder = `Ask a question from ${res}.`;
+      //   document.querySelector('.ask-container-title').textContent = res;
+      // }
     })
     .catch(err => console.log(err));
 };
