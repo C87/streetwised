@@ -644,7 +644,7 @@ button {
 /* ---------------------------------------------------------------------------*/
 
 .intro {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.2);
   display: block;
   height: 100%;
   position: fixed;
@@ -654,19 +654,13 @@ button {
 
 .intro-section {
   background-color: rgb(255, 255, 255);
-  border-radius: 20px 20px 0 0;
-  border-left: 1px solid rgb(230, 230, 230);
-  border-right: 1px solid rgb(230, 230, 230);
-  border-top: 1px solid rgb(230, 230, 230);
   bottom: 0;
+  border: 2px solid rgb(47, 184, 205);
+  border-bottom: none;
+  border-radius: 25px 25px 0 0;
   height: var(--controller-height);
-  max-height: 100%;
-  left: 0;
-  margin: auto;
-  max-width: 600px;
   padding: 20px;
   position: absolute;
-  right: 0;
   width: 100%;
 }
 
