@@ -31,6 +31,7 @@ data.canvas = (res) => {
       },
     },
   });
+  return res;
 };
 
 data.insight = (res) => {
@@ -123,11 +124,12 @@ data.dbQuery = () => {
     .then(res => data.preview(res))
     .then(res => data.insight(res))
     .then(res => data.canvas(res))
-    .then(() => data.geocode())
+    .then(res => data.geocode(res))
     .catch(err => console.log(err));
 };
 
-data.geocode = () => {
+data.geocode = (questions) => {
+  const count = questions.features.length;
   const fd = data.formData();
 
   fetch('/geocode', {
@@ -136,7 +138,8 @@ data.geocode = () => {
     body: fd,
   }).then(res => res.json())
     .then((res) => {
-      document.querySelector('.info-location').textContent = res;
+      document.querySelector('.info-location-question-count').textContent = `${count} questions near`;
+      document.querySelector('.info-location-name').textContent = res;
       // const ask = document.querySelector('.ask-form-textarea');
       // if (ask) {
       //   ask.placeholder = `Ask a question from ${res}.`;
