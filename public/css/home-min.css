@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Quicksand:500');
+@import url('https://fonts.googleapis.com/css?family=Quicksand:100,200,300,400,500');
 
 * {
   border: 0;
@@ -283,7 +283,7 @@ button {
 .info-location {
   color: rgb(37, 39, 43);
   font-family: 'Quicksand', sans-serif;
-  font-weight: 300;
+  font-weight: 500;
   font-size: 20px;
   height: 46px;
   line-height: 1.1;
@@ -337,9 +337,9 @@ button {
   color: rgb(255, 255, 255);
   border-radius: 8px;
   display: block;
-  font-family: sans-serif;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 200;
   font-size: 16px;
-  font-weight: 500;
   margin: auto;
   padding: 2px 3px;
   position: absolute;
@@ -387,7 +387,7 @@ button {
 .insight-content {
   display: inline-block;
   font-family: 'Quicksand', sans-serif;
-  font-weight: 300;
+  font-weight: 500;
   font-size: 20px;
   height: calc(100%);
   width: calc(100%);
@@ -429,17 +429,20 @@ button {
 }
 
 .insight-question {
-  font-family: sans-serif;
-  font-size: 22px;
+  font-family: inherit;
+  font-size: 20px;
   font-weight: 300;
+  /* font-family: sans-serif;
+  font-size: 22px;
+  font-weight: 300; */
   line-height: 25px;
   vertical-align: middle;
 }
 
 .insight-route {
   color: rgb(37, 39, 43);
-  font-family: sans-serif;
-  font-size: 20px;
+  font-family: inherit;
+  font-size: 18px;
   font-weight: 300;
   display: inline-block;
   line-height: 25px;
