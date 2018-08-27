@@ -37,8 +37,8 @@ data.insight = (res) => {
   if (res.features[0]) {
     document.querySelector('.insight-image').src = res.features[0].properties.user.avatar;
     document.querySelector('.insight-name').textContent = res.features[0].properties.user.username;
-    document.querySelector('.insight-content').textContent = res.features[0].properties.text;
-    document.querySelector('.insight-route').href = `/${res.features[0].properties.user.username}/posts/${res.features[0]._id}`;
+    document.querySelector('.insight-question').textContent = res.features[0].properties.text;
+    // document.querySelector('.insight-route').href = `/${res.features[0].properties.user.username}/posts/${res.features[0]._id}`;
     document.querySelector('.insight-route-text').textContent = res.features[0].properties.comments.length;
   }
   return res;

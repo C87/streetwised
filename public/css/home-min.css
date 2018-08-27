@@ -383,15 +383,13 @@ button {
   padding: 5px;
 }
 
-.insight-title {
+.insight-content {
   display: inline-block;
   font-family: 'Quicksand', sans-serif;
   font-weight: 300;
   font-size: 20px;
-  line-height: 25px;
-  text-align: center;
-  width: calc(100% - 110px);
-  vertical-align: middle;
+  height: calc(100% - 20px);
+  width: calc(100%);
 }
 
 .insight-image {
@@ -405,27 +403,14 @@ button {
 }
 
 .insight-name {
-  display: inline-block;
   font-family: inherit;
   font-weight: inherit;
   font-size: inherit;
-  height: 25px;
   line-height: 25px;
   vertical-align: middle;
 }
 
-.insight-distance,
-.insight-route {
-  color: rgb(37, 39, 43);
-  display: inline-block;
-  font-family: sans-serif;
-  font-size: 16px;
-  font-weight: 300;
-  line-height: 25px;
-  width: 50px;
-}
-
-.insight-distance-icon,
+.insight-icon,
 .insight-route-icon {
   background-position: center;
   background-repeat: no-repeat;
@@ -437,20 +422,40 @@ button {
   vertical-align: middle;
 }
 
-.insight-distance-icon {
+.insight-icon {
   background-image: url(../assets/icons/location-arrow-light.svg);
+  margin: 0 5px 0 2px;
+}
+
+.insight-question {
+  font-family: sans-serif;
+  font-size: 22px;
+  font-weight: 300;
+  line-height: 25px;
+  vertical-align: middle;
+}
+
+.insight-route {
+  color: rgb(37, 39, 43);
+  font-family: sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 25px;
+  margin-left: 5px;
+  vertical-align: middle;
 }
 
 .insight-route-icon {
   background-image: url(../assets/icons/comment-light.svg);
 }
 
-.insight-distance-text,
+
+
 .insight-route-text {
   display: inline-block;
   font-family: inherit;
-  font-size: inherit;
   font-weight: inherit;
+  font-size: inherit;
   line-height: 25px;
   vertical-align: middle;
   width: 23px;
@@ -463,16 +468,6 @@ button {
   background-color: rgb(255, 255, 255);
   color: rgb(0, 0, 0);
   text-decoration: none;
-}
-
-.insight-content {
-  color: rgb(37, 39, 43);
-  display: block;
-  font-family: sans-serif;
-  font-size: 22px;
-  font-weight: 300;
-  height: calc(100% - 20px);
-  padding-top: 5px;
 }
 
 /* -------------------------------------------------------------------------  */

@@ -11,7 +11,7 @@ const app = {
   },
   insight: {
     comments: document.querySelector('.insight-route-text'),
-    content: document.querySelector('.insight-content'),
+    content: document.querySelector('.insight-question'),
     element: document.querySelector('.insight'),
     image: document.querySelector('.insight-image'),
     link: document.querySelector('.insight-route'),
