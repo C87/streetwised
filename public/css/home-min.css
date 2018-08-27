@@ -53,7 +53,6 @@ button {
 
 .header {
   background-color: rgb(255, 255, 255);
-  /* border-bottom: 1px solid rgba(46, 61, 73, 0.1); */
   border-bottom: 2px solid rgb(47, 184, 205);
   height: var(--header-height);
   padding: 5px 10px;
@@ -142,8 +141,10 @@ button {
   width: 12px;
 }
 
-.mapboxgl-ctrl-attrib {
-  display: none;
+.mapboxgl-ctrl,
+.mapboxgl-ctrl-attrib,
+.mapboxgl-compact {
+  bottom: 40px;
 }
 
 .mapboxgl-zoom {

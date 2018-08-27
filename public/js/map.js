@@ -90,7 +90,7 @@ map.load = (res) => {
     attributionControl: false,
   }).addControl(new mapboxgl.AttributionControl({
     compact: true,
-  }), 'bottom-right');
+  }));
 
   map.element.doubleClickZoom.disable();
   map.element.scrollZoom.disable();

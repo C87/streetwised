@@ -6,42 +6,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <title>{{ title }}</title>
-    <link rel="stylesheet" href="/css/post.css">
+    <link rel="stylesheet" media="(max-width: 599px)" href="/css/post-min.css">
+		<link rel="stylesheet" media="(min-width: 600px)" href="/css/home-max.css">
   </head>
-  <header class="header">
-    <section class="header-section">
-      <button class="header-section-button"></button>
-      <h1 class="header-section-title">{{ user }}</h1>
-      {% if unauthLink %}
-        {% include unauthLink %}
-      {% endif %}
-    </section>
-  </header>
-  <main class="main">
-    <div class="main-container">
-      <section class="main-section main-section-template">
-        <article class="main-section-container">
-          <h1 class="main-section-container-content"></h1>
-          <div class="main-section-secondary-container">
-            <div class="main-section-secondary-container-icon"></div>
-            <p class="main-section-secondary-container-title"></p>
-          </div>
-        </article>
-        <img class="main-section-image">
+  <body>
+    <header class="header">
+      <section class="header-section">
+        <h1 class="header-section-title">Streetwised</h1>
+        <button class="header-section-route"></button>
       </section>
-      <article class="main-article main-article-template">
-        <img class="main-article-section-header-image">
-        <p class="main-article-content-text">
-          <span class="main-article-section-header-title"></span>
-          <span class="main-article-content"></span>
-        </p>
-        <div class="main-article-container"></div>
-      </article>
-    </div>
-  </main>
-  <section class="section">
-  {% include section %}
-  </section>
+    </header>
+    <main class="main">
+      <section class="question-template">
+        <h2 class="question-content">
+          <span class="content-tag"></span>
+          <span class="content-text"></span>
+        </h2>
+        <div class="question-user">
+          <img class="user-image">
+          <h5 class="user-name"></h5>
+        </div>
+      </section>
+      <section class="response-container">
+        <article class="response-template">
+          <img class="response-image">
+          <p class="response-content">
+            <span class="response-name"></span>
+            <span class="response-text"></span>
+          </p>
+        </article>
+      </section>
+    </main>
+    {% include controller %}
+  </body>
   <script src="{{ script }}" charset="utf-8"></script>
 </body>
 </html>

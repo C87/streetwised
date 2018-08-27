@@ -1,79 +1,83 @@
 const tabBar = 'Streetwised';
 
 module.exports.account = (req, res) => {
-  if (req.session.userId) {
-    return res.status(200).render('auth/account.html', {
-      title: tabBar,
-      username: req.session.username,
-    });
+  if (!req.session.userId) {
+    return res.status(200).render('unauth/account.html');
   }
-  res
-    .status(200).render('unauth/account.html');
+
+  res.status(200).render('auth/account.html', {
+    title: tabBar,
+    username: req.session.username,
+  });
 };
 
 module.exports.avatar = (req, res) => {
-  if (req.session.userId) {
-    return res.status(200).render('auth/avatar.html', {
-      title: tabBar,
-      username: req.session.username,
-    });
+  if (!req.session.userId) {
+    return res.redirect('/account');
   }
-  res.redirect('/account');
+
+  res.status(200).render('auth/avatar.html', {
+    title: tabBar,
+    username: req.session.username,
+  });
 };
 
 module.exports.ask = (req, res) => {
-  if (req.session.userId) {
-    return res.status(200).render('ask.html', {
-      location: req.session.location,
-      title: tabBar,
-      username: req.session.username,
-    });
+  if (!req.session.userId) {
+    return res.redirect('/account');
   }
-  res.redirect('/account');
+
+  res.status(200).render('ask.html', {
+    location: req.session.location,
+    title: tabBar,
+    username: req.session.username,
+  });
 };
 
 module.exports.home = (req, res) => {
+  let intro = '_partials/home/intro.html';
+  let header = 'unauth';
+  let route = '/account';
   if (req.session.userId) {
-    return res.status(200).render('home.html', {
-      headerClass: 'auth',
-      route: '/ask',
-      title: tabBar,
-    });
+    intro = null;
+    header = 'auth';
+    route = '/ask';
   }
+
   res.status(200).render('home.html', {
-    headerClass: 'unauth',
-    intro: '_partials/home/intro.html',
-    route: '/account',
+    headerClass: header,
+    intro,
+    route,
     title: tabBar,
   });
 };
 
 module.exports.questions = (req, res) => {
-  let href = '/account';
-  if (req.session.userId) { href = '/ask'; }
+  let route = '/account';
+  if (req.session.userId) {
+    route = '/ask';
+  }
 
-  res.render('questions.html', {
+  res.status(200).render('questions.html', {
     location: req.session.location,
-    route: href,
+    route,
     script: '/js/questions.js',
     title: tabBar,
   });
 };
 
 module.exports.post = (req, res) => {
+  let controller = '_partials/post/unauth/controller.html';
+  let src = null;
   if (req.session.userId) {
-    return res.status(200).render('post.html', {
-      section: '_partials/post/auth/section.html',
-      script: '/js/auth/post.js',
-      title: tabBar,
-      user: req.params.username,
-    });
+    controller = '_partials/post/auth/controller.html';
+    src = req.session.avatar;
   }
+
   res.status(200).render('post.html', {
-    section: '_partials/post/unauth/section.html',
-    script: '/js/unauth/post.js',
+    controller,
+    script: '/js/post.js',
+    src,
     title: tabBar,
-    user: req.params.username,
-    unauthLink: '_partials/post/unauth/header.html'
   });
 };
