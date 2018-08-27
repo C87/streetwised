@@ -138,7 +138,7 @@ data.geocode = (questions) => {
     body: fd,
   }).then(res => res.json())
     .then((res) => {
-      document.querySelector('.info-location-question-count').textContent = `${count} questions near`;
+      if (questions) { document.querySelector('.info-location-question-count').textContent = `${count} questions near`; }
       document.querySelector('.info-location-name').textContent = res;
       // const ask = document.querySelector('.ask-form-textarea');
       // if (ask) {

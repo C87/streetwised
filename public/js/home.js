@@ -78,7 +78,6 @@ app.enableGeo = () => {
 
       result
         .then(pos => app.fly([pos.coords.longitude, pos.coords.latitude]))
-        .then(data.geocode)
         .then(() => {
           app.map.geo.classList.remove('mapboxgl-options-spinner');
           app.map.geo.classList.add('mapboxgl-options-geo');
