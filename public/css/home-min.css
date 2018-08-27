@@ -648,7 +648,7 @@ button {
   display: block;
   height: 100%;
   position: fixed;
-  z-index: 2;
+  z-index: 5;
   width: 100%;
 }
 
