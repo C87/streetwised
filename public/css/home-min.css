@@ -39,8 +39,8 @@ button {
   --controller-height: 350px;
   /* ------- 350px ---------- */
   --info-height: 50px;
-  --view-section-height: 120px;
-  --insight-height: 140px;
+  --view-section-height: 135px;
+  --insight-height: 125px;
   --menu-section-height: 40px;
   /* ------------------------- */
   --search-section-height: calc(100vh);
@@ -299,6 +299,7 @@ button {
   height: var(--view-section-height);
   overflow: hidden;
   margin: auto;
+  padding-top: 10px;
   width: calc(100% - 10px);
 }
 
@@ -380,7 +381,7 @@ button {
 
 .insight {
   height: var(--insight-height);
-  padding: 5px;
+  padding: 0px 5px 5px 5px;
 }
 
 .insight-content {
@@ -388,7 +389,7 @@ button {
   font-family: 'Quicksand', sans-serif;
   font-weight: 300;
   font-size: 20px;
-  height: calc(100% - 20px);
+  height: calc(100%);
   width: calc(100%);
 }
 
