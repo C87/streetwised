@@ -30,6 +30,10 @@ const postSchema = new Schema({
       type: String,
       required: true,
     },
+    tag: {
+      type: String,
+      required: false,
+    },
     location: {
       type: String,
       required: true,

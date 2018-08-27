@@ -39,9 +39,11 @@ button {
   --controller-height: 350px;
   /* ------- 350px ---------- */
   --info-height: 50px;
+  --menu-section-height: 40px;
   --view-section-height: 135px;
   --insight-height: 125px;
-  --menu-section-height: 40px;
+  /* ------- 260px ---------- */
+  --spinner-height: 260px;
   /* ------------------------- */
   --search-section-height: calc(100vh);
 }
@@ -293,6 +295,37 @@ button {
 /* ---------------------------------------------------------------------------*/
 /* ---------------------------------------------------------------------------*/
 
+.load {
+  display: none;
+  height: var(--spinner-height);
+  width: 100%;
+}
+
+.load-notification {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 300;
+  font-size: 25px;
+  height: var(--spinner-height);
+  padding: 20px;
+}
+
+.load-spinner {
+  background-image: url(../assets/icons/spinner-third-light.svg);
+  background-color: inherit;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 40px 40px;
+  border-radius: 50%;
+  display: block;
+  height: var(--spinner-height);
+  margin: auto;
+  width: var(--spinner-height);
+  -webkit-animation: spin 0.8s linear infinite; /* Safari */
+  animation: spin 0.8s linear infinite;
+}
+
+/* ---------------------------------------------------------------------------*/
+/* ---------------------------------------------------------------------------*/
 
 .view-container {
   display: block;
@@ -385,7 +418,7 @@ button {
 }
 
 .insight-content {
-  display: inline-block;
+  display: none;
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
   font-size: 20px;

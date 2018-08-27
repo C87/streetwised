@@ -22,11 +22,11 @@ data.canvas = (res) => {
     paint: {
       'circle-stroke-width': 1,
       'circle-stroke-color': '#fff',
-      'circle-color': '#d9453d',
+      'circle-color': '#1F98AC',
       'circle-radius': {
         stops: [
-          [10, 3],
-          [15, 6],
+          [10, 5],
+          [15, 10],
         ],
       },
     },
@@ -39,8 +39,14 @@ data.insight = (res) => {
     document.querySelector('.insight-image').src = res.features[0].properties.user.avatar;
     document.querySelector('.insight-name').textContent = res.features[0].properties.user.username;
     document.querySelector('.insight-question').textContent = res.features[0].properties.text;
-    // document.querySelector('.insight-route').href = `/${res.features[0].properties.user.username}/posts/${res.features[0]._id}`;
+    document.querySelector('.insight-icon').dataset.lng = res.features[0].geometry.coordinates[0];
+    document.querySelector('.insight-icon').dataset.lat = res.features[0].geometry.coordinates[1];
+    document.querySelector('.insight-icon').onclick = app.insight.fly;
+    document.querySelector('.insight-route').href = `/${res.features[0].properties.user.username}/posts/${res.features[0]._id}`;
     document.querySelector('.insight-route-text').textContent = res.features[0].properties.comments.length;
+    document.querySelector('.insight-content').style.display = 'block';
+  } else {
+    document.querySelector('.insight-content').style.display = 'none';
   }
   return res;
 };
@@ -131,6 +137,8 @@ data.dbQuery = () => {
 data.geocode = (questions) => {
   const count = questions.features.length;
   const fd = data.formData();
+  document.querySelector('.info-location-question-count').textContent = '';
+  document.querySelector('.info-location-name').textContent = 'Searching location';
 
   fetch('/geocode', {
     method: 'POST',
@@ -138,7 +146,11 @@ data.geocode = (questions) => {
     body: fd,
   }).then(res => res.json())
     .then((res) => {
-      if (questions) { document.querySelector('.info-location-question-count').textContent = `${count} questions near`; }
+      if (count !== 1) {
+        document.querySelector('.info-location-question-count').textContent = `${count} questions near`;
+      } else {
+        document.querySelector('.info-location-question-count').textContent = `${count} question near`;
+      }
       document.querySelector('.info-location-name').textContent = res;
       // const ask = document.querySelector('.ask-form-textarea');
       // if (ask) {
