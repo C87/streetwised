@@ -387,7 +387,7 @@ button {
 .insight-content {
   display: inline-block;
   font-family: 'Quicksand', sans-serif;
-  font-weight: 500;
+  font-weight: 400;
   font-size: 20px;
   height: calc(100%);
   width: calc(100%);
@@ -432,9 +432,6 @@ button {
   font-family: inherit;
   font-size: 20px;
   font-weight: 300;
-  /* font-family: sans-serif;
-  font-size: 22px;
-  font-weight: 300; */
   line-height: 25px;
   vertical-align: middle;
 }
