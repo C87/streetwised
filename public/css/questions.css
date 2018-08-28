@@ -124,7 +124,7 @@ button {
   font-size: 20px;
   line-height: 40px;
   vertical-align: middle;
-  width: calc(100% - 115px);
+  width: calc(100% - 135px);
 }
 
 .view-article-tag {
@@ -158,6 +158,10 @@ button {
   line-height: 25px;
   margin: auto;
   width: 60px;
+}
+
+.view-article-distance {
+  display: none;
 }
 
 .view-article-link:link,
