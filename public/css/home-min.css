@@ -329,21 +329,13 @@ button {
 /* ---------------------------------------------------------------------------*/
 
 .view-container {
-  display: block;
-  height: var(--view-section-height);
-  overflow: hidden;
-  margin: auto;
-  padding-top: 10px;
-  width: calc(100% - 10px);
-}
-
-.view {
-  box-sizing: content-box;
   display: flex;
   height: var(--view-section-height);
   overflow-x: scroll;
   overflow-y: hidden;
-  width: 100%;
+  margin: auto;
+  padding-top: 10px;
+  width: calc(100% - 10px);
 }
 
 .view-article-template {
@@ -513,12 +505,13 @@ button {
   display: flex;
   height: var(--menu-section-height);
   margin: auto;
+  padding: 0px 10px;
   width: calc(100% - 10px);
 }
 
 .menu-questions,
 .menu-ask {
-  border-radius: 4px;
+  border-radius: 10px;
   border: 1px solid rgb(31, 152, 172);
   display: block;
   font-family: 'Quicksand', sans-serif;
@@ -711,7 +704,7 @@ button {
 .intro-section-button {
   background-color: rgb(31, 152, 172);
   color: rgb(255, 255, 255);
-  border-radius: 4px;
+  border-radius: 10px;
   display: block;
   font-family: 'Quicksand', sans-serif;
   font-size: 20px;

@@ -59,8 +59,8 @@ function insight(e) {
   app.insight.image.src = el.querySelector('.view-article-image').src;
   app.insight.link.href = el.querySelector('.view-article-link').href;
   app.insight.icon.onclick = app.insight.fly;
-  app.insight.icon.dataset.lng = el.querySelector('.view-article-location').dataset.lng;
-  app.insight.icon.dataset.lat = el.querySelector('.view-article-location').dataset.lat;
+  app.insight.icon.dataset.lng = el.querySelector('.view-article-distance').dataset.lng;
+  app.insight.icon.dataset.lat = el.querySelector('.view-article-distance').dataset.lat;
   app.insight.comments.textContent = el.querySelector('.view-article-link-text').textContent;
 }
 

@@ -53,12 +53,15 @@ module.exports.home = (req, res) => {
 };
 
 module.exports.questions = (req, res) => {
+  let header = 'unauth';
   let route = '/account';
   if (req.session.userId) {
+    header = 'auth';
     route = '/ask';
   }
 
   res.status(200).render('questions.html', {
+    headerClass: header,
     location: req.session.location,
     route,
     script: '/js/questions.js',
