@@ -124,13 +124,21 @@ button {
   font-size: 20px;
   line-height: 40px;
   vertical-align: middle;
-  width: calc(100% - 115px);
+  width: calc(100% - 190px);
+}
+
+.view-article-tag-container {
+  display: inline-block;
+  height: 25px;
+  line-height: 25px;
+  /* padding-top: 1px; */
+  width: 80px;
+  vertical-align: middle;
 }
 
 .view-article-tag {
   border: 1px solid rgb(31, 152, 172);
   border-radius: 8px;
-  display: inline-block;
   font-family: 'Quicksand', sans-serif;
   font-weight: 300;
   font-size: 16px;
@@ -157,7 +165,7 @@ button {
   display: inline-block;
   line-height: 25px;
   margin: auto;
-  width: 60px;
+  width: 50px;
 }
 
 .view-article-distance {
