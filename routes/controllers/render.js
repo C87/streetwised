@@ -27,7 +27,8 @@ module.exports.ask = (req, res) => {
     return res.redirect('/account');
   }
 
-  res.status(200).render('ask.html', {
+  res.status(200).render('auth/ask.html', {
+    image: req.session.avatar,
     location: req.session.location,
     title: tabBar,
     username: req.session.username,
