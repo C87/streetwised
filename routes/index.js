@@ -107,11 +107,11 @@ router
 
 router
   .route('/new-comment')
-  .post(aws.none, validate.text, create.comment, res.comment);
+  .post(aws.none, validate.comment, create.comment, res.comment);
 
 router
   .route('/new-post')
-  .post(aws.none, validate.text, create.post, res.points);
+  .post(aws.none, validate.question, create.post, res.points);
 
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------

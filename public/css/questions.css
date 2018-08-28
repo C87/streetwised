@@ -131,19 +131,23 @@ button {
   display: inline-block;
   height: 25px;
   line-height: 25px;
-  /* padding-top: 1px; */
   width: 80px;
   vertical-align: middle;
 }
 
 .view-article-tag {
-  border: 1px solid rgb(31, 152, 172);
+  background-color: rgb(47, 184, 205);
+  border: 1px solid rgb(47, 184, 205);
   border-radius: 8px;
+  color: rgb(255, 255, 255);
+  display: inline-block;
+  float: right;
   font-family: 'Quicksand', sans-serif;
   font-weight: 300;
   font-size: 16px;
   line-height: 25px;
   padding: 0px 3px;
+  text-align: center;
   vertical-align: middle;
 }
 

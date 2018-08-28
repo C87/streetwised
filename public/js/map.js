@@ -36,14 +36,15 @@ data.canvas = (res) => {
 
 data.insight = (res) => {
   if (res.features[0]) {
-    document.querySelector('.insight-image').src = res.features[0].properties.user.avatar;
-    document.querySelector('.insight-name').textContent = res.features[0].properties.user.username;
-    document.querySelector('.insight-question').textContent = res.features[0].properties.text;
-    document.querySelector('.insight-icon').dataset.lng = res.features[0].geometry.coordinates[0];
-    document.querySelector('.insight-icon').dataset.lat = res.features[0].geometry.coordinates[1];
+    const pop = res.features.pop();
+    document.querySelector('.insight-image').src = pop.properties.user.avatar;
+    document.querySelector('.insight-name').textContent = pop.properties.user.username;
+    document.querySelector('.insight-question').textContent = pop.properties.text;
+    document.querySelector('.insight-icon').dataset.lng = pop.geometry.coordinates[0];
+    document.querySelector('.insight-icon').dataset.lat = pop.geometry.coordinates[1];
     document.querySelector('.insight-icon').onclick = app.insight.fly;
-    document.querySelector('.insight-route').href = `/${res.features[0].properties.user.username}/posts/${res.features[0]._id}`;
-    document.querySelector('.insight-route-text').textContent = res.features[0].properties.comments.length;
+    document.querySelector('.insight-route').href = `/${pop.properties.user.username}/posts/${pop._id}`;
+    document.querySelector('.insight-route-text').textContent = pop.properties.comments.length;
     document.querySelector('.insight-content').style.display = 'block';
   } else {
     document.querySelector('.insight-content').style.display = 'none';

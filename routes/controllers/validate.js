@@ -4,6 +4,20 @@ const string = require('lodash/string');
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
 
+module.exports.comment = (req, res, next) => {
+  if (!req.body.text) {
+    const err = new Error('Input required.');
+    err.code = 400;
+    return next(err);
+  }
+  req.body.text = validator.trim(req.body.text);
+  console.log('PASSED: validate.comment,', req.body.text);
+  next();
+};
+
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+
 module.exports.email = (req, res, next) => {
   if (!req.body.email) {
     const err = new Error('Email required.');
@@ -88,6 +102,23 @@ module.exports.password = (req, res, next) => {
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
 
+
+module.exports.question = (req, res, next) => {
+  if (!req.body.text) {
+    const err = new Error('Input required.');
+    err.code = 400;
+    return next(err);
+  }
+  req.body.text = validator.trim(req.body.text);
+  if (req.body.tag) {
+    req.body.tag = validator.trim(req.body.tag);
+  } else {
+    req.body.tag = null;
+  }
+  console.log('PASSED: validate.question,', req.body.text, req.body.tag);
+  next();
+};
+
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
 
@@ -105,20 +136,6 @@ module.exports.reservedUsernames = (req, res, next) => {
     }
   });
   console.log('PASSED: validate.reservedUsernames,', req.body.username);
-  next();
-};
-
-// -----------------------------------------------------------------------------
-// -----------------------------------------------------------------------------
-
-module.exports.text = (req, res, next) => {
-  if (!req.body.text) {
-    const err = new Error('Input required.');
-    err.code = 400;
-    return next(err);
-  }
-  req.body.text = validator.trim(req.body.text);
-  console.log('PASSED: validate.text,', req.body.text);
   next();
 };
 

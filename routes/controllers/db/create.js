@@ -52,6 +52,7 @@ module.exports.post = (req, res, next) => {
     properties: {
       user: req.session.userId,
       text: req.body.text,
+      tag: req.body.tag,
       location: req.session.location,
     },
   });
