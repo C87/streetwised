@@ -41,6 +41,8 @@ app.post = (data) => {
   template.querySelector('.content-text').textContent = data.properties.text;
   if (data.properties.tag) {
     template.querySelector('.content-tag').textContent = data.properties.tag;
+  } else {
+    template.querySelector('.content-tag').style.display = 'none';
   }
   app.main.insertBefore(template, app.responseContainer);
   return data.properties.comments;

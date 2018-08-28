@@ -125,31 +125,17 @@ button {
   font-size: 20px;
   line-height: 40px;
   vertical-align: middle;
-  width: calc(100% - 190px);
+  width: calc(100% - 110px);
 }
 
-.view-article-tag-container {
-  display: inline-block;
-  height: 25px;
-  line-height: 25px;
-  width: 80px;
-  vertical-align: middle;
-}
-
-.view-article-tag {
-  background-color: rgb(47, 184, 205);
-  border: 1px solid rgb(47, 184, 205);
-  border-radius: 8px;
+.view-article-content-tag {
+  background-color: rgb(31, 152, 172);
   color: rgb(255, 255, 255);
-  display: inline-block;
-  float: right;
+  border-radius: 8px;
   font-family: 'Quicksand', sans-serif;
-  font-weight: 300;
   font-size: 16px;
-  line-height: 25px;
-  padding: 0px 3px;
-  text-align: center;
-  vertical-align: middle;
+  font-weight: 300;
+  padding: 2px 4px;
 }
 
 .view-article-content {

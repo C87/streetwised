@@ -358,7 +358,7 @@ button {
   margin-top: 30px;
 }
 
-.view-article-tag {
+.view-article-content-tag {
   background-color: rgb(31, 152, 172);
   color: rgb(255, 255, 255);
   border-radius: 8px;
@@ -374,11 +374,11 @@ button {
   width: 100%;
 }
 
-.view-article-title {
+.view-article-content-text {
   display: none;
 }
 
-.view-article-content {
+.view-article-title {
   display: none;
 }
 

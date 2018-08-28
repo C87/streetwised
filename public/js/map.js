@@ -65,16 +65,15 @@ data.preview = (res) => {
     template.classList.add('view-article');
     template.querySelector('.view-article-image').src = el.properties.user.avatar;
     template.querySelector('.view-article-title').textContent = el.properties.user.username;
-    template.querySelector('.view-article-tag').textContent = el.properties.tag;
-    template.querySelector('.view-article-content').textContent = el.properties.text;
+    template.querySelector('.view-article-content-text').textContent = el.properties.text;
     template.querySelector('.view-article-distance').dataset.lng = el.geometry.coordinates[0];
     template.querySelector('.view-article-distance').dataset.lat = el.geometry.coordinates[1];
     template.querySelector('.view-article-link').href = `/${el.properties.user.username}/posts/${el._id}`;
     template.querySelector('.view-article-link-text').textContent = el.properties.comments.length;
     if (el.properties.tag) {
-      template.querySelector('.view-article-tag').textContent = el.properties.tag;
+      template.querySelector('.view-article-content-tag').textContent = el.properties.tag;
     } else {
-      template.querySelector('.view-article-tag').style.display = 'none';
+      template.querySelector('.view-article-content-tag').style.display = 'none';
     }
     template.onclick = insight;
     const node = document.querySelector('.view-article') ? document.querySelector('.view-article') : document.querySelector('.view-article-template');
