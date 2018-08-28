@@ -71,7 +71,11 @@ data.preview = (res) => {
     template.querySelector('.view-article-distance').dataset.lat = el.geometry.coordinates[1];
     template.querySelector('.view-article-link').href = `/${el.properties.user.username}/posts/${el._id}`;
     template.querySelector('.view-article-link-text').textContent = el.properties.comments.length;
-    if (!el.properties.tag) { template.querySelector('.view-article-tag').textContent = 'Shopping'; }
+    if (el.properties.tag) {
+      template.querySelector('.view-article-tag').textContent = el.properties.tag;
+    } else {
+      template.querySelector('.view-article-tag').style.display = 'none';
+    }
     template.onclick = insight;
     const node = document.querySelector('.view-article') ? document.querySelector('.view-article') : document.querySelector('.view-article-template');
     document.querySelector('.view-container').insertBefore(template, node);
