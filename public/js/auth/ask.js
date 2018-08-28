@@ -1,32 +1,31 @@
 const app = {
   form: {
-    cancel: document.querySelector('.main-buttons-cancel'),
-    confirm: document.querySelector('.main-buttons-post'),
-    element: document.querySelector('.main-form'),
-    textarea: document.querySelector('.main-form-textarea'),
+    cancel: document.querySelector('.controller-cancel'),
+    confirm: document.querySelector('.controller-post'),
+    element: document.querySelector('.form'),
+    question: document.querySelector('.form-question'),
+    tag: document.querySelector('.form-tag')
   },
-  header: {
-    icon: document.querySelector('.header-section-icon'),
-    title: document.querySelector('.header-container-title'),
-  }
 };
+
 
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
+
 app.back = () => {
-  app.form.textarea.value = '';
+  app.form.question.value = '';
+  app.form.tag.value = '';
   window.history.back();
 };
 
-app.form.cancel.addEventListener('click', app.back);
-app.header.icon.addEventListener('click', app.back);
-
-app.form.textarea.style.paddingRight = `${app.form.textarea.offsetWidth - app.form.textarea.clientWidth}px`;
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 
 app.form.submit = (e) => {
   e.preventDefault();
   const fd = new FormData(app.form.element);
-  app.form.textarea.value = '';
+  app.form.question.value = '';
+  app.form.tag.value = '';
 
   fetch('/new-post', {
     method: 'POST',
@@ -41,3 +40,5 @@ app.form.submit = (e) => {
 // -----------------------------------------------------------------------------
 
 app.form.confirm.addEventListener('click', app.form.submit);
+app.form.cancel.addEventListener('click', app.back);
+document.querySelector('.header-section-route').addEventListener('click', app.back);
