@@ -55,7 +55,7 @@ const app = {
 function insight(e) {
   const el = this;
   app.insight.name.textContent = el.querySelector('.view-article-title').textContent;
-  app.insight.content.textContent = el.querySelector('.view-article-content').textContent;
+  app.insight.content.textContent = el.querySelector('.view-article-content-text').textContent;
   app.insight.image.src = el.querySelector('.view-article-image').src;
   app.insight.link.href = el.querySelector('.view-article-link').href;
   app.insight.icon.onclick = app.insight.fly;
