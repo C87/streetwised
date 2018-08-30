@@ -43,10 +43,6 @@ image.adjust = () => {
   // Adjust margins
   image.left = 0;
   image.top = 0;
-  // image.left = 0 - ((image.element.width - image.boundarySize) / 2);
-  // image.top = 0 - ((image.element.height - image.boundarySize) / 2);
-  // image.element.style.marginLeft = `${image.left}px`;
-  // image.element.style.marginTop = `${image.top}px`;
 };
 
 image.resize = (size) => {
@@ -54,7 +50,6 @@ image.resize = (size) => {
   if (image.dimension === 'height') image.element.style.height = `${size}px`;
   if (image.dimension === 'width') image.element.style.width = `${size}px`;
   const imageEl = document.querySelector('.main-form-crop-container-image');
-  // console.log(imageEl.offsetWidth);
 };
 
 // -----------------------------------------------------------------------------
@@ -87,7 +82,6 @@ image.disableDrag = () => {
 };
 
 image.enableDrag = (x, y) => {
-  // console.log(x, y);
   image.startX = x;
   image.startY = y;
   image.element.setAttribute('drag', true);
@@ -99,7 +93,6 @@ image.drag = (x, y) => {
   image.activeY = image.top + (y - image.startY);
   image.element.style.marginLeft = `${image.activeX}px`;
   image.element.style.marginTop = `${image.activeY}px`;
-  // console.log(image);
 };
 
 // -----------------------------------------------------------------------------
