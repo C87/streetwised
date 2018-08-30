@@ -24,6 +24,7 @@ const single = multer().single('avatar');
 // -----------------------------------------------------------------------------
 
 module.exports.none = (req, res, next) => {
+  console.log('works');
   none(req, res, (err) => {
     if (err) next(err);
     console.log('PASSED: aws.none,', Object.keys(req.body).length);
