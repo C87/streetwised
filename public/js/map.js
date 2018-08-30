@@ -34,17 +34,24 @@ data.canvas = (res) => {
   return res;
 };
 
+data.info = (res) => {
+  const question = res.features.length === 1 ? 'question' : 'questions';
+  document.querySelector('.info-question-count').textContent = `${res.features.length} ${question} nearby`;
+  if (res.features.length === 0) document.querySelector('.info-tagline').textContent = 'Zoom out to expand your search area';
+  return res;
+};
+
 data.insight = (res) => {
   if (res.features[0]) {
-    const pop = res.features.pop();
-    document.querySelector('.insight-image').src = pop.properties.user.avatar;
-    document.querySelector('.insight-name').textContent = pop.properties.user.username;
-    document.querySelector('.insight-question').textContent = pop.properties.text;
-    document.querySelector('.insight-icon').dataset.lng = pop.geometry.coordinates[0];
-    document.querySelector('.insight-icon').dataset.lat = pop.geometry.coordinates[1];
+    const i = res.features.length - 1;
+    document.querySelector('.insight-image').src = res.features[i].properties.user.avatar;
+    document.querySelector('.insight-name').textContent = res.features[i].properties.user.username;
+    document.querySelector('.insight-question').textContent = res.features[i].properties.text;
+    document.querySelector('.insight-icon').dataset.lng = res.features[i].geometry.coordinates[0];
+    document.querySelector('.insight-icon').dataset.lat = res.features[i].geometry.coordinates[1];
     document.querySelector('.insight-icon').onclick = app.insight.fly;
-    document.querySelector('.insight-route').href = `/${pop.properties.user.username}/posts/${pop._id}`;
-    document.querySelector('.insight-route-text').textContent = pop.properties.comments.length;
+    document.querySelector('.insight-route').href = `/${res.features[i].properties.user.username}/posts/${res.features[i]._id}`;
+    document.querySelector('.insight-route-text').textContent = res.features[i].properties.comments.length;
     document.querySelector('.insight-content').style.display = 'block';
   } else {
     document.querySelector('.insight-content').style.display = 'none';
@@ -90,7 +97,7 @@ map.load = (res) => {
     container: 'mapboxgl',
     style: 'https://maps.tilehosting.com/c/d5517948-b81a-4374-9547-6de2bf4279d8/styles/basic/style.json?key=BJinYMSawaKJNsgs0dR4',
     center: res.center,
-    zoom: 5,
+    zoom: 11,
     maxZoom: 15,
     // maxBounds: res.maxBounds,
     attributionControl: false,
@@ -103,10 +110,13 @@ map.load = (res) => {
   map.element.touchZoomRotate.disableRotation();
 };
 
-map.listeners = (res) => {
+map.listeners = () => {
   map.element.once('load', () => data.dbQuery());
   map.element.on('dragstart', () => map.element.once('moveend', () => data.dbQuery()));
   map.element.on('zoomend', () => data.dbQuery());
+  // data.geocode as a seperate concern.
+  map.element.once('load', () => data.geocode());
+  // map.element.on('moveend', () => data.geocode());
 };
 
 // -----------------------------------------------------------------------------
@@ -133,18 +143,16 @@ data.dbQuery = () => {
     credentials: 'same-origin',
     body: fd,
   }).then(res => res.json())
+    .then(res => data.info(res))
     .then(res => data.preview(res))
     .then(res => data.insight(res))
     .then(res => data.canvas(res))
-    .then(res => data.geocode(res))
     .catch(err => console.log(err));
 };
 
-data.geocode = (questions) => {
-  const count = questions.features.length;
+data.geocode = () => {
   const fd = data.formData();
-  document.querySelector('.info-location-question-count').textContent = '';
-  document.querySelector('.info-location-name').textContent = 'Searching location';
+  document.querySelector('.info-tagline').textContent = 'Loading name of current location';
 
   fetch('/geocode', {
     method: 'POST',
@@ -152,12 +160,7 @@ data.geocode = (questions) => {
     body: fd,
   }).then(res => res.json())
     .then((res) => {
-      if (count !== 1) {
-        document.querySelector('.info-location-question-count').textContent = `${count} questions near`;
-      } else {
-        document.querySelector('.info-location-question-count').textContent = `${count} question near`;
-      }
-      document.querySelector('.info-location-name').textContent = res;
+      document.querySelector('.info-tagline').textContent = res;
       // const ask = document.querySelector('.ask-form-textarea');
       // if (ask) {
       //   ask.placeholder = `Ask a question from ${res}.`;

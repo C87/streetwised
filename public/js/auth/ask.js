@@ -1,7 +1,5 @@
 const app = {
   form: {
-    cancel: document.querySelector('.controller-cancel'),
-    confirm: document.querySelector('.controller-post'),
     element: document.querySelector('.form'),
     question: document.querySelector('.form-question'),
     tag: document.querySelector('.form-tag')
@@ -32,13 +30,17 @@ app.form.submit = (e) => {
     credentials: 'same-origin',
     body: fd,
   }).then(res => res.json())
-    .then(() => app.back())
+    .then(() => {
+      app.form.question.value = '';
+      app.form.tag.value = '';
+      window.location.replace(document.referrer);
+    })
     .catch(err => console.log(err));
 };
 
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
 
-app.form.confirm.addEventListener('click', app.form.submit);
-app.form.cancel.addEventListener('click', app.back);
+document.querySelector('.controller-post').addEventListener('click', app.form.submit);
+document.querySelector('.controller-cancel').addEventListener('click', app.back);
 document.querySelector('.header-section-route').addEventListener('click', app.back);

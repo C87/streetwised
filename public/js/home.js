@@ -169,6 +169,7 @@ data.list = (res) => {
 };
 
 data.reverseGeo = (value) => {
+  // Add Spinner here
   fd = new FormData();
   fd.append('text', value);
   fetch('/reverse-geo', {
@@ -176,7 +177,7 @@ data.reverseGeo = (value) => {
     origin: 'same-origin',
     body: fd,
   }).then(res => res.json())
-    .then(res => data.list(res))
+    .then(res => data.list(res)) // Remove Spinner Here
     .catch(err => console.log(err));
 };
 

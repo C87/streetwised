@@ -283,13 +283,21 @@ button {
   padding: 3px 5px 0 5px;
 }
 
-.info-location {
+.info-question-count {
   color: rgb(37, 39, 43);
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
   font-size: 20px;
-  height: 46px;
-  line-height: 1.1;
+  height: 25px;
+  text-align: center;
+}
+
+.info-tagline {
+  color: rgb(37, 39, 43);
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  height: 25px;
   text-align: center;
 }
 
