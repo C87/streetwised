@@ -37,7 +37,6 @@ data.canvas = (res) => {
 data.info = (res) => {
   const question = res.features.length === 1 ? 'question' : 'questions';
   document.querySelector('.info-question-count').textContent = `${res.features.length} ${question} nearby`;
-  if (res.features.length === 0) document.querySelector('.info-tagline').textContent = 'Zoom out to expand your search area';
   return res;
 };
 
@@ -116,7 +115,7 @@ map.listeners = () => {
   map.element.on('zoomend', () => data.dbQuery());
   // data.geocode as a seperate concern.
   map.element.once('load', () => data.geocode());
-  // map.element.on('moveend', () => data.geocode());
+  map.element.on('moveend', () => data.geocode());
 };
 
 // -----------------------------------------------------------------------------
@@ -152,7 +151,7 @@ data.dbQuery = () => {
 
 data.geocode = () => {
   const fd = data.formData();
-  document.querySelector('.info-tagline').textContent = 'Loading name of current location';
+  document.querySelector('.info-tagline').textContent = '';
 
   fetch('/geocode', {
     method: 'POST',
@@ -160,12 +159,7 @@ data.geocode = () => {
     body: fd,
   }).then(res => res.json())
     .then((res) => {
-      document.querySelector('.info-tagline').textContent = res;
-      // const ask = document.querySelector('.ask-form-textarea');
-      // if (ask) {
-      //   ask.placeholder = `Ask a question from ${res}.`;
-      //   document.querySelector('.ask-container-title').textContent = res;
-      // }
+      document.querySelector('.info-tagline').textContent = res; // Class name === location element for ask box on large screen;
     })
     .catch(err => console.log(err));
 };
