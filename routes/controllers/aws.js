@@ -86,6 +86,7 @@ module.exports.avatar = (req, res, next) => {
   res.locals.path = `avatars/${req.session.username}`;
 
   gm(req.file.buffer)
+    .autoOrient()
     .resizeExact(image.width, image.height)
     .crop(image.capture, image.capture, image.left, image.top)
     .setFormat('jpeg')
