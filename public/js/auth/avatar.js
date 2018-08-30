@@ -27,19 +27,12 @@ const input = {
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
 
-form.handleFile = (e) => {
-  if (!e.target.files[0] || !e.target.files[0].type.startsWith('image/')) return;
+input.hidden.addEventListener('change', (e) => {
   const file = e.target.files[0];
-  image.element.file = file;
-
   const reader = new FileReader();
-  reader.readAsDataURL(file);
-  reader.addEventListener('load', (event) => {
-    image.element.src = event.target.result;
-  });
-};
-
-input.hidden.addEventListener('change', form.handleFile);
+  reader.addEventListener('load', () => { image.element.src = reader.result; });
+  if (file && file.type.startsWith('image/')) reader.readAsDataURL(file);
+});
 
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
