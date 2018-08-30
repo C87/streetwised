@@ -24,7 +24,6 @@ const single = multer().single('avatar');
 // -----------------------------------------------------------------------------
 
 module.exports.none = (req, res, next) => {
-  console.log('file upload works');
   none(req, res, (err) => {
     if (err) next(err);
     console.log('PASSED: aws.none,', Object.keys(req.body).length);
@@ -36,6 +35,7 @@ module.exports.none = (req, res, next) => {
 // -----------------------------------------------------------------------------
 
 module.exports.single = (req, res, next) => {
+  console.log('file upload works');
   single(req, res, (err) => {
     if (err) next(err);
     if (!req.file) {
