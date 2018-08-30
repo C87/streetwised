@@ -9,36 +9,30 @@
     <link rel="stylesheet" href="/css/auth/avatar.css">
   </head>
   <body>
-    <!-- <header class="header">
-      <section class="header-section">
-        <h1 class="header-section-title">{{ username }}</h1>
-      </section>
-    </header> -->
     <main class="main">
-      <form class="main-form">
-        <h3 class="main-form-alert"></h3>
-        <input type="file" name="avatar" class="main-form-hidden-input">
-        <div class="main-form-container">
-          <div class="main-form-container-buffer"></div>
-          <div class="main-form-container-button">
-            <button class="main-form-container-button-image">Choose Profile Picture</button>
-          </div>
-          <div class="buffer-button"></div>
-        </div>
-        <div class="main-form-crop-container">
-          <img class="main-form-crop-container-image">
-          <div class="main-form-crop-container-boundary"></div>
-        </div>
-        <div class="main-form-crop-zoom">
-          <button class="main-form-crop-zoom-in"></button>
-          <button class="main-form-crop-zoom-out"></button>
-        </div>
-        <div class="main-form-button-container">
-          <button class="main-form-button-container-cancel">Skip</button>
-          <button class="main-form-button-container-save">Save</button>
-        </div>
+      <form class="form">
+        <input type="file" name="avatar" class="form-input" accept="image/*">
       </form>
+      <div class="container">
+        <div class="buffer"></div>
+        <div class="button-container">
+          <button class="button">Choose Profile Picture</button>
+        </div>
+        <div class="buffer-button"></div>
+      </div>
+      <div class="render">
+          <div class="image-boundary"></div>
+          <canvas class="canvas"></canvas>
+      </div>
+      <div class="zoom">
+        <button class="zoom-in"></button>
+        <button class="zoom-out"></button>
+      </div>
     </main>
+    <div class="controller">
+      <button class="skip">Skip</button>
+      <button class="save">Save</button>
+    </div>
     <script src="/js/auth/avatar.js" charset="utf-8"></script>
   </body>
 </html>

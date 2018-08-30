@@ -1,174 +1,81 @@
-const button = {
-  buffer: document.querySelector('.buffer-button'),
-  cancel: document.querySelector('.main-form-button-container-cancel'),
-  selectImage: document.querySelector('.main-form-container-button-image'),
-  save: document.querySelector('.main-form-button-container-save'),
-  zoomContainer: document.querySelector('.main-form-crop-zoom'),
-  zoomIn: document.querySelector('.main-form-crop-zoom-in'),
-  zoomOut: document.querySelector('.main-form-crop-zoom-out'),
-};
-
-const form = {
-  alert: document.querySelector('.main-form-alert'),
-  element: document.querySelector('.main-form'),
-};
-
-const image = {
-  boundary: document.querySelector('.main-form-crop-container-boundary'),
-  boundarySize: 200,
-  container: document.querySelector('.main-form-crop-container'),
-  element: document.querySelector('.main-form-crop-container-image'),
-};
-
-const input = {
-  hidden: document.querySelector('.main-form-hidden-input'),
+const app = {
+  button: {
+    buffer: document.querySelector('.buffer-button'),
+    save: document.querySelector('.save'),
+    select: document.querySelector('.button'),
+    skip: document.querySelector('.skip'),
+  },
+  input: {
+    element: document.querySelector('.form-input'),
+  },
+  zoom: {
+    element: document.querySelector('.zoom'),
+    in: document.querySelector('.zoom-in'),
+    out: document.querySelector('.zoom-out'),
+  },
 };
 
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
+const i = new Image();
 
-input.hidden.addEventListener('change', (e) => {
-  const file = e.target.files[0];
+app.input.element.addEventListener('change', () => {
+  const file = app.input.element.files[0];
   const reader = new FileReader();
-  reader.addEventListener('load', () => { image.element.src = reader.result; });
+  reader.addEventListener('load', () => { i.src = reader.result; });
   if (file && file.type.startsWith('image/')) reader.readAsDataURL(file);
 });
 
-// -----------------------------------------------------------------------------
-// -----------------------------------------------------------------------------
-
-image.adjust = () => {
-  // Resize image
-  image.resize(image.boundarySize + 100);
-  // Adjust margins
-  image.left = 0;
-  image.top = 0;
-};
-
-image.resize = (size) => {
-  if (size < 200 || size > 500) return;
-  if (image.dimension === 'height') image.element.style.height = `${size}px`;
-  if (image.dimension === 'width') image.element.style.width = `${size}px`;
-  const imageEl = document.querySelector('.main-form-crop-container-image');
-};
-
-// -----------------------------------------------------------------------------
-// -----------------------------------------------------------------------------
-
-/* When image loads, if the image is a portrait we need to adjust the shorter
-width to fit the width of the cropBox, if the image is a landscape we need to
-asjust the shorter height to fit the height of the cropBox. */
-
-image.element.addEventListener('load', (e) => {
-  // Display container and zoom buttons
-  image.container.style.display = 'block';
-  button.zoomContainer.style.display = 'flex';
-  button.buffer.classList.remove('spinner');
-  button.buffer.classList.add('check-circle');
-  // Primary image dimension
-  image.dimension = e.target.naturalHeight > e.target.naturalWidth ? 'width' : 'height';
-  image.adjust();
-});
-
-// -----------------------------------------------------------------------------
-// -----------------------------------------------------------------------------
-
-image.element.setAttribute('drag', false);
-
-image.disableDrag = () => {
-  image.left = image.activeX;
-  image.top = image.activeY;
-  image.element.attributes.drag.value = 'false';
-};
-
-image.enableDrag = (x, y) => {
-  image.startX = x;
-  image.startY = y;
-  image.element.setAttribute('drag', true);
-};
-
-image.drag = (x, y) => {
-  if (image.element.attributes.drag.value !== 'true') { return; }
-  image.activeX = image.left + (x - image.startX);
-  image.activeY = image.top + (y - image.startY);
-  image.element.style.marginLeft = `${image.activeX}px`;
-  image.element.style.marginTop = `${image.activeY}px`;
-};
-
-// -----------------------------------------------------------------------------
-// -----------------------------------------------------------------------------
-
-image.container.addEventListener('mousedown', (e) => {
-  image.enableDrag(e.layerX, e.layerY);
-});
-
-image.container.addEventListener('touchstart', (e) => {
-  image.enableDrag(e.targetTouches[0].clientX, e.targetTouches[0].clientY);
-});
-
-image.container.addEventListener('mousemove', (e) => {
-  image.drag(e.layerX, e.layerY);
-});
-
-image.container.addEventListener('touchmove', (e) => {
-  image.drag(e.targetTouches[0].clientX, e.targetTouches[0].clientY);
-});
-
-image.container.addEventListener('mouseleave', image.disableDrag);
-image.container.addEventListener('mouseup', image.disableDrag);
-image.container.addEventListener('touchend', image.disableDrag);
-
-// -----------------------------------------------------------------------------
-// -----------------------------------------------------------------------------
-
-button.zoomIn.addEventListener('click', (e) => {
+app.button.select.addEventListener('click', (e) => {
   e.preventDefault();
-  const size = image.dimension === 'height' ? image.element.height : image.element.width;
-  image.resize(size + 50);
-});
-button.zoomOut.addEventListener('click', (e) => {
-  e.preventDefault();
-  const size = image.dimension === 'height' ? image.element.height : image.element.width;
-  image.resize(size - 50);
+  app.input.element.click();
+  app.button.buffer.classList.add('spinner');
 });
 
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
 
-button.selectImage.addEventListener('click', (e) => {
-  e.preventDefault();
-  input.hidden.click();
-  button.buffer.classList.add('spinner');
-});
+app.send = (file, width, height) => {
+  const fd = new FormData();
+  fd.append('avatar', file);
+  fd.append('height', height);
+  fd.append('width', width);
 
-button.cancel.addEventListener('click', (e) => {
-  e.preventDefault();
-  window.location.replace('/');
-});
-
-button.save.addEventListener('click', (e) => {
-  e.preventDefault();
-  const fd = new FormData(form.element);
-  if (input.hidden.files.length > 0) {
-    fd.append('image', [
-      image.element.offsetHeight,
-      image.element.offsetWidth,
-      Math.abs(image.element.offsetLeft),
-      Math.abs(image.element.offsetTop),
-      image.boundarySize,
-    ]);
-  }
-
-  const url = '/new-avatar';
-
-  fetch(url, {
+  fetch('/new-avatar', {
     method: 'POST',
     credentials: 'same-origin',
-    body: fd,
-  }).then(res => res.json())
-    .then((res) => {
-      if (res.code === 301) { return window.location.replace(res.url); }
-      form.alert.textContent = res.body;
-    })
+    body: fd
+  })
+    .then(res => res.json())
+    .then(res => console.log(res))
     .catch(err => console.log(err));
+
+  // fetch("https://httpbin.org/post", {
+  //       method: "POST",
+  //       headers: { "Content-Type": "application/octet-stream" },
+  //       body: imageAsBase64
+
+  // const url = '/new-avatar';
+
+  // fetch(url, {
+  //   method: 'POST',
+  //   credentials: 'same-origin',
+  //   contentType: false,
+  //   body: fd,
+  // })
+  //   .then(res => res.json)
+  //   .then(res => console.log(res))
+  //   .catch(err => console.log(err));
+};
+
+i.addEventListener('load', () => {
+  const canvas = document.createElement('canvas');
+  const px = 200;
+  canvas.width = i.width > i.height ? px * (i.width / i.height) : px;
+  canvas.height = i.width > i.height ? px : px * (i.height / i.width);
+  const context = canvas.getContext('2d');
+  context.drawImage(i, 0, 0, canvas.width, canvas.height);
+  document.querySelector('.main').appendChild(canvas);
+
+  // app.send(canvas.toDataURL('image/jpeg', 0.5), canvas.width, canvas.height);
 });

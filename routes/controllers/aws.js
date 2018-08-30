@@ -35,60 +35,67 @@ module.exports.none = (req, res, next) => {
 // -----------------------------------------------------------------------------
 
 module.exports.single = (req, res, next) => {
-  console.log('file upload works');
+  // console.log('file upload works', req);
   single(req, res, (err) => {
-    if (err) next(err);
-    if (!req.file) {
-      console.log('SKIPPED: aws.single');
-      return next();
-    }
-    if (!req.file.mimetype.startsWith('image/')) {
-      const _err = new Error('Invalid file type.');
-      _err.code = 400;
-      return next(_err);
-    }
-    console.log('PASSED: aws.single,', req.file);
-    next();
+    // console.log('file upload works', req.body.avatar);
+    // if (err) next(err);
+    // if (!req.file) {
+    //   console.log('SKIPPED: aws.single');
+    //   // return next();
+    // }
+    // if (!req.file.mimetype.startsWith('image/')) {
+    //   const _err = new Error('Invalid file type.');
+    //   _err.code = 400;
+    //   return next(_err);
+    // }
+    // console.log('PASSED: aws.single,', req.file);
+    // next();
   });
 };
 
 module.exports.avatar = (req, res, next) => {
-  if (!req.file || !req.body.image) {
-    const err = new Error('No file found.');
-    err.code = 400;
-    return next(err);
-  }
-
-  if (!req.session.username) {
-    const err = new Error('No session found.');
-    err.code = 400;
-    return next(err);
-  }
-
-  const imageArray = [];
-  req.body.image.split(',').forEach((el) => {
-    imageArray.push(parseInt(el, 10));
-  });
-
-  image = {
-    height: imageArray[0],
-    width: imageArray[1],
-    left: imageArray[2],
-    top: imageArray[3],
-    capture: imageArray[4],
-  };
-
-  console.log(image);
-
-  if (image.top > (image.height - image.capture)) image.top = image.height - image.capture;
-  if (image.left > (image.width - image.capture)) image.left = image.width - image.capture;
-
+  // if (!req.file || !req.body.image) {
+  //   const err = new Error('No file found.');
+  //   err.code = 400;
+  //   return next(err);
+  // }
+  //
+  // if (!req.session.username) {
+  //   const err = new Error('No session found.');
+  //   err.code = 400;
+  //   return next(err);
+  // }
+  //
+  // const imageArray = [];
+  // req.body.image.split(',').forEach((el) => {
+  //   imageArray.push(parseInt(el, 10));
+  // });
+  //
+  // image = {
+  //   height: imageArray[0],
+  //   width: imageArray[1],
+  //   left: imageArray[2],
+  //   top: imageArray[3],
+  //   capture: imageArray[4],
+  // };
+  //
+  // console.log(image);
+  //
+  // if (image.top > (image.height - image.capture)) image.top = image.height - image.capture;
+  // if (image.left > (image.width - image.capture)) image.left = image.width - image.capture;
+  //
   res.locals.path = `avatars/${req.session.username}`;
 
-  gm(req.file.buffer)
+  const imageData = Buffer.from(req.body.avatar);
+
+  console.log('height', req.body.height);
+  console.log('width', req.body.width);
+
+  console.log(imageData);
+
+  gm(req.body.avatar)
     .autoOrient()
-    .resizeExact(image.width, image.height)
-    .crop(image.capture, image.capture, image.left, image.top)
+    .crop(200, 200, 0, 0)
     .setFormat('jpeg')
     .toBuffer((err, buffer) => {
       if (err) { console.log('Error,', err); }
