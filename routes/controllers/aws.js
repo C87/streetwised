@@ -105,8 +105,8 @@ module.exports.avatar = (req, res, next) => {
   gm(req.body.avatar)
     .size((err, value) => {
       if (err) { console.log('Error,', err); }
-      const x = value.height === px ? 0 : (value.height - 200) / 2;
-      const y = value.width === px ? 0 : (value.width - 200) / 2;
+      const x = value.width === px ? 0 : (value.width - 200) / 2;
+      const y = value.height === px ? 0 : (value.height - 200) / 2;
       console.log(value);
       console.log(x, y);
     });
