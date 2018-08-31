@@ -91,6 +91,8 @@ module.exports.avatar = (req, res, next) => {
   req.body.avatar = Buffer.from(req.body.avatar, 'base64');
 
   const px = 200;
+  let x;
+  let y;
   // const height = parseInt(req.body.height, 10);
   // const width = parseInt(req.body.width, 10);
 
@@ -105,8 +107,8 @@ module.exports.avatar = (req, res, next) => {
   gm(req.body.avatar)
     .size((err, value) => {
       if (err) { console.log('Error,', err); }
-      const x = value.width === px ? 0 : (value.width - 200) / 2;
-      const y = value.height === px ? 0 : (value.height - 200) / 2;
+      x = value.width === px ? 0 : (value.width - 200) / 2;
+      y = value.height === px ? 0 : (value.height - 200) / 2;
       console.log(value);
       console.log(x, y);
     })
