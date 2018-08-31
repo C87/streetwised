@@ -75,7 +75,6 @@ i.addEventListener('load', () => {
   canvas.height = i.width > i.height ? px : px * (i.height / i.width);
   const context = canvas.getContext('2d');
   context.drawImage(i, 0, 0, canvas.width, canvas.height);
-  document.querySelector('.main').appendChild(canvas);
-
-  // app.send(canvas.toDataURL('image/jpeg', 0.5), canvas.width, canvas.height);
+  // document.querySelector('.main').appendChild(canvas);
+  app.send(canvas.toDataURL('image/jpeg', 0.5), canvas.width, canvas.height);
 });
