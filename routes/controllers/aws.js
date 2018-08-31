@@ -91,11 +91,11 @@ module.exports.avatar = (req, res, next) => {
   req.body.avatar = Buffer.from(req.body.avatar, 'base64');
 
   const px = 200;
-  const height = parseInt(req.body.height, 10);
-  const width = parseInt(req.body.width, 10);
+  // const height = parseInt(req.body.height, 10);
+  // const width = parseInt(req.body.width, 10);
 
-  const x = height === px ? 0 : (height - 200) / 2;
-  const y = width === px ? 0 : (width - 200) / 2;
+  // const x = height === px ? 0 : (height - 200) / 2;
+  // const y = width === px ? 0 : (width - 200) / 2;
 
   console.log('height', height);
   console.log('width', width);
@@ -105,7 +105,10 @@ module.exports.avatar = (req, res, next) => {
   gm(req.body.avatar)
     .size((err, value) => {
       if (err) { console.log('Error,', err); }
+      const x = value.height === px ? 0 : (value.height - 200) / 2;
+      const y = value.width === px ? 0 : (value.width - 200) / 2;
       console.log(value);
+      console.log(x, y);
     });
     // .autoOrient()
     // .crop(px, px, x, y)
