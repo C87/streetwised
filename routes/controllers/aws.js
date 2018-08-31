@@ -103,35 +103,68 @@ module.exports.avatar = (req, res, next) => {
   // console.log('width', width);
   // console.log('x', x);
   // console.log('y', y);
-
   gm(req.body.avatar)
-    .size((err, value) => {
-      if (err) { console.log('Error,', err); }
+    .size((error, value) => {
+      if (error || !value) {
+        console.log('Error:', err);
+      }
       x = value.width === px ? 0 : (value.width - 200) / 2;
       y = value.height === px ? 0 : (value.height - 200) / 2;
-      console.log(value);
-      console.log(x, y);
+      console.log(value, x, y);
+
+      gm(req.body.avatar)
+        .crop(px, px, x, y)
+        .autoOrient()
+        .setFormat('jpeg')
+        .toBuffer((err, buffer) => {
+          if (err) console.log('Error:', err);
+          console.log('PASSED: aws.avatar.gm,', buffer);
+          const params = {
+            Bucket: 'streetwised',
+            Key: res.locals.path,
+            Body: buffer,
+            ContentType: 'image/jpeg',
+            ACL: 'public-read',
+          };
+          s3
+            .putObject(params)
+            .promise()
+            .then((data) => {
+              console.log('PASSED: aws.avatar.s3,', data);
+              next();
+            })
+            .catch(err_ => console.log(err_));
+        });
     })
-    .crop(px, px, x, y)
-    .autoOrient()
-    .setFormat('jpeg')
-    .toBuffer((err, buffer) => {
-      if (err) { console.log('Error,', err); }
-      console.log('PASSED: aws.avatar.gm,', buffer);
-      const params = {
-        Bucket: 'streetwised',
-        Key: res.locals.path,
-        Body: buffer,
-        ContentType: 'image/jpeg',
-        ACL: 'public-read',
-      };
-      s3
-        .putObject(params)
-        .promise()
-        .then((data) => {
-          console.log('PASSED: aws.avatar.s3,', data);
-          next();
-        })
-        .catch(error => console.log(error));
-    });
+
+  // gm(req.body.avatar)
+  //   .size((err, value) => {
+  //     if (err) { console.log('Error,', err); }
+  //     x = value.width === px ? 0 : (value.width - 200) / 2;
+  //     y = value.height === px ? 0 : (value.height - 200) / 2;
+  //     console.log(value);
+  //     console.log(x, y);
+  //   })
+  //   .crop(px, px, x, y)
+  //   .autoOrient()
+  //   .setFormat('jpeg')
+  //   .toBuffer((err, buffer) => {
+  //     if (err) { console.log('Error,', err); }
+  //     console.log('PASSED: aws.avatar.gm,', buffer);
+  //     const params = {
+  //       Bucket: 'streetwised',
+  //       Key: res.locals.path,
+  //       Body: buffer,
+  //       ContentType: 'image/jpeg',
+  //       ACL: 'public-read',
+  //     };
+  //     s3
+  //       .putObject(params)
+  //       .promise()
+  //       .then((data) => {
+  //         console.log('PASSED: aws.avatar.s3,', data);
+  //         next();
+  //       })
+  //       .catch(error => console.log(error));
+  //   });
 };
