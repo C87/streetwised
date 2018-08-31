@@ -76,5 +76,5 @@ i.addEventListener('load', () => {
   const context = canvas.getContext('2d');
   context.drawImage(i, 0, 0, canvas.width, canvas.height);
   // document.querySelector('.main').appendChild(canvas);
-  app.send(canvas.toDataURL('image/jpeg', 0.5), canvas.width, canvas.height);
+  app.send(canvas.toDataURL('image/jpeg', 0.75), canvas.width, canvas.height);
 });
