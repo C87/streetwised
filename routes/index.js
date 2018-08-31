@@ -103,8 +103,7 @@ router
 
 router
   .route('/new-avatar')
-  // .post(aws.single, aws.avatar, update.avatar, redirect.home);
-  .post(aws.none, aws.avatar);
+  .post(aws.none, aws.avatar, update.avatar, redirect.home);
 
 router
   .route('/new-comment')

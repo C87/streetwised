@@ -35,11 +35,10 @@ app.button.select.addEventListener('click', (e) => {
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
 
-app.send = (file, width, height) => {
+app.send = (file, rotate) => {
   const fd = new FormData();
   fd.append('avatar', file);
-  fd.append('height', height);
-  fd.append('width', width);
+  fd.append('rotate', rotate);
 
   fetch('/new-avatar', {
     method: 'POST',
@@ -47,34 +46,22 @@ app.send = (file, width, height) => {
     body: fd
   })
     .then(res => res.json())
-    .then(res => console.log(res))
+    .then((res) => {
+      if (res.code === 301) { return window.location.replace(res.url); }
+      form.alert.textContent = res.body; // Abs positioned alert textContent is equal to res body.
+    })
     .catch(err => console.log(err));
-
-  // fetch("https://httpbin.org/post", {
-  //       method: "POST",
-  //       headers: { "Content-Type": "application/octet-stream" },
-  //       body: imageAsBase64
-
-  // const url = '/new-avatar';
-
-  // fetch(url, {
-  //   method: 'POST',
-  //   credentials: 'same-origin',
-  //   contentType: false,
-  //   body: fd,
-  // })
-  //   .then(res => res.json)
-  //   .then(res => console.log(res))
-  //   .catch(err => console.log(err));
 };
 
 i.addEventListener('load', () => {
   const canvas = document.createElement('canvas');
+  EXIF.getData(i, () => {
+    canvas.rotate = EXIF.getTag(i, 'Orientation') === 6 ? 90 : 0;
+  });
   const px = 200;
   canvas.width = i.width > i.height ? px * (i.width / i.height) : px;
   canvas.height = i.width > i.height ? px : px * (i.height / i.width);
   const context = canvas.getContext('2d');
   context.drawImage(i, 0, 0, canvas.width, canvas.height);
-  // document.querySelector('.main').appendChild(canvas);
-  app.send(canvas.toDataURL('image/jpeg', 0.75), canvas.width, canvas.height);
+  app.send(canvas.toDataURL('image/jpeg', 1), canvas.rotate);
 });

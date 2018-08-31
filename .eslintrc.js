@@ -11,5 +11,6 @@ module.exports = {
         'consistent-return': 'off',
         'no-param-reassign': 'off',
         'comma-dangle': 'off',
+        'func-names': 'off',
     },
 };
