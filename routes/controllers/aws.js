@@ -105,7 +105,7 @@ module.exports.avatar = (req, res, next) => {
 
   gm(imageData)
     .autoOrient()
-    .crop(px, px, x, y)
+    .crop(px, px, 0, 0)
     .setFormat('jpeg')
     .toBuffer((err, buffer) => {
       if (err) { console.log('Error,', err); }
