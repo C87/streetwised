@@ -109,27 +109,27 @@ module.exports.avatar = (req, res, next) => {
       const y = value.height === px ? 0 : (value.height - 200) / 2;
       console.log(value);
       console.log(x, y);
+    })
+    .crop(px, px, x, y)
+    .autoOrient()
+    .setFormat('jpeg')
+    .toBuffer((err, buffer) => {
+      if (err) { console.log('Error,', err); }
+      console.log('PASSED: aws.avatar.gm,', buffer);
+      const params = {
+        Bucket: 'streetwised',
+        Key: res.locals.path,
+        Body: buffer,
+        ContentType: 'image/jpeg',
+        ACL: 'public-read',
+      };
+      s3
+        .putObject(params)
+        .promise()
+        .then((data) => {
+          console.log('PASSED: aws.avatar.s3,', data);
+          next();
+        })
+        .catch(error => console.log(error));
     });
-    // .autoOrient()
-    // .crop(px, px, x, y)
-    // .setFormat('jpeg')
-    // .toBuffer((err, buffer) => {
-    //   if (err) { console.log('Error,', err); }
-    //   console.log('PASSED: aws.avatar.gm,', buffer);
-    //   const params = {
-    //     Bucket: 'streetwised',
-    //     Key: res.locals.path,
-    //     Body: buffer,
-    //     ContentType: 'image/jpeg',
-    //     ACL: 'public-read',
-    //   };
-    //   s3
-    //     .putObject(params)
-    //     .promise()
-    //     .then((data) => {
-    //       console.log('PASSED: aws.avatar.s3,', data);
-    //       next();
-    //     })
-    //     .catch(error => console.log(error));
-    // });
 };
