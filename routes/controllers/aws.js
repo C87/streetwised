@@ -97,10 +97,10 @@ module.exports.avatar = (req, res, next) => {
   // const x = height === px ? 0 : (height - 200) / 2;
   // const y = width === px ? 0 : (width - 200) / 2;
 
-  console.log('height', height);
-  console.log('width', width);
-  console.log('x', x);
-  console.log('y', y);
+  // console.log('height', height);
+  // console.log('width', width);
+  // console.log('x', x);
+  // console.log('y', y);
 
   gm(req.body.avatar)
     .size((err, value) => {
