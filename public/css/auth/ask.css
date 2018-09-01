@@ -136,6 +136,7 @@ button {
 .question {
   background-color: rgba(47, 184, 205, 0.1);
   border-bottom: 2px solid rgb(47, 184, 205);
+  border-radius: 0;
   display: block;
   font-family: 'Quicksand', sans-serif;
   font-weight: 300;
@@ -148,6 +149,7 @@ button {
 
 .tag {
   background-color: rgba(47, 184, 205, 0.1);
+  border-radius: 0;
   display: inline-block;
   font-family: 'Quicksand', sans-serif;
   font-weight: 300;
