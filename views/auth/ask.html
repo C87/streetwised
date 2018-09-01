@@ -17,16 +17,18 @@
       </section>
     </header>
     <main class="main">
-      <img src="{{ image }}" class="image">
       <form class="form">
-        <textarea class="form-question" name="text" placeholder="Ask a question"></textarea>
-        <textarea class="form-tag" name="tag" placeholder="Add a tag"></textarea>
-        <p class="form-tag-count"></p>
+        <section class="info">
+          <img src="{{ image }}" class="image">
+          <h5 class="question-count">90</h5>
+          <h5 class="tag-count">8</h5>
+        </section>
+        <section class="input">
+          <textarea class="question" name="question" placeholder="Ask a question"></textarea>
+          <textarea class="tag" name="tag" placeholder="Add a tag"></textarea>
+          <button class="button">Post question</button>
+        </section>
       </form>
-      <div class="controller">
-        <p class="controller-cancel">Cancel</p>
-        <p class="controller-post">Post question</p>
-      </div>
     </main>
     <script src="/js/auth/ask.js" charset="utf-8"></script>
   </body>
