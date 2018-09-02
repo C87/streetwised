@@ -44,10 +44,10 @@ const send = (file, rotate) => {
             .then((response) => {
               document.querySelector('.user-image').src = response.url;
               document.querySelector('.edit-image').textContent = 'Image updated';
-              document.querySelector('.spinner').style.none = 'none';
+              document.querySelector('.spinner').style.display = 'none';
             })
             .catch((error) => {
-              document.querySelector('.spinner').style.none = 'none';
+              document.querySelector('.spinner').style.display = 'none';
             });
         }, 5000);
         return;
@@ -55,7 +55,7 @@ const send = (file, rotate) => {
       // form.alert.textContent = res.body; Abs positioned alert textContent is equal to res body.
     })
     .catch((err) => {
-      document.querySelector('.spinner').style.none = 'none';
+      document.querySelector('.spinner').style.display = 'none';
     });
 };
 
