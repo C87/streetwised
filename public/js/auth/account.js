@@ -40,7 +40,7 @@ const send = (file, rotate) => {
             cache: 'reload',
             mode: 'cors',
           })
-            .then(response => response.json())
+            // .then(response => response.json())
             .then(response => console.log(response))
             .catch(error => console.log(error));
 
