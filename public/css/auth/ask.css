@@ -75,6 +75,7 @@ button {
   background-position: center;
   background-repeat: no-repeat;
   background-size: 30px 30px;
+  cursor: pointer;
   display: inline-block;
   height: calc(var(--header-height) - 10px);
   line-height: calc(var(--header-height) - 10px);
