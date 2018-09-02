@@ -91,6 +91,13 @@ data.preview = (res) => {
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
 
+map.attr = () => {
+  console.log('works');
+  map.element.addControl(new mapboxgl.AttributionControl({
+    compact: true,
+  }));
+};
+
 map.load = (res) => {
   map.element = new mapboxgl.Map({
     container: 'mapboxgl',
@@ -100,13 +107,24 @@ map.load = (res) => {
     maxZoom: 15,
     // maxBounds: res.maxBounds,
     attributionControl: false,
-  }).addControl(new mapboxgl.AttributionControl({
-    compact: true,
-  }));
+  });
 
   map.element.doubleClickZoom.disable();
   map.element.scrollZoom.disable();
   map.element.touchZoomRotate.disableRotation();
+
+  const intro = document.querySelector('.intro');
+
+  if (intro) {
+    document.querySelector('.intro').addEventListener('click', (e) => {
+      if (e.target.className === 'intro') map.attr();
+    });
+    document.querySelector('.intro').addEventListener('click', (e) => {
+      if (e.target.className === 'intro-section-button') setTimeout(() => { map.attr(); }, 1000);
+    });
+  } else {
+    map.attr();
+  }
 };
 
 map.listeners = () => {
