@@ -41,7 +41,8 @@ const send = (file, rotate) => {
             mode: 'cors',
           })
             .then(response => response.json())
-            .then(response => console.log(res));
+            .then(response => console.log(response))
+            .catch(error => console.log(error));
 
           // document.querySelector('.user-image').src = res.url;
           // document.querySelector('.edit-image').textContent = 'Image updated';
