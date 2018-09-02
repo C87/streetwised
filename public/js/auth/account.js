@@ -22,6 +22,7 @@ document.querySelector('.edit-image').addEventListener('click', (e) => {
 // -----------------------------------------------------------------------------
 
 const send = (file, rotate) => {
+  document.querySelector('.spinner').style.display = 'block';
   const fd = new FormData();
   fd.append('avatar', file);
   fd.append('rotate', rotate);
@@ -40,19 +41,22 @@ const send = (file, rotate) => {
             cache: 'reload',
             mode: 'cors',
           })
-            .then(response => {
+            .then((response) => {
               document.querySelector('.user-image').src = response.url;
+              document.querySelector('.edit-image').textContent = 'Image updated';
+              document.querySelector('.spinner').style.none = 'none';
             })
-            .catch(error => console.log(error));
-
-          // document.querySelector('.user-image').src = res.url;
-          // document.querySelector('.edit-image').textContent = 'Image updated';
-        }, 1000);
+            .catch((error) => {
+              document.querySelector('.spinner').style.none = 'none';
+            });
+        }, 5000);
         return;
       }
       // form.alert.textContent = res.body; Abs positioned alert textContent is equal to res body.
     })
-    .catch(err => console.log(err));
+    .catch((err) => {
+      document.querySelector('.spinner').style.none = 'none';
+    });
 };
 
 // -----------------------------------------------------------------------------

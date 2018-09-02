@@ -30,6 +30,17 @@ button {
   display: none;
 }
 
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 /* ---------------------------------------------------------------------------*/
 /* ---------------------------------------------------------------------------*/
 
@@ -96,14 +107,36 @@ button {
   width: 100%;
 }
 
-.user-image {
+.image {
   border: 1px solid rgb(230, 230, 230);
   border-radius: 50%;
   display: block;
   height: 120px;
   margin: auto;
   margin-top: 30px;
+  position: relative;
   width: 120px;
+}
+
+.user-image {
+  border-radius: 50%;
+  height: 100%;
+  width: 100%;
+}
+
+.spinner {
+  background-image: url(../../assets/icons/spinner-third-light.svg);
+  background-color: rgba(0, 0, 0, 0.2);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 50px 50px;
+  border-radius: 50%;
+  display: none;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  -webkit-animation: spin 0.8s linear infinite; /* Safari */
+  animation: spin 0.8s linear infinite;
 }
 
 .edit-image {

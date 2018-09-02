@@ -20,7 +20,10 @@
         <input type="file" name="avatar" class="form-input" accept="image/*">
       </form>
       <div class="user">
-        <img class="user-image" src="{{ src }}">
+        <div class="image">
+          <div class="spinner"></div>
+          <img class="user-image" src="{{ src }}">          
+        </div>
         <h5 class="edit-image">Edit profile picture</h5>
         <h2 class="user-name">{{ name }}</h2>
         <h3 class="user-username">{{ username }}</h4>
