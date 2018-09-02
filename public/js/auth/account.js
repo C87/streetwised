@@ -42,7 +42,7 @@ const send = (file, rotate) => {
           })
             .then(response => {
               document.querySelector('.user-image').src = response.url;
-            }
+            })
             .catch(error => console.log(error));
 
           // document.querySelector('.user-image').src = res.url;
