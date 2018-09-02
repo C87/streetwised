@@ -104,18 +104,32 @@ module.exports.password = (req, res, next) => {
 
 
 module.exports.question = (req, res, next) => {
-  if (!req.body.text) {
-    const err = new Error('Input required.');
+  if (!req.body.question) {
+    const err = new Error('Question is required.');
     err.code = 400;
     return next(err);
   }
-  req.body.text = validator.trim(req.body.text);
-  if (req.body.tag) {
+
+  if (req.body.question.length > 90) {
+    const err = new Error('Exceeded character limit.');
+    err.code = 400;
+    return next(err);
+  }
+
+  if (req.body.tag && req.body.tag.length > 8) {
+    const err = new Error('Exceeded character limit.');
+    err.code = 400;
+    return next(err);
+  } else if (req.body.tag) {
     req.body.tag = validator.trim(req.body.tag);
+    req.body.tag = req.body.tag.toLowerCase();
   } else {
     req.body.tag = null;
   }
-  console.log('PASSED: validate.question,', req.body.text, req.body.tag);
+
+  req.body.question = validator.trim(req.body.question);
+
+  console.log('PASSED: validate.question,', req.body.question, req.body.tag);
   next();
 };
 

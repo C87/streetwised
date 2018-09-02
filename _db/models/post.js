@@ -34,10 +34,6 @@ const postSchema = new Schema({
       type: String,
       required: false,
     },
-    location: {
-      type: String,
-      required: true,
-    },
     created: {
       type: Date,
       default: Date.now,

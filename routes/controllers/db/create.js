@@ -51,9 +51,8 @@ module.exports.post = (req, res, next) => {
     },
     properties: {
       user: req.session.userId,
-      text: req.body.text,
+      text: req.body.question,
       tag: req.body.tag,
-      location: req.session.location,
     },
   });
 
@@ -68,7 +67,7 @@ module.exports.post = (req, res, next) => {
             username: req.session.username,
           },
           text: doc.properties.text,
-          location: doc.properties.location,
+          tag: doc.properties.tag,
           comments: doc.properties.comments,
         },
         geometry: {
