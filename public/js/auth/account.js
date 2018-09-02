@@ -40,8 +40,9 @@ const send = (file, rotate) => {
             cache: 'reload',
             mode: 'cors',
           })
-            // .then(response => response.json())
-            .then(response => console.log(response))
+            .then(response => {
+              document.querySelector('.user-image').src = response.url;
+            }
             .catch(error => console.log(error));
 
           // document.querySelector('.user-image').src = res.url;
