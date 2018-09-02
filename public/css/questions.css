@@ -145,11 +145,11 @@ button {
   padding: 2px 0;
 }
 
-.view-article-options {
+/* .view-article-options {
   display: none;
   width: 130px;
   margin: auto;
-}
+} */
 
 .view-article-distance,
 .view-article-link {
@@ -172,9 +172,9 @@ button {
   text-decoration: none;
 }
 
-.view-article-distance {
-  /* margin-left: calc(100% - 130px); */
-}
+/* .view-article-distance {
+  margin-left: calc(100% - 130px);
+} */
 
 
 .view-article-distance-icon,

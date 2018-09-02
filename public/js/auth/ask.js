@@ -34,8 +34,8 @@ document.querySelector('.button').addEventListener('click', (e) => {
     body: fd,
   }).then(res => res.json())
     .then(() => {
-      app.form.question.value = '';
-      app.form.tag.value = '';
+      // app.form.question.value = '';
+      // app.form.tag.value = '';
       window.location.replace(document.referrer);
     })
     .catch(err => console.log(err));
@@ -74,6 +74,7 @@ app.form.question.addEventListener('keydown', (e) => {
 });
 
 app.form.tag.addEventListener('keydown', (e) => {
+  console.log(e);
   if (e.key === 'Backspace') {
     const limit = 8;
     const characters = app.form.tag.value.length;

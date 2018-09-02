@@ -2,6 +2,13 @@ const app = {
   controller: {
     element: document.querySelector('.controller'),
   },
+  form: {
+    element: document.querySelector('.form'),
+    qCount: document.querySelector('.form-question-count'),
+    question: document.querySelector('.form-question'),
+    tCount: document.querySelector('.form-tag-count'),
+    tag: document.querySelector('.form-tag'),
+  },
   header: {
     element: document.querySelector('.header'),
   },
@@ -199,3 +206,68 @@ app.search.input.addEventListener('keyup', () => { if (app.search.input.value.le
 
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+
+document.querySelector('.form-button').addEventListener('click', (e) => {
+  e.preventDefault();
+  const fd = new FormData(app.form.element);
+  if (app.form.question.value.length > 90 || app.form.tag.value.length > 8) return;
+  app.form.question.value = '';
+  app.form.tag.value = '';
+
+  fetch('/new-post', {
+    method: 'POST',
+    credentials: 'same-origin',
+    body: fd,
+  }).then(res => res.json())
+    .then(() => {
+      // app.form.question.value = '';
+      // app.form.tag.value = '';
+      // window.location.replace(document.referrer);
+    })
+    .catch(err => console.log(err));
+});
+
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+
+app.form.question.addEventListener('keypress', () => {
+  const limit = 90;
+  const characters = app.form.question.value.length + 1;
+  app.form.qCount.textContent = limit - characters;
+  const color = app.form.qCount.textContent >= 0 ? 'rgb(31, 152, 172)' : 'rgb(239, 62, 74)';
+  app.form.qCount.style.color = color;
+});
+
+
+app.form.tag.addEventListener('keypress', () => {
+  const limit = 8;
+  const characters = app.form.tag.value.length + 1;
+  app.form.tCount.textContent = limit - characters;
+  const color = app.form.tCount.textContent >= 0 ? 'rgb(31, 152, 172)' : 'rgb(239, 62, 74)';
+  app.form.tCount.style.color = color;
+});
+
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+
+app.form.question.addEventListener('keydown', (e) => {
+  if (e.key === 'Backspace') {
+    characters = 90 - app.form.question.value.length;
+    app.form.qCount.textContent = characters;
+  }
+  const color = app.form.qCount.textContent >= 0 ? 'rgb(31, 152, 172)' : 'rgb(239, 62, 74)';
+  app.form.qCount.style.color = color;
+});
+
+app.form.tag.addEventListener('keydown', (e) => {
+  if (e.key === 'Backspace') {
+    const limit = 8;
+    const characters = app.form.tag.value.length;
+    app.form.tCount.textContent = limit - characters;
+  }
+  const color = app.form.tCount.textContent >= 0 ? 'rgb(31, 152, 172)' : 'rgb(239, 62, 74)';
+  app.form.tCount.style.color = color;
+});
