@@ -35,13 +35,10 @@ button {
 
 :root {
   --header-height: 50px;
-  --main-height: calc(100% - 150px);
-  --container-height: calc(100% - 105px);
+  --main-height: calc(100% - 50px);
+  --container-height: 100%;
   --controller-height: 60px;
 }
-
-/* ---------------------------------------------------------------------------*/
-/* ---------------------------------------------------------------------------*/
 
 .header {
   background-color: rgb(255, 255, 255);
@@ -86,20 +83,42 @@ button {
 /* -------------------------------------------------------------------------- */
 /* -------------------------------------------------------------------------- */
 
+
 .main {
-  display: block;
-  height: var(--main-height);
+  display: flex;
+  height: 100%;
+  margin: auto;
+  max-width: 1024px;
   width: 100%;
 }
 
-.question {
-  display: flex;
-  padding: 10px;
-}
+/* ---------------------------------------------------------------------------*/
+/* ---------------------------------------------------------------------------*/
 
 .question-template {
   display: none;
 }
+
+.question {
+  border-bottom: 2px solid rgb(47, 184, 205);
+  border-left: 2px solid rgb(47, 184, 205);
+  border-right: 2px solid rgb(47, 184, 205);
+  display: flex;
+  height: 300px;
+  order: 2;
+  padding: 10px;
+  width: 50%;
+}
+
+.response-container {
+  height: var(--container-height);
+  order: 1;
+  overflow-y: scroll;
+  width: 50%;
+}
+
+/* ---------------------------------------------------------------------------*/
+/* ---------------------------------------------------------------------------*/
 
 .question-user {
   display: inline-block;
@@ -155,12 +174,6 @@ button {
 /* -------------------------------------------------------------------------- */
 /* -------------------------------------------------------------------------- */
 
-.response-container {
-  height: var(--container-height);
-  overflow: scroll;
-  width: 100%;
-}
-
 .response-template {
   display: none;
 }
@@ -199,11 +212,6 @@ button {
   font-size: 18px;
 }
 
-/* word-wrap: break-word; <-- These were not included in previous file, delete if they dont work
-overflow: auto;
-white-space: nowrap;
-width: 100%; */
-
 /* -------------------------------------------------------------------------- */
 /* -------------------------------------------------------------------------- */
 
@@ -215,8 +223,12 @@ width: 100%; */
   border-radius: 25px 25px 0 0;
   display: flex;
   height: var(--controller-height);
+  left: 0;
+  max-width: 1024px;
+  margin: auto;
   position: absolute;
   padding: 10px;
+  right: 0;
   width: 100%;
 }
 
@@ -278,6 +290,3 @@ width: 100%; */
   padding-top: 1px;
   width: 45px;
 }
-
-/* -------------------------------------------------------------------------- */
-/* -------------------------------------------------------------------------- */

@@ -101,7 +101,6 @@ signup.query = (key, value, url, icon) => {
         return icon.classList.add('check-circle');
       }
       icon.classList.add('times-circle');
-      console.log(res);
     }).catch((err) => {
       icon.classList.add('times-circle');
     });

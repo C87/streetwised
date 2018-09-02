@@ -18,6 +18,7 @@ module.exports.compare = (req, res, next) => {
       if (result) {
         req.session.userId = res.locals.user._id;
         req.session.avatar = res.locals.user.avatar;
+        req.session.name = res.locals.user.name;
         req.session.username = res.locals.user.username;
         console.log('PASSED: bcrypt.compare,', result);
         return next();

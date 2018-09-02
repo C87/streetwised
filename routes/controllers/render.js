@@ -6,6 +6,8 @@ module.exports.account = (req, res) => {
   }
 
   res.status(200).render('auth/account.html', {
+    name: req.session.name,
+    src: req.session.avatar,
     title: tabBar,
     username: req.session.username,
   });

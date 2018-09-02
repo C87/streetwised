@@ -6,23 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="PWA">
     <title>{{ title }}</title>
-    <link rel="stylesheet" href="/css/auth/account.css">
+    <link rel="stylesheet" href="/css/auth/account-min.css">
   </head>
   <body>
     <header class="header">
       <section class="header-section">
-        <button class="header-section-button"></button>
-        <h1 class="header-section-title">{{ username }}</h1>
+        <h1 class="header-section-title">Streetwised</h1>
+        <button class="header-section-route"></button>
       </section>
     </header>
     <main class="main">
-      <article class="main-article">
-        <a class="main-article-route" href="/account/avatar">Profile Picture</a>
-      </article>
-      <article class="main-article">
-        <a class="main-article-route" href="/logout">Log out</a>
-      </article>
+      <form class="form">
+        <input type="file" name="avatar" class="form-input" accept="image/*">
+      </form>
+      <div class="user">
+        <img class="user-image" src="{{ src }}">
+        <h5 class="edit-image">Edit profile picture</h5>
+        <h2 class="user-name">{{ name }}</h2>
+        <h3 class="user-username">{{ username }}</h4>
+      </div>
+      <div class="settings">
+        <section class="logout">
+          <a class="logout-route" href="/logout">Log out</a>
+        </section>
+      </div>
     </main>
+    <script src="/js/auth/exif.js" charset="utf-8"></script>
     <script src="js/auth/account.js" charset="utf-8"></script>
   </body>
 </html>

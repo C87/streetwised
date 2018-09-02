@@ -49,3 +49,9 @@ module.exports.ok = (req, res, next) => {
       body: 'OK',
     });
 };
+
+module.exports.url = (req, res, next) => {
+  console.log('PASSED: res.url');
+  res
+    .json({ code: 200, url: req.session.avatar });
+};

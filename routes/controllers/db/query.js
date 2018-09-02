@@ -63,6 +63,7 @@ module.exports.user = (req, res, next) => {
         res.locals.user = {
           _id: user._id,
           avatar: user.avatar,
+          name: user.name,
           password: user.password,
           username: user.username,
         };

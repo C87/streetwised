@@ -92,7 +92,6 @@ data.preview = (res) => {
 // -----------------------------------------------------------------------------
 
 map.attr = () => {
-  console.log('works');
   map.element.addControl(new mapboxgl.AttributionControl({
     compact: true,
   }));
