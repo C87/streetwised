@@ -58,6 +58,12 @@ module.exports.name = (req, res, next) => {
     return next(err);
   }
 
+  if (req.body.name.length < 3) {
+    const err = new Error('Name too short.');
+    err.code = 400;
+    return next(err);
+  }
+
   let name = string.trim(req.body.name, ' .').toLowerCase(); // toLowerCase to avoid lodash camelCase filtering
   name = string.lowerCase(name); // lodash lowerCase for filtering dash and apostrophe
   name = string.upperFirst(name);

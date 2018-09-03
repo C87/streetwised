@@ -12,13 +12,11 @@ const buffer = {
 };
 
 const login = {
-  alert: document.querySelector('.login-form-alert'),
   element: document.querySelector('.login-form'),
   submit: document.querySelector('.login-form-button-submit'),
 };
 
 const signup = {
-  alert: document.querySelector('.signup-form-alert'),
   element: document.querySelector('.signup-form'),
   email: document.querySelector('.signup-email'),
   name: document.querySelector('.signup-name'),
@@ -59,7 +57,8 @@ login.submit.addEventListener('click', (e) => {
   }).then(res => res.json())
     .then((res) => {
       if (res.code === 301) { return window.location.replace(res.url); }
-      // login.alert.textContent = res.body;
+      document.querySelector('.alert-container').style.display = 'block';
+      document.querySelector('.alert').textContent = res.body;
     })
     .catch(err => console.log(err));
 });
@@ -78,7 +77,8 @@ signup.submit.addEventListener('click', (e) => {
   }).then(res => res.json())
     .then((res) => {
       if (res.code === 301) { return window.location.replace(res.url); }
-      // signup.alert.textContent = res.body;
+      document.querySelector('.alert-container').style.display = 'block';
+      document.querySelector('.alert').textContent = res.body;
     })
     .catch(err => console.log(err));
 });
