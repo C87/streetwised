@@ -102,7 +102,10 @@ input {
 
 .view-container {
   height: var(--view-height);
+  margin: auto;
+  max-width: 1024px;
   overflow-y: scroll;
+  width: 100%;
 }
 
 .view-article-template {
@@ -229,6 +232,8 @@ input {
   border-radius: 25px 25px 0 0;
   display: flex;
   height: var(--controller-height);
+  margin: auto;
+  max-width: 1024px;
   position: absolute;
   padding: 10px;
   width: 100%;
