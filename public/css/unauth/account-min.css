@@ -26,9 +26,13 @@ button {
   display: none;
 }
 
+::-webkit-appearance: none;
+
 ::-moz-scrollbar {
   display: none;
 }
+
+::-moz-appearance: none;
 
 
 .check-circle {
