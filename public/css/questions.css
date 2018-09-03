@@ -30,12 +30,6 @@ button {
   display: none;
 }
 
-input {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-
 /* ---------------------------------------------------------------------------*/
 /* ---------------------------------------------------------------------------*/
 
@@ -60,7 +54,7 @@ input {
 .header-section {
   height: calc(var(--header-height) - 10px);
   margin: auto;
-  max-width: 1024px;
+  max-width: 800px;
   width: 100%;
 }
 
@@ -102,10 +96,7 @@ input {
 
 .view-container {
   height: var(--view-height);
-  margin: auto;
-  max-width: 1024px;
   overflow-y: scroll;
-  width: 100%;
 }
 
 .view-article-template {
@@ -232,12 +223,8 @@ input {
   border-radius: 25px 25px 0 0;
   display: flex;
   height: var(--controller-height);
-  left: 0;
-  margin: auto;
-  max-width: 1024px;
   position: absolute;
   padding: 10px;
-  right: 0;
   width: 100%;
 }
 

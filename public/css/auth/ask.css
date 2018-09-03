@@ -30,12 +30,6 @@ button {
   display: none;
 }
 
-input {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-
 /* ---------------------------------------------------------------------------*/
 /* ---------------------------------------------------------------------------*/
 
@@ -60,7 +54,7 @@ input {
 .header-section {
   height: calc(var(--header-height) - 10px);
   margin: auto;
-  max-width: 1024px;
+  max-width: 800px;
   width: 100%;
 }
 
@@ -94,9 +88,6 @@ input {
 
 .main {
   height: var(--main-height);
-  margin: auto;
-  max-width: 1024px;
-  width: 100%;
 }
 
 .form {

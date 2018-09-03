@@ -30,12 +30,6 @@ button {
   display: none;
 }
 
-input {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-
 
 .check-circle {
   background-image: url(../../assets/icons/check-circle-light.svg);
