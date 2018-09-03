@@ -2,26 +2,6 @@ const fetch = require('node-fetch');
 
 const bbox = [-3.21270, 53.16401, -2.65632, 53.58125];
 
-module.exports.geocode = (req, res, next) => {
-  // Check if within bounding box?? Needs to be server side instead of client side.
-  const url = `https://geocoder.tilehosting.com/r/${req.body.lng}/${req.body.lat}.js?key=Rgbg05zBqK0dhML5dNJi`;
-
-  fetch(url)
-    .then(geo => geo.json())
-    .then((geo) => {
-      req.session.coordinates = [geo.results[0].lon, geo.results[0].lat];
-      if (geo.results[0].city === geo.results[0].name) {
-        req.session.location = geo.results[0].city;
-      } else if (geo.results[0].city !== geo.results[0].name) {
-        req.session.location = `${geo.results[0].name}, ${geo.results[0].city}`;
-      } else {
-        req.session.location = geo.results[0].name;
-      }
-      next();
-    })
-    .catch(err => next(err));
-};
-
 module.exports.params = (req, res, next) => {
   req.session.coordinates = [parseFloat(req.body.lng), parseFloat(req.body.lat)];
   req.session.geoBoundBox = [

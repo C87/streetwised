@@ -166,19 +166,32 @@ data.dbQuery = () => {
     .catch(err => console.log(err));
 };
 
-data.geocode = () => {
-  const fd = data.formData();
-  document.querySelector('.info-tagline').textContent = '';
+const geocode = (ms, url) => new Promise((resolve, reject) => {
+  setTimeout(() => {
+    reject(new Error('timeout'));
+  }, ms);
+  fetch(url).then(resolve, reject);
+});
 
-  fetch('/geocode', {
-    method: 'POST',
-    credentials: 'same-origin',
-    body: fd,
-  }).then(res => res.json())
-    .then((res) => {
-      document.querySelector('.info-tagline').textContent = res; // Class name === location element for ask box on large screen;
+data.geocode = () => {
+  document.querySelector('.info-tagline').textContent = '';
+  const c = map.element.getCenter();
+  const url = `https://geocoder.tilehosting.com/r/${c.lng}/${c.lat}.js?key=Rgbg05zBqK0dhML5dNJi`;
+
+  geocode(2000, url)
+    .then(geo => geo.json())
+    .then((geo) => {
+      if (geo.results[0].city === geo.results[0].name) {
+        document.querySelector('.info-tagline').textContent = geo.results[0].city;
+      } else if (geo.results[0].city !== geo.results[0].name) {
+        document.querySelector('.info-tagline').textContent = `${geo.results[0].name}, ${geo.results[0].city}`;
+      } else {
+        document.querySelector('.info-tagline').textContent = geo.results[0].name;
+      }
     })
-    .catch(err => console.log(err));
+    .catch((err) => {
+      document.querySelector('.info-tagline').textContent = '';
+    });
 };
 
 // Get request initialises map settings

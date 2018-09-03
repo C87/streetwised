@@ -3,11 +3,6 @@ module.exports.comment = (req, res, next) => {
     .json(res.locals.comment);
 };
 
-module.exports.display = (req, res, next) => {
-  res
-    .json(req.session.location);
-};
-
 module.exports.location = (req, res, next) => {
   res
     .json({

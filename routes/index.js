@@ -87,10 +87,6 @@ router
   .post(aws.none, location.params, read.all, res.points);
 
 router
-  .route('/geocode')
-  .post(aws.none, location.geocode, res.display);
-
-router
   .route('/reverse-geo')
   .post(aws.none, location.reverseGeo, res.results);
 
