@@ -94,6 +94,9 @@ input {
 
 .main {
   height: var(--main-height);
+  margin: auto;
+  max-width: 1024px;
+  width: 100%;
 }
 
 .form {
