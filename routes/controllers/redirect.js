@@ -1,7 +1,7 @@
 module.exports.avatar = (req, res, next) => {
   console.log('PASSED: redirect.avatar');
   res
-    .json({ code: 301, url: '/account/avatar' });
+    .json({ code: 301, url: '/account' });
 };
 
 module.exports.home = (req, res, next) => {

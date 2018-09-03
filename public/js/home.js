@@ -222,11 +222,7 @@ document.querySelector('.form-button').addEventListener('click', (e) => {
     credentials: 'same-origin',
     body: fd,
   }).then(res => res.json())
-    .then(() => {
-      // app.form.question.value = '';
-      // app.form.tag.value = '';
-      // window.location.replace(document.referrer);
-    })
+    .then(() => data.dbQuery())
     .catch(err => console.log(err));
 });
 

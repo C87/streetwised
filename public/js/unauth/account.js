@@ -1,5 +1,5 @@
 const app = {
-  back: document.querySelector('.header-section-button'),
+  back: document.querySelector('.header-section-route'),
   text: document.querySelector('.section-title-span-text'),
   link: document.querySelector('.section-title-span-link'),
 };
@@ -50,7 +50,6 @@ app.link.addEventListener('click', (e) => {
 
 login.submit.addEventListener('click', (e) => {
   e.preventDefault();
-  login.alert.textContent = '';
   const fd = new FormData(login.element);
 
   fetch('/session-login', {
@@ -60,7 +59,7 @@ login.submit.addEventListener('click', (e) => {
   }).then(res => res.json())
     .then((res) => {
       if (res.code === 301) { return window.location.replace(res.url); }
-      login.alert.textContent = res.body;
+      // login.alert.textContent = res.body;
     })
     .catch(err => console.log(err));
 });
@@ -70,7 +69,6 @@ login.submit.addEventListener('click', (e) => {
 
 signup.submit.addEventListener('click', (e) => {
   e.preventDefault();
-  signup.alert.textContent = '';
   const fd = new FormData(signup.element);
 
   fetch('/session-signup', {
@@ -80,7 +78,7 @@ signup.submit.addEventListener('click', (e) => {
   }).then(res => res.json())
     .then((res) => {
       if (res.code === 301) { return window.location.replace(res.url); }
-      signup.alert.textContent = res.body;
+      // signup.alert.textContent = res.body;
     })
     .catch(err => console.log(err));
 });

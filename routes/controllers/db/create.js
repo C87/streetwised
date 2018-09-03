@@ -117,7 +117,7 @@ module.exports.upvote = (req, res, next) => {
 
 module.exports.user = (req, res, next) => {
   const newUser = new User({
-    avatar: 'https://streetwised.ams3.digitaloceanspaces.com/streetwised/generic-avatar',
+    avatar: 'https://streetwised.ams3.digitaloceanspaces.com/streetwised/avatars/generic-avatar.jpeg',
     name: req.body.name,
     username: req.body.username,
     email: req.body.email,
@@ -129,6 +129,7 @@ module.exports.user = (req, res, next) => {
     .then((user) => {
       req.session.userId = user._id;
       req.session.avatar = user.avatar;
+      req.session.name = user.name;
       req.session.username = user.username;
       console.log('PASSED: create.user,', user);
       next();

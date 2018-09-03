@@ -6,18 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="PWA">
     <title>{{ title }}</title>
-    <link rel="stylesheet" href="/css/unauth/account.css">
+    <link rel="stylesheet" href="/css/unauth/account-min.css">
   </head>
   <body>
     <header class="header">
       <section class="header-section">
-        <button class="header-section-button"></button>
         <h1 class="header-section-title">Streetwised</h1>
+        <button class="header-section-route"></button>
       </section>
     </header>
     <main class="main">
       <form class="signup-form">
-        <h3 class="signup-form-alert"></h3>
         <div class="signup-form-container">
           <div class="signup-form-container-buffer"></div>
           <input type="text" name="email" class="signup-email signup-form-container-input" placeholder="Email" autocomplete="off" autocorrect="off">
@@ -41,22 +40,21 @@
         <input type="submit" value="Signup" class="signup-form-button-submit">
       </form>
       <form class="login-form">
-        <h3 class="login-form-alert"></h3>
         <div class="login-form-container">
           <div class="login-form-container-buffer"></div>
-          <input type="text" name="username" class="login-form-container-input" placeholder="Username" autocomplete="off" autocorrect="off">
+          <input type="text" name="username" class="login-form-container-input login-username" placeholder="Username" autocomplete="off" autocorrect="off">
           <div class="login-buffer-username"></div>
         </div>
         <div class="login-form-container">
           <div class="login-form-container-buffer"></div>
-          <input type="password" name="password" class="login-form-container-input" placeholder="Password" autocomplete="off" autocorrect="off">
+          <input type="password" name="password" class="login-form-container-input login-password" placeholder="Password" autocomplete="off" autocorrect="off">
           <div class="login-buffer-password"></div>
         </div>
         <input type="submit" value="Log in" class="login-form-button-submit">
       </form>
     </main>
-    <section class="section">
-      <h3 class="section-title"><span class="section-title-span-text">Don't have an account? </span><span class="section-title-span-link">Sign up</span></h3> 
+    <section class="controller">
+      <h3 class="section-title"><span class="section-title-span-text">Don't have an account? </span><span class="section-title-span-link">Sign up</span></h3>
     </section>
     <script src="/js/unauth/account.js" charset="utf-8"></script>
   </body>

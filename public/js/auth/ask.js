@@ -74,7 +74,6 @@ app.form.question.addEventListener('keydown', (e) => {
 });
 
 app.form.tag.addEventListener('keydown', (e) => {
-  console.log(e);
   if (e.key === 'Backspace') {
     const limit = 8;
     const characters = app.form.tag.value.length;

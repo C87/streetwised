@@ -28,12 +28,8 @@ module.exports.points = (req, res, next) => {
 };
 
 module.exports.post = (req, res, next) => {
-  const geoJSON = {
-    type: 'FeatureCollection',
-    features: res.locals.data,
-  };
   res
-    .json(res.locals.post);
+    .json(res.locals.data);
 };
 
 module.exports.results = (req, res, next) => {

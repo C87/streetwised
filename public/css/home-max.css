@@ -192,6 +192,7 @@ button {
   background-position: center;
   background-repeat: no-repeat;
   background-size: 20px 20px;
+  cursor: pointer;
   display: block;
   height: 31px;
   width: 31px;
@@ -232,6 +233,7 @@ button {
   border-right: 2px solid rgb(47, 184, 205);
   border-right: 2px solid rgba(47, 184, 205, 0.4);
   border-radius: 50% 0 0 50%;
+  cursor: pointer;
   display: block;
   height: 31px;
   width: 50%;
@@ -245,6 +247,7 @@ button {
   background-size: 28px 28px;
   border-radius: 50%;
   border-radius: 0 50% 50% 0;
+  cursor: pointer;
   display: block;
   height: 31px;
   width: 50%;
@@ -366,6 +369,7 @@ button {
 .form-button {
   background-color: rgb(31, 152, 172);
   color: rgb(255, 255, 255);
+  cursor: pointer;
   border-radius: 10px;
   display: inline-block;
   font-family: 'Quicksand', sans-serif;
@@ -543,7 +547,7 @@ button {
   left: 0;
   margin: auto;
   max-height: 80%;
-  max-width: 600px;
+  max-width: 400px;
   padding: 20px;
   position: absolute;
   right: 0;
@@ -597,6 +601,7 @@ button {
 .intro-section-button {
   background-color: rgb(31, 152, 172);
   color: rgb(255, 255, 255);
+  cursor: pointer;
   border-radius: 10px;
   display: block;
   font-family: 'Quicksand', sans-serif;

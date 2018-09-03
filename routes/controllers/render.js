@@ -13,17 +13,6 @@ module.exports.account = (req, res) => {
   });
 };
 
-module.exports.avatar = (req, res) => {
-  if (!req.session.userId) {
-    return res.redirect('/account');
-  }
-
-  res.status(200).render('auth/avatar.html', {
-    title: tabBar,
-    username: req.session.username,
-  });
-};
-
 module.exports.ask = (req, res) => {
   if (!req.session.userId) {
     return res.redirect('/account');

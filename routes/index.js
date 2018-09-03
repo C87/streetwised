@@ -60,10 +60,6 @@ router
   .get(render.account);
 
 router
-  .route('/account/avatar')
-  .get(render.avatar);
-
-router
   .route('/ask')
   .get(render.ask);
 
@@ -111,7 +107,7 @@ router
 
 router
   .route('/new-post')
-  .post(aws.none, validate.question, create.post, res.points);
+  .post(aws.none, validate.question, create.post, res.ok);
 
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
