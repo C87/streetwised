@@ -26,13 +26,15 @@ button {
   display: none;
 }
 
-::-webkit-appearance: none;
-
 ::-moz-scrollbar {
   display: none;
 }
 
-::-moz-appearance: none;
+input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
 
 
 .check-circle {
