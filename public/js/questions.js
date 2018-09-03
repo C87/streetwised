@@ -43,3 +43,8 @@ fetch('/questions.json', {
 }).then(res => res.json())
   .then(res => app.view(res))
   .catch(err => console.log(err));
+
+document.querySelector('.alert-icon').addEventListener('click', () => {
+  document.querySelector('.alert').textContent = '';
+  document.querySelector('.alert-container').style.display = 'none';
+});

@@ -138,3 +138,8 @@ signup.username.addEventListener('focusout', () => {
   }
   signup.query('username', signup.username.value, '/validate-username', buffer.username);
 });
+
+document.querySelector('.alert-icon').addEventListener('click', () => {
+  document.querySelector('.alert').textContent = '';
+  document.querySelector('.alert-container').style.display = 'none';
+});

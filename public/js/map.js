@@ -202,3 +202,8 @@ fetch('/explore.json', {
   .then(res => map.load(res))
   .then(res => map.listeners())
   .catch(err => console.log(err));
+
+document.querySelector('.alert-icon').addEventListener('click', () => {
+  document.querySelector('.alert').textContent = '';
+  document.querySelector('.alert-container').style.display = 'none';
+});

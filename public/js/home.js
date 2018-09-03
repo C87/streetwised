@@ -267,3 +267,8 @@ app.form.tag.addEventListener('keydown', (e) => {
   const color = app.form.tCount.textContent >= 0 ? 'rgb(31, 152, 172)' : 'rgb(239, 62, 74)';
   app.form.tCount.style.color = color;
 });
+
+document.querySelector('.alert-icon').addEventListener('click', () => {
+  document.querySelector('.alert').textContent = '';
+  document.querySelector('.alert-container').style.display = 'none';
+});

@@ -95,3 +95,8 @@ fetch(url, {
   .then(res => app.post(res))
   .then(res => app.comments(res))
   .catch(err => console.log(err));
+
+document.querySelector('.alert-icon').addEventListener('click', () => {
+  document.querySelector('.alert').textContent = '';
+  document.querySelector('.alert-container').style.display = 'none';
+});
