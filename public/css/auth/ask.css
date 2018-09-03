@@ -60,7 +60,7 @@ input {
 .header-section {
   height: calc(var(--header-height) - 10px);
   margin: auto;
-  max-width: 800px;
+  max-width: 1024px;
   width: 100%;
 }
 
