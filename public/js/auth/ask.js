@@ -64,7 +64,7 @@ app.form.question.addEventListener('keyup', (e) => {
 });
 
 app.form.tag.addEventListener('keyup', (e) => {
-  app.form.tCount.textContent = 90 - app.form.tag.value.length;
+  app.form.tCount.textContent = 8 - app.form.tag.value.length;
   app.form.tCount.style.color = app.form.tCount.textContent >= 0 ? 'rgb(31, 152, 172)' : 'rgb(239, 62, 74)';
 });
 
