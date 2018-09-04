@@ -229,7 +229,16 @@ app.search.input.addEventListener('keyup', () => { if (app.search.input.value.le
 document.querySelector('.form-button').addEventListener('click', (e) => {
   e.preventDefault();
   const fd = new FormData(app.form.element);
-  if (app.form.question.value.length > 90 || app.form.tag.value.length > 8) return;
+  if (app.form.question.value.length > 90 || app.form.tag.value.length > 8) {
+    document.querySelector('.alert-container').style.display = 'block';
+    document.querySelector('.alert').textContent = 'Question must not exceed 90 characters and tag must not exceed 8 characters';
+    return;
+  }
+  if (app.form.question.value.length < 1) {
+    document.querySelector('.alert-container').style.display = 'block';
+    document.querySelector('.alert').textContent = 'Question is required';
+    return;
+  }
   app.form.question.value = '';
   app.form.tag.value = '';
 
