@@ -63,50 +63,12 @@ app.form.question.addEventListener('keyup', (e) => {
   app.form.qCount.style.color = app.form.qCount.textContent >= 0 ? 'rgb(31, 152, 172)' : 'rgb(239, 62, 74)';
 });
 
-// app.form.question.addEventListener('keypress', () => {
-//   const limit = 90;
-//   const characters = app.form.question.value.length + 1;
-//   app.form.qCount.textContent = limit - characters;
-//   const color = app.form.qCount.textContent >= 0 ? 'rgb(31, 152, 172)' : 'rgb(239, 62, 74)';
-//   app.form.qCount.style.color = color;
-// });
-
-
-// app.form.tag.addEventListener('keypress', () => {
-//   const limit = 8;
-//   const characters = app.form.tag.value.length + 1;
-//   app.form.tCount.textContent = limit - characters;
-//   const color = app.form.tCount.textContent >= 0 ? 'rgb(31, 152, 172)' : 'rgb(239, 62, 74)';
-//   app.form.tCount.style.color = color;
-// });
-
-// -----------------------------------------------------------------------------
-// -----------------------------------------------------------------------------
-
-// app.form.question.addEventListener('keydown', (e) => {
-//   if (e.key === 'Backspace') {
-//     characters = 90 - app.form.question.value.length;
-//     app.form.qCount.textContent = characters;
-//   }
-//   const color = app.form.qCount.textContent >= 0 ? 'rgb(31, 152, 172)' : 'rgb(239, 62, 74)';
-//   app.form.qCount.style.color = color;
-// });
-
-// app.form.tag.addEventListener('keydown', (e) => {
-//   if (e.key === 'Backspace') {
-//     const limit = 8;
-//     const characters = app.form.tag.value.length;
-//     app.form.tCount.textContent = limit - characters;
-//   }
-//   const color = app.form.tCount.textContent >= 0 ? 'rgb(31, 152, 172)' : 'rgb(239, 62, 74)';
-//   app.form.tCount.style.color = color;
-// });
+app.form.tag.addEventListener('keyup', (e) => {
+  app.form.tCount.textContent = 90 - app.form.tag.value.length;
+  app.form.tCount.style.color = app.form.tCount.textContent >= 0 ? 'rgb(31, 152, 172)' : 'rgb(239, 62, 74)';
+});
 
 document.querySelector('.alert-icon').addEventListener('click', () => {
   document.querySelector('.alert').textContent = '';
   document.querySelector('.alert-container').style.display = 'none';
 });
-
-// app.form.tag.addEventListener('keyup', (e) => {
-//   app.form.question.value = app.form.tag.value.length;
-// });
