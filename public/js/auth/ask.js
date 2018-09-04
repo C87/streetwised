@@ -24,15 +24,18 @@ document.querySelector('.header-section-route').addEventListener('click', () => 
 document.querySelector('.button').addEventListener('click', (e) => {
   e.preventDefault();
   const fd = new FormData(app.form.element);
-  if (app.form.question.value.length > 90 || app.form.tag.value.length > 8) {
-    document.querySelector('.alert-container').style.display = 'block';
-    document.querySelector('.alert').textContent = 'Question must not exceed 90 characters and tag must not exceed 8 characters';
-    return;
-  }
   if (app.form.question.value.length < 1) {
     document.querySelector('.alert-container').style.display = 'block';
     document.querySelector('.alert').textContent = 'Question is required';
     return;
+  }
+  if (app.form.question.value.length > 90) {
+    document.querySelector('.alert-container').style.display = 'block';
+    document.querySelector('.alert').textContent = 'Question must not exceed 90 characters';
+    return;
+  } else if (app.form.tag.value.length > 8) {
+    document.querySelector('.alert-container').style.display = 'block';
+    document.querySelector('.alert').textContent = 'Tag must not exceed 8 characters';
   }
   app.form.question.value = '';
   app.form.tag.value = '';
@@ -75,24 +78,24 @@ app.form.tag.addEventListener('keypress', () => {
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
 
-app.form.question.addEventListener('keydown', (e) => {
-  if (e.key === 'Backspace') {
-    characters = 90 - app.form.question.value.length;
-    app.form.qCount.textContent = characters;
-  }
-  const color = app.form.qCount.textContent >= 0 ? 'rgb(31, 152, 172)' : 'rgb(239, 62, 74)';
-  app.form.qCount.style.color = color;
-});
+// app.form.question.addEventListener('keydown', (e) => {
+//   if (e.key === 'Backspace') {
+//     characters = 90 - app.form.question.value.length;
+//     app.form.qCount.textContent = characters;
+//   }
+//   const color = app.form.qCount.textContent >= 0 ? 'rgb(31, 152, 172)' : 'rgb(239, 62, 74)';
+//   app.form.qCount.style.color = color;
+// });
 
-app.form.tag.addEventListener('keydown', (e) => {
-  if (e.key === 'Backspace') {
-    const limit = 8;
-    const characters = app.form.tag.value.length;
-    app.form.tCount.textContent = limit - characters;
-  }
-  const color = app.form.tCount.textContent >= 0 ? 'rgb(31, 152, 172)' : 'rgb(239, 62, 74)';
-  app.form.tCount.style.color = color;
-});
+// app.form.tag.addEventListener('keydown', (e) => {
+//   if (e.key === 'Backspace') {
+//     const limit = 8;
+//     const characters = app.form.tag.value.length;
+//     app.form.tCount.textContent = limit - characters;
+//   }
+//   const color = app.form.tCount.textContent >= 0 ? 'rgb(31, 152, 172)' : 'rgb(239, 62, 74)';
+//   app.form.tCount.style.color = color;
+// });
 
 document.querySelector('.alert-icon').addEventListener('click', () => {
   document.querySelector('.alert').textContent = '';
