@@ -220,7 +220,7 @@ app.map.search.addEventListener('click', app.enableSearch);
 app.map.zoomIn.addEventListener('click', () => map.element.zoomIn());
 app.map.zoomOut.addEventListener('click', () => map.element.zoomOut());
 app.search.return.addEventListener('click', app.disableSearch);
-app.search.input.addEventListener('keyup', () => { if (app.search.input.value.length > 3) data.reverseGeo(app.search.input.value); });
+app.search.input.addEventListener('keyup', () => data.reverseGeo(app.search.input.value));
 
 
 // -----------------------------------------------------------------------------
