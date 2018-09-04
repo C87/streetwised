@@ -42,6 +42,7 @@ const app = {
     element: document.querySelector('.search'),
     input: document.querySelector('.search-header-section-container-input'),
     list: document.querySelector('.search-list'),
+    modal: document.querySelector('.search-modal'),
     return: document.querySelector('.search-header-section-icon'),
   },
   view: {
@@ -125,7 +126,7 @@ app.enableGeo = () => {
 };
 
 app.enableSearch = () => {
-  app.search.element.style.display = 'block';
+  app.search.modal.style.display = 'block';
 };
 
 app.disableSearch = () => {
@@ -136,7 +137,7 @@ app.disableSearch = () => {
     });
   }
   app.search.input.value = '';
-  app.search.element.style.display = 'none';
+  app.search.modal.style.display = 'none';
 };
 
 app.search.fly = (e) => {
@@ -178,7 +179,8 @@ data.list = (res) => {
       el.remove();
     });
   }
-
+  document.querySelector('.load').style.display = 'none';
+  document.querySelector('.search-list').style.display = 'block';
   res.forEach((el) => {
     const item = document.querySelector('.search-list-item-template').cloneNode(true);
     item.classList.remove('search-list-item-template');
@@ -192,7 +194,8 @@ data.list = (res) => {
 };
 
 data.reverseGeo = (value) => {
-  // Add Spinner here
+  document.querySelector('.search-list').style.display = 'none';
+  document.querySelector('.load').style.display = 'block';
   fd = new FormData();
   fd.append('text', value);
   fetch('/reverse-geo', {

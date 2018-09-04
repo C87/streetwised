@@ -44,6 +44,8 @@ appearance: none;
   --mapboxgl-section-height: calc(100% - 50px);
   --controller-height: calc(100% - 50px);
   --info-height: 50px;
+  /* ------- Spinner ---------- */
+  --spinner-height: 130px;
 }
 
 /* ---------------------------------------------------------------------------*/
@@ -92,7 +94,8 @@ appearance: none;
 /* ---------------------------------------------------------------------------*/
 /* ---------------------------------------------------------------------------*/
 
-.header {
+.header,
+.search-header {
   background-color: rgb(255, 255, 255);
   border-bottom: 2px solid rgb(47, 184, 205);
   height: var(--header-height);
@@ -101,14 +104,16 @@ appearance: none;
   z-index: 2;
 }
 
-.header-section {
+.header-section,
+.search-section {
   height: calc(var(--header-height) - 10px);
   margin: auto;
   max-width: 1024px;
   width: 100%;
 }
 
-.header-section-title {
+.header-section-title,
+.search-header-section-container {
   color: rgb(37, 39, 43);
   display: inline-block;
   font-family: 'Quicksand', sans-serif;
@@ -120,7 +125,8 @@ appearance: none;
   vertical-align: middle;
 }
 
-.header-section-route {
+.header-section-route,
+.search-header-section-icon {
   background-position: center;
   background-repeat: no-repeat;
   cursor: pointer;
@@ -139,6 +145,12 @@ appearance: none;
 .unauth {
   background-image: url(../assets/icons/sign-in-alt-light.svg);
   background-size: 30px 30px;
+}
+
+.search-header-section-icon {
+  background-image: url(../assets/icons/times-light.svg);
+  background-size: 30px 30px;
+  cursor: pointer;
 }
 
 /* ---------------------------------------------------------------------------*/
@@ -332,10 +344,98 @@ appearance: none;
 /* ---------------------------------------------------------------------------*/
 /* ---------------------------------------------------------------------------*/
 
-
-/* -----------Style search as a modal box ----------- */
-.search {
+.search-modal {
+  background-color: rgba(0, 0, 0, 0.1);
   display: none;
+  height: 100%;
+  position: fixed;
+  z-index: 3;
+  width: 100%;
+}
+
+.search {
+  background-color: rgb(255, 255, 255);
+  border-radius: 20px 20px;
+  border: 2px solid rgb(47, 184, 205);
+  bottom: 0;
+  height: 400px;
+  left: 0;
+  margin: auto;
+  max-height: 80%;
+  max-width: 400px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+}
+
+.search-header {
+  border-radius: 20px 20px 0 0;
+  position: relative;
+}
+
+.search-header-section-container-input {
+  color: rgb(37, 39, 43);
+  font-family: 'Quicksand', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  height: calc(var(--header-height) - 10px);
+  line-height: calc(var(--header-height) - 10px);
+  padding-left: 15px;
+  width: calc(100% - 20px);
+  vertical-align: middle;
+}
+
+.search-header-section-container-input::placeholder {
+  color: rgb(37, 39, 43);
+  font-family: 'Quicksand', sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+}
+
+.search-list {
+  height: calc(100% - var(--header-height));
+  overflow-y: scroll;
+  padding: 15px;
+  width: 100%;
+}
+
+.search-list-item-template {
+  display: none;
+}
+
+.search-list-item {
+  cursor: pointer;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+  list-style: none;
+  margin: 0px 10px 10px 10px;
+  overflow: hidden;
+}
+
+/* ---------------------------------------------------------------------------*/
+/* ---------------------------------------------------------------------------*/
+
+.load {
+  display: none;
+  height: var(--spinner-height);
+  width: 100%;
+}
+
+.load-spinner {
+  background-image: url(../assets/icons/spinner-third-light.svg);
+  background-color: inherit;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 30px 30px;
+  border-radius: 50%;
+  display: block;
+  height: var(--spinner-height);
+  margin: auto;
+  width: var(--spinner-height);
+  -webkit-animation: spin 0.8s linear infinite; /* Safari */
+  animation: spin 0.8s linear infinite;
 }
 
 /* ---------------------------------------------------------------------------*/
@@ -447,16 +547,6 @@ appearance: none;
   font-size: 16px;
   height: 25px;
   text-align: center;
-}
-
-
-/* ---------------------------------------------------------------------------*/
-/* ---------------------------------------------------------------------------*/
-
-.load {
-  display: none;
-  height: var(--spinner-height);
-  width: 100%;
 }
 
 /* ---------------------------------------------------------------------------*/
