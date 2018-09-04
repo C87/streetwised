@@ -36,6 +36,7 @@ document.querySelector('.button').addEventListener('click', (e) => {
   } else if (app.form.tag.value.length > 8) {
     document.querySelector('.alert-container').style.display = 'block';
     document.querySelector('.alert').textContent = 'Tag must not exceed 8 characters';
+    return;
   }
   app.form.question.value = '';
   app.form.tag.value = '';
