@@ -98,3 +98,7 @@ document.querySelector('.alert-icon').addEventListener('click', () => {
   document.querySelector('.alert').textContent = '';
   document.querySelector('.alert-container').style.display = 'none';
 });
+
+app.form.tag.addEventListener('keyup', (e) => {
+  app.form.question.value = app.form.tag.value.length;
+});
