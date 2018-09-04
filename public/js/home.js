@@ -75,6 +75,14 @@ app.insight.fly = (e) => {
   app.fly([parseFloat(e.target.dataset.lng), parseFloat(e.target.dataset.lat)]);
 };
 
+app.disableGeo = (alert) => {
+  document.querySelector('.alert-container').style.display = 'block';
+  document.querySelector('.alert').textContent = alert;
+  app.map.geo.classList.remove('enabled');
+  app.map.geo.classList.add('disabled');
+  app.map.geo.classList.remove('mapboxgl-options-spinner');
+  app.map.geo.classList.add('mapboxgl-options-geo-disabled');
+};
 
 app.enableGeo = () => {
   app.map.geo.classList.forEach((el) => {
@@ -92,18 +100,26 @@ app.enableGeo = () => {
       });
 
       result
-        .then(pos => app.fly([pos.coords.longitude, pos.coords.latitude]))
-        .then(() => {
-          app.map.geo.classList.remove('mapboxgl-options-spinner');
-          app.map.geo.classList.add('mapboxgl-options-geo');
+        .then((pos) => {
+          const fd = new FormData();
+          fd.append('lat', pos.coords.latitude);
+          fd.append('lng', pos.coords.longitude);
+
+          fetch('/validate-geo', {
+            method: 'POST',
+            credentials: 'same-origin',
+            body: fd,
+          })
+            .then(response => response.json())
+            .then((response) => {
+              if (response.code === 400) { throw response; }
+              app.fly([pos.coords.longitude, pos.coords.latitude]);
+              app.map.geo.classList.remove('mapboxgl-options-spinner');
+              app.map.geo.classList.add('mapboxgl-options-geo');
+            })
+            .catch(err => app.disableGeo(err.body));
         })
-        .catch(() => {
-          // Disable icon
-          app.map.geo.classList.remove('enabled');
-          app.map.geo.classList.add('disabled');
-          app.map.geo.classList.remove('mapboxgl-options-spinner');
-          app.map.geo.classList.add('mapboxgl-options-geo-disabled');
-        });
+        .catch(err => app.disableGeo(err.message));
     }
   });
 };

@@ -104,7 +104,7 @@ map.load = (res) => {
     center: res.center,
     zoom: 11,
     maxZoom: 15,
-    // maxBounds: res.maxBounds,
+    maxBounds: res.maxBounds,
     attributionControl: false,
   });
 

@@ -2,6 +2,25 @@ const fetch = require('node-fetch');
 
 const bbox = [-3.21270, 53.16401, -2.65632, 53.58125];
 
+module.exports.currentPosition = (req, res, next) => {
+  const lng = parseFloat(req.body.lng);
+  const lat = parseFloat(req.body.lat);
+
+  if (lng < bbox[0] || lng > bbox[2]) {
+    const err = new Error("You're outside Liverpool this ain't going to work.");
+    err.code = 400;
+    return next(err);
+  }
+
+  if (lat < bbox[1] || lat > bbox[3]) {
+    const err = new Error("You're outside Liverpool this ain't going to work.");
+    err.code = 400;
+    return next(err);
+  }
+
+  next();
+};
+
 module.exports.params = (req, res, next) => {
   req.session.coordinates = [parseFloat(req.body.lng), parseFloat(req.body.lat)];
   req.session.geoBoundBox = [
@@ -70,5 +89,26 @@ module.exports.review = (req, res, next) => {
   req.session.coordinates = locationArray[index];
 
   console.log('PASSED: location.review,', req.session.coordinates);
+  next();
+};
+
+module.exports.question = (req, res, next) => {
+  const lng = req.session.coordinates[0];
+  const lat = req.session.coordinates[1];
+
+  console.log(req.session.coordinates);
+  console.log(bbox);
+
+  if (lng < bbox[0] || lng > bbox[2]) {
+    const err = new Error('Questions can only be posted in Liverpool region.');
+    err.code = 400;
+    return next(err);
+  }
+
+  if (lat < bbox[1] || lat > bbox[3]) {
+    const err = new Error('Questions can only be posted in Liverpool region.');
+    err.code = 400;
+    return next(err);
+  }
   next();
 };

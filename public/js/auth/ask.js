@@ -33,12 +33,14 @@ document.querySelector('.button').addEventListener('click', (e) => {
     credentials: 'same-origin',
     body: fd,
   }).then(res => res.json())
-    .then(() => {
-      // app.form.question.value = '';
-      // app.form.tag.value = '';
-      window.location.replace(document.referrer);
+    .then((res) => {
+      if (res.code === 301) { return window.location.replace(document.referrer); }
+      throw res.body;
     })
-    .catch(err => console.log(err));
+    .catch((err) => {
+      document.querySelector('.alert-container').style.display = 'block';
+      document.querySelector('.alert').textContent = err;
+    });
 });
 
 // -----------------------------------------------------------------------------

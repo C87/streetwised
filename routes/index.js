@@ -103,7 +103,7 @@ router
 
 router
   .route('/new-post')
-  .post(aws.none, validate.question, create.post, res.ok);
+  .post(aws.none, location.question, validate.question, create.post, res.redirect);
 
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
@@ -111,6 +111,10 @@ router
 router
   .route('/validate-email')
   .post(aws.none, validate.email, query.email, res.ok);
+
+router
+  .route('/validate-geo')
+  .post(aws.none, location.currentPosition, res.ok);
 
 router
   .route('/validate-name')

@@ -7,7 +7,7 @@ module.exports.location = (req, res, next) => {
   res
     .json({
       center: req.session.coordinates,
-      maxBounds: null,
+      maxBounds: [-3.21270, 53.16401, -2.65632, 53.58125],
     });
 };
 
@@ -25,6 +25,14 @@ module.exports.points = (req, res, next) => {
 module.exports.post = (req, res, next) => {
   res
     .json(res.locals.data);
+};
+
+module.exports.redirect = (req, res, next) => {
+  res
+    .status(200)
+    .json({
+      code: 301,
+    });
 };
 
 module.exports.results = (req, res, next) => {
