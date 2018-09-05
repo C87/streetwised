@@ -1,5 +1,8 @@
 // Client side analytics monitor other properties like browser, location,
 
+console.log(window.location.host);
+console.log(window.location.hostname);
+
 const analytics = {};
 
 analytics.signup = (user, name, email) => {
