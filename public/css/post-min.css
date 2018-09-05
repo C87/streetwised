@@ -285,7 +285,10 @@ width: 100%; */
   width: 90%;
 }
 
-.controller-route {
+.controller-route:link,
+.controller-route:visited,
+.controller-route:hover,
+.controller-route:active {
   background-color: rgb(31, 152, 172);
   color: rgb(255, 255, 255);
   text-decoration: none;
