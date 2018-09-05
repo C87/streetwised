@@ -95,15 +95,18 @@ router
 
 router
   .route('/new-avatar')
-  .post(aws.none, aws.avatar, update.avatar, res.url);
+  .post(aws.none, validate.session, aws.avatar, update.avatar, res.url);
 
 router
   .route('/new-comment')
-  .post(aws.none, validate.comment, create.comment, res.comment);
+  .post(aws.none, validate.session, validate.comment, create.comment, res.comment);
 
 router
   .route('/new-post')
-  .post(aws.none, location.question, validate.question, create.post, res.redirect);
+  .post(
+    aws.none, validate.session, location.question,
+    validate.question, create.post, res.redirect
+  );
 
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------

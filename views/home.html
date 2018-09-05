@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    {% include "_partials/google.html" %}
+    {% if google %}
+      {% include google %}
+    {% endif %}
+    {% if mixpanel %}
+      {% include mixpanel %}
+    {% endif %}
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -29,7 +34,9 @@
     <main class="main">
       {% include "_partials/home/map.html" %}
       <div class="controller">
-        {% include "_partials/home/ask.html" %}
+        <section class="ask">
+          {% include partial %}
+        </section>
         <section class="info">
           <h2 class="info-question-count"></h2>
           <p class="info-tagline"></p>
@@ -42,6 +49,7 @@
         </section>
       </div>
     </main>
+    <script src="/js/mixpanel.js" charset="utf-8"></script>
     <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v0.46.0/mapbox-gl.js"></script>
     <script src="/js/map.js" charset="utf-8"></script>
     <script src="/js/home.js" charset="utf-8"></script>

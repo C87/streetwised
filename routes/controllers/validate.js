@@ -159,6 +159,15 @@ module.exports.reservedUsernames = (req, res, next) => {
   next();
 };
 
+module.exports.session = (req, res, next) => {
+  if (!req.session.userId) {
+    const err = new Error('Login or signup to perform this action');
+    err.code = 400;
+    return next(err);
+  }
+  next();
+};
+
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
 

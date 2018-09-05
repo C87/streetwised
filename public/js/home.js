@@ -203,7 +203,7 @@ data.reverseGeo = (value) => {
     origin: 'same-origin',
     body: fd,
   }).then(res => res.json())
-    .then(res => data.list(res)) // Remove Spinner Here
+    .then(res => data.list(res))
     .catch(err => console.log(err));
 };
 
@@ -228,44 +228,57 @@ app.search.input.addEventListener('keyup', () => data.reverseGeo(app.search.inpu
 
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
+if (app.form.element) {
+  document.querySelector('.form-button').addEventListener('click', (e) => {
+    e.preventDefault();
+    const fd = new FormData(app.form.element);
+    if (app.form.question.value.length > 90 || app.form.tag.value.length > 8) {
+      document.querySelector('.alert-container').style.display = 'block';
+      document.querySelector('.alert').textContent = 'Question must not exceed 90 characters and tag must not exceed 8 characters';
+      return;
+    }
+    if (app.form.question.value.length < 1) {
+      document.querySelector('.alert-container').style.display = 'block';
+      document.querySelector('.alert').textContent = 'Question is required';
+      return;
+    }
+    const t = app.form.tag.value.toLowerCase();
+    const ql = app.form.question.value.length;
+    const tl = app.form.tag.value.length;
+    app.form.question.value = '';
+    app.form.qCount.textContent = 90;
+    app.form.tag.value = '';
+    app.form.tCount.textContent = 8;
 
-document.querySelector('.form-button').addEventListener('click', (e) => {
-  e.preventDefault();
-  const fd = new FormData(app.form.element);
-  if (app.form.question.value.length > 90 || app.form.tag.value.length > 8) {
-    document.querySelector('.alert-container').style.display = 'block';
-    document.querySelector('.alert').textContent = 'Question must not exceed 90 characters and tag must not exceed 8 characters';
-    return;
-  }
-  if (app.form.question.value.length < 1) {
-    document.querySelector('.alert-container').style.display = 'block';
-    document.querySelector('.alert').textContent = 'Question is required';
-    return;
-  }
-  app.form.question.value = '';
-  app.form.tag.value = '';
+    fetch('/new-post', {
+      method: 'POST',
+      credentials: 'same-origin',
+      body: fd,
+    }).then(res => res.json())
+      .then(() => data.dbQuery())
+      .then(() => {
+        analytics.question(t, ql, tl);
+      })
+      .catch((err) => {
+        document.querySelector('.alert-container').style.display = 'block';
+        document.querySelector('.alert').textContent = err;
+      });
+  });
 
-  fetch('/new-post', {
-    method: 'POST',
-    credentials: 'same-origin',
-    body: fd,
-  }).then(res => res.json())
-    .then(() => data.dbQuery())
-    .catch(err => console.log(err));
-});
+  app.form.question.addEventListener('keyup', (e) => {
+    app.form.qCount.textContent = 90 - app.form.question.value.length;
+    app.form.qCount.style.color = app.form.qCount.textContent >= 0 ? 'rgb(31, 152, 172)' : 'rgb(239, 62, 74)';
+  });
+
+  app.form.tag.addEventListener('keyup', (e) => {
+    app.form.tCount.textContent = 8 - app.form.tag.value.length;
+    app.form.tCount.style.color = app.form.tCount.textContent >= 0 ? 'rgb(31, 152, 172)' : 'rgb(239, 62, 74)';
+  });
+}
 
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
 
-app.form.question.addEventListener('keyup', (e) => {
-  app.form.qCount.textContent = 90 - app.form.question.value.length;
-  app.form.qCount.style.color = app.form.qCount.textContent >= 0 ? 'rgb(31, 152, 172)' : 'rgb(239, 62, 74)';
-});
-
-app.form.tag.addEventListener('keyup', (e) => {
-  app.form.tCount.textContent = 8 - app.form.tag.value.length;
-  app.form.tCount.style.color = app.form.tCount.textContent >= 0 ? 'rgb(31, 152, 172)' : 'rgb(239, 62, 74)';
-});
 
 document.querySelector('.alert-icon').addEventListener('click', () => {
   document.querySelector('.alert').textContent = '';

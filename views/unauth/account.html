@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    {% include "_partials/google.html" %}
-    {% include "_partials/mixpanel.html" %}
+    {% if google %}
+      {% include google %}
+    {% endif %}
+    {% if mixpanel %}
+      {% include mixpanel %}
+    {% endif %}
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
