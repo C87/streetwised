@@ -1,7 +1,7 @@
 const tabBar = 'Streetwised';
 
 module.exports.account = (req, res) => {
-  console.log(req.header.host);
+  console.log(req);
   let google = null;
   let mixpanel = '_partials/analytics/dev/mixpanel.html';
   if (req.header.host === 'streetwised.com') {
