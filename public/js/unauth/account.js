@@ -14,6 +14,7 @@ const buffer = {
 const login = {
   element: document.querySelector('.login-form'),
   submit: document.querySelector('.login-form-button-submit'),
+  username: document.querySelector('.login-username'),
 };
 
 const signup = {
@@ -47,6 +48,7 @@ app.link.addEventListener('click', (e) => {
 // -----------------------------------------------------------------------------
 
 login.submit.addEventListener('click', (e) => {
+  const user = login.username.value.toLowerCase();
   e.preventDefault();
   const fd = new FormData(login.element);
 
@@ -56,7 +58,10 @@ login.submit.addEventListener('click', (e) => {
     body: fd,
   }).then(res => res.json())
     .then((res) => {
-      if (res.code === 301) { return window.location.replace(res.url); }
+      if (res.code === 301) {
+        analytics.login(user);
+        return window.location.replace(res.url);
+      }
       document.querySelector('.alert-container').style.display = 'block';
       document.querySelector('.alert').textContent = res.body;
     })
@@ -67,6 +72,9 @@ login.submit.addEventListener('click', (e) => {
 // -----------------------------------------------------------------------------
 
 signup.submit.addEventListener('click', (e) => {
+  const user = signup.username.value.toLowerCase();
+  const name = signup.name.value.toLowerCase();
+  const email = signup.email.value.toLowerCase();
   e.preventDefault();
   const fd = new FormData(signup.element);
 
@@ -76,7 +84,10 @@ signup.submit.addEventListener('click', (e) => {
     body: fd,
   }).then(res => res.json())
     .then((res) => {
-      if (res.code === 301) { return window.location.replace(res.url); }
+      if (res.code === 301) {
+        analytics.signup(user, name, email);
+        return window.location.replace(res.url);
+      }
       document.querySelector('.alert-container').style.display = 'block';
       document.querySelector('.alert').textContent = res.body;
     })

@@ -1,4 +1,6 @@
 const app = {
+  t: null,
+  ql: null,
   main: document.querySelector('.main'),
   responseContainer: document.querySelector('.response-container'),
   responseTemplate: document.querySelector('.response-template'),
@@ -32,6 +34,7 @@ app.comments = (comments) => {
   });
 };
 
+
 app.post = (data) => {
   const template = app.questionTemplate.cloneNode(true);
   template.classList.remove('question-template');
@@ -39,8 +42,10 @@ app.post = (data) => {
   template.querySelector('.user-image').src = data.properties.user.avatar;
   template.querySelector('.user-name').textContent = data.properties.user.username;
   template.querySelector('.content-text').textContent = data.properties.text;
+  app.ql = data.properties.text.length;
   if (data.properties.tag) {
     template.querySelector('.content-tag').textContent = data.properties.tag;
+    app.t = data.properties.tag;
   } else {
     template.querySelector('.content-tag').style.display = 'none';
   }
@@ -65,6 +70,7 @@ if (form.element) {
     if (!form.input.value) return;
 
     const fd = new FormData(form.element);
+    app.rl = form.input.value.length;
     form.input.value = '';
 
     fetch('/new-comment', {
@@ -73,7 +79,13 @@ if (form.element) {
       body: fd,
     }).then(res => res.json())
       .then(res => app.update(res))
-      .catch(err => console.log(err));
+      .then(() => {
+        analytics.response(app.t, app.ql, app.rl);
+      })
+      .catch((err) => {
+        document.querySelector('.alert-container').style.display = 'block';
+        document.querySelector('.alert').textContent = err;
+      });
   });
 }
 

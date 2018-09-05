@@ -38,6 +38,11 @@ document.querySelector('.button').addEventListener('click', (e) => {
     document.querySelector('.alert').textContent = 'Tag must not exceed 8 characters';
     return;
   }
+
+  const t = app.form.tag.value.toLowerCase();
+  const ql = app.form.question.value.length;
+  const tl = app.form.tag.value.length;
+
   app.form.question.value = '';
   app.form.tag.value = '';
 
@@ -47,7 +52,10 @@ document.querySelector('.button').addEventListener('click', (e) => {
     body: fd,
   }).then(res => res.json())
     .then((res) => {
-      if (res.code === 301) { return window.location.replace(document.referrer); }
+      if (res.code === 301) {
+        analytics.question(t, ql, tl);
+        return window.location.replace(document.referrer);
+      }
       throw res.body;
     })
     .catch((err) => {
