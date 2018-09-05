@@ -1,10 +1,6 @@
 // Client side analytics monitor other properties like browser, location,
 
-console.log(window.location.host);
-console.log(window.location.hostname);
-
 if (window.location.hostname === 'streetwised.com') {
-  console.log('works');
   const analytics = {};
 
   analytics.signup = (user, name, email) => {
