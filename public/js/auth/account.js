@@ -1,5 +1,9 @@
 document.querySelector('.header-section-route').addEventListener('click', () => {
-  window.history.back();
+  if (document.referrer === 'https://staging.streetwised.com/account') {
+    window.location = 'https://streetwised.com/';
+  } else {
+    window.history.back();
+  }
 });
 
 // -----------------------------------------------------------------------------

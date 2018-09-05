@@ -171,7 +171,6 @@ appearance: none;
 #mapboxgl {
   height: var(--mapboxgl-section-height);
   margin: auto;
-  max-width: 600px;
   width: 100%;
 }
 
