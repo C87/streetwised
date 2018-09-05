@@ -1,10 +1,9 @@
 const tabBar = 'Streetwised';
 
 module.exports.account = (req, res) => {
-  console.log(req.headers.host);
   let google = null;
   let mixpanel = '_partials/analytics/dev/mixpanel.html';
-  if (req.header.host === 'streetwised.com') {
+  if (req.headers.host === 'streetwised.com') {
     mixpanel = '_partials/analytics/production/mixpanel.html';
     google = '_partials/analytics/production/google.html';
   }
@@ -29,7 +28,7 @@ module.exports.account = (req, res) => {
 module.exports.ask = (req, res) => {
   let google = null;
   let mixpanel = '_partials/analytics/dev/mixpanel.html';
-  if (req.header.host === 'streetwised.com') {
+  if (req.headers.host === 'streetwised.com') {
     mixpanel = '_partials/analytics/production/mixpanel.html';
     google = '_partials/analytics/production/google.html';
   }
@@ -51,10 +50,11 @@ module.exports.ask = (req, res) => {
 module.exports.home = (req, res) => {
   let google = null;
   let mixpanel = '_partials/analytics/dev/mixpanel.html';
-  if (req.header.host === 'streetwised.com') {
+  if (req.headers.host === 'streetwised.com') {
     mixpanel = '_partials/analytics/production/mixpanel.html';
     google = '_partials/analytics/production/google.html';
   }
+
   let partial = '_partials/home/unauth/link.html';
   let intro = '_partials/home/intro.html';
   let header = 'unauth';
@@ -80,7 +80,7 @@ module.exports.home = (req, res) => {
 module.exports.questions = (req, res) => {
   let google = null;
   let mixpanel = '_partials/analytics/dev/mixpanel.html';
-  if (req.header.host === 'streetwised.com') {
+  if (req.headers.host === 'streetwised.com') {
     mixpanel = '_partials/analytics/production/mixpanel.html';
     google = '_partials/analytics/production/google.html';
   }
@@ -106,7 +106,7 @@ module.exports.questions = (req, res) => {
 module.exports.post = (req, res) => {
   let google = null;
   let mixpanel = '_partials/analytics/dev/mixpanel.html';
-  if (req.header.host === 'streetwised.com') {
+  if (req.headers.host === 'streetwised.com') {
     mixpanel = '_partials/analytics/production/mixpanel.html';
     google = '_partials/analytics/production/google.html';
   }
