@@ -232,16 +232,22 @@ if (app.form.element) {
   document.querySelector('.form-button').addEventListener('click', (e) => {
     e.preventDefault();
     const fd = new FormData(app.form.element);
-    if (app.form.question.value.length > 90 || app.form.tag.value.length > 8) {
-      document.querySelector('.alert-container').style.display = 'block';
-      document.querySelector('.alert').textContent = 'Question must not exceed 90 characters and tag must not exceed 8 characters';
-      return;
-    }
+
     if (app.form.question.value.length < 1) {
       document.querySelector('.alert-container').style.display = 'block';
       document.querySelector('.alert').textContent = 'Question is required';
       return;
     }
+    if (app.form.question.value.length > 90) {
+      document.querySelector('.alert-container').style.display = 'block';
+      document.querySelector('.alert').textContent = 'Question must not exceed 90 characters';
+      return;
+    } else if (app.form.tag.value.length > 8) {
+      document.querySelector('.alert-container').style.display = 'block';
+      document.querySelector('.alert').textContent = 'Tag must not exceed 8 characters';
+      return;
+    }
+
     const t = app.form.tag.value.toLowerCase();
     const ql = app.form.question.value.length;
     const tl = app.form.tag.value.length;
