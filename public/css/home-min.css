@@ -756,6 +756,7 @@ appearance: none;
   height: 35px;
   margin: auto;
   margin-top: 20px;
+  max-width: 400px;
   text-align: center;
-  width: 300px;
+  width: 100%;
 }
