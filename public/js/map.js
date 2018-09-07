@@ -36,7 +36,8 @@ data.canvas = (res) => {
 
 data.info = (res) => {
   const question = res.features.length === 1 ? 'question' : 'questions';
-  document.querySelector('.info-question-count').textContent = `${res.features.length} ${question} nearby`;
+  const sentence = res.features.length === 0 ? 'nearby, zoom out.' : 'nearby';
+  document.querySelector('.info-question-count').textContent = `${res.features.length} ${question} ${sentence}`;
   return res;
 };
 
