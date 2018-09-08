@@ -756,7 +756,8 @@ appearance: none;
 }
 
 .intro-section-button {
-  background-color: rgb(31, 152, 172);
+  /* background-color: rgb(31, 152, 172); */
+  background-color: rgb(255, 142, 22);
   color: rgb(255, 255, 255);
   cursor: pointer;
   border-radius: 10px;
