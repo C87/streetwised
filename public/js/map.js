@@ -14,7 +14,7 @@ data.canvas = (res) => {
   map.element.addLayer({
     id: 'users',
     type: 'circle',
-    minzoom: 9,
+    minzoom: 5,
     source: {
       type: 'geojson',
       data: res,
