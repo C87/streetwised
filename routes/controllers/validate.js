@@ -1,6 +1,13 @@
 const validator = require('validator');
 const string = require('lodash/string');
 
+module.exports.checkbox = (req, res, next) => {
+  if (req.body.checkbox === 'on') {
+    req.session.cookie.maxAge = 31536000000;
+  }
+  next();
+};
+
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
 
