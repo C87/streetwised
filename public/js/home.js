@@ -148,7 +148,7 @@ app.search.fly = (e) => {
 app.fly = (coordinates) => {
   map.element.flyTo({
     center: coordinates,
-    zoom: 12,
+    zoom: 14,
     speed: 0.8,
   });
 };
