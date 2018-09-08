@@ -144,8 +144,11 @@ module.exports.question = (req, res, next) => {
 
 module.exports.reservedUsernames = (req, res, next) => {
   const reservedUsernames = [
-    'account', 'home', 'login', 'post', 'profile',
-    'signup',
+    'about', 'account', 'activity', 'alerts', 'area', 'ask', 'auth', 'bookmarks',
+    'businesses', 'deactivate', 'dev', 'events', 'explore', 'feed', 'forgot-password',
+    'friends', 'help', 'home', 'homes', 'invite', 'login', 'logout', 'menu', 'messages',
+    'neighbourhood', 'new', 'notifications', 'open', 'post', 'profile', 'questions',
+    'recommendations', 'rentals', 'search', 'settings', 'session', 'signup', 'support', 'sw',
   ];
 
   reservedUsernames.forEach((el) => {

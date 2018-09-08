@@ -32,7 +32,7 @@ router
 router
   .route('/session-signup')
   .post(
-    aws.none, validate.email, validate.password, validate.username,
+    aws.none, validate.email, validate.reservedUsernames, validate.password, validate.username,
     validate.name, query.email, query.username, bcrypt.hash,
     create.user, redirect.avatar
   );
@@ -129,7 +129,7 @@ router
 
 router
   .route('/validate-username')
-  .post(aws.none, validate.username, query.username, res.ok);
+  .post(aws.none, validate.username, validate.reservedUsernames, query.username, res.ok);
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
 
