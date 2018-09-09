@@ -148,7 +148,7 @@ appearance: none;
   margin: auto;
   max-width: 1024px;
   overflow-y: scroll;
-  /* -webkit-overflow-scrolling: touch; */
+  -webkit-overflow-scrolling: touch;
 }
 
 .view-article-template {
