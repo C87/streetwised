@@ -92,7 +92,7 @@ module.exports.questions = (req, res) => {
     route = '/ask';
   }
 
-  console.log('RENDER: questions.html,', req.session);
+  console.log('RENDER: questions.html,', req.session.geoBoundBox);
 
   res.status(200).render('questions.html', {
     google,
