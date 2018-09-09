@@ -377,6 +377,7 @@ appearance: none;
   margin: auto;
   padding-top: 10px;
   width: calc(100% - 10px);
+  -webkit-overflow-scrolling: touch;
 }
 
 .view-article-template {
