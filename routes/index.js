@@ -64,10 +64,6 @@ router
   .get(render.ask);
 
 router
-  .route('/')
-  .get(render.home);
-
-router
   .route('/logout')
   .get(redirect.logout);
 
@@ -132,6 +128,10 @@ router
   .post(aws.none, validate.username, validate.reservedUsernames, query.username, res.ok);
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
+
+router
+  .route('/')
+  .get(render.home);
 
 router
   .route('*')
