@@ -7,7 +7,7 @@ const User = mongoose.model('User');
 // -----------------------------------------------------------------------------
 
 module.exports.all = (req, res, next) => {
-  console.log(req.session.geoBoundBox);
+  console.log('QUERY: read.all,', req.session.geoBoundBox);
   Post
     .find()
     .where('geometry.coordinates')
