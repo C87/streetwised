@@ -12,6 +12,7 @@ module.exports.location = (req, res, next) => {
 };
 
 module.exports.points = (req, res, next) => {
+  console.log(req.session.geoBoundBox);
   if (!res.locals.data) return next();
   const geoJSON = {
     type: 'FeatureCollection',
