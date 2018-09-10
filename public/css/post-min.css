@@ -207,7 +207,8 @@ appearance: none;
 
 .response-container {
   height: var(--container-height);
-  overflow: scroll;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
   width: 100%;
 }
 
