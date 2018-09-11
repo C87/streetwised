@@ -6,8 +6,12 @@ analytics.account = () => {
   mixpanel.track('View Signup Page');
 };
 
-analytics.geolocation = () => {
+analytics.cta = () => {
   mixpanel.track('Pressed Home Page CTA');
+};
+
+analytics.geolocation = () => {
+  mixpanel.track('Home Geolocation Success');
 };
 
 analytics.home = () => {

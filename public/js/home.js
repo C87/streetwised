@@ -164,6 +164,7 @@ app.intro.remove = () => {
 
 app.intro.findLocation = () => {
   app.intro.button.textContent = 'Searching location';
+  analytics.cta();
   app.enableGeo();
   setTimeout(() => {
     app.intro.remove();
