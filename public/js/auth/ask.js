@@ -54,6 +54,11 @@ document.querySelector('.button').addEventListener('click', (e) => {
     .then((res) => {
       if (res.code === 301) {
         analytics.question(t, ql, tl);
+      }
+      return res;
+    })
+    .then((res) => {
+      if (res.code === 301) {
         return window.location.replace(document.referrer);
       }
       throw res.body;
