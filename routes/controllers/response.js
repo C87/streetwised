@@ -24,7 +24,7 @@ module.exports.points = (req, res, next) => {
   if (req.session.userId) {
     data.geoJSON.features = res.locals.data;
   } else {
-    data.geoJSON.features = res.locals.data.slice(0, 10);
+    data.geoJSON.features = res.locals.data.slice(-10);
   }
   // console.log(res.locals.data.length);
   // const data = {
