@@ -2,6 +2,14 @@
 
 const analytics = {};
 
+analytics.geolocation = () => {
+  mixpanel.track('Pressed Home Page CTA');
+};
+
+analytics.home = () => {
+  mixpanel.track('View Home Page');
+};
+
 analytics.signup = (user, name, email) => {
   mixpanel.identify(user);
   mixpanel.track('User Signup');

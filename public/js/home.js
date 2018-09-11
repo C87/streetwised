@@ -117,6 +117,7 @@ app.enableGeo = () => {
               app.fly([pos.coords.longitude, pos.coords.latitude]);
               app.map.geo.classList.remove('mapboxgl-options-spinner');
               app.map.geo.classList.add('mapboxgl-options-geo');
+              analytics.geolocation();
             })
             .catch(err => app.disableGeo(err.body));
         })
@@ -290,3 +291,5 @@ document.querySelector('.alert-icon').addEventListener('click', () => {
   document.querySelector('.alert').textContent = '';
   document.querySelector('.alert-container').style.display = 'none';
 });
+
+analytics.home();
