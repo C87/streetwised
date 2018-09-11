@@ -55,23 +55,26 @@ module.exports.home = (req, res) => {
     google = '_partials/analytics/production/google.html';
   }
 
-  let partial = '_partials/home/unauth/link.html';
+  let ask = null;
+  let block = '_partials/block.html';
   let intro = '_partials/home/intro.html';
   let header = 'unauth';
   let route = '/account';
   if (req.session.userId) {
+    ask = '_partials/home/auth/ask.html';
+    block = null;
     intro = null;
     header = 'auth';
     route = '/ask';
-    partial = '_partials/home/auth/ask.html';
   }
 
   res.status(200).render('home.html', {
+    ask,
+    block,
     google,
     mixpanel,
     headerClass: header,
     intro,
-    partial,
     route,
     title: tabBar,
   });
@@ -85,9 +88,11 @@ module.exports.questions = (req, res) => {
     google = '_partials/analytics/production/google.html';
   }
 
+  let block = '_partials/block.html';
   let header = 'unauth';
   let route = '/account';
   if (req.session.userId) {
+    block = null;
     header = 'auth';
     route = '/ask';
   }
@@ -95,6 +100,7 @@ module.exports.questions = (req, res) => {
   console.log('RENDER: questions.html,', req.session.geoBoundBox);
 
   res.status(200).render('questions.html', {
+    block,
     google,
     mixpanel,
     headerClass: header,

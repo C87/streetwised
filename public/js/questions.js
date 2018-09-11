@@ -16,7 +16,7 @@ app.view = (res) => {
       el.remove();
     });
   }
-  res.features.forEach((el) => {
+  res.geoJSON.features.forEach((el) => {
     const template = document.querySelector('.view-article-template').cloneNode(true);
     template.classList.remove('view-article-template');
     template.classList.add('view-article');
@@ -33,6 +33,11 @@ app.view = (res) => {
     const node = document.querySelector('.view-article') ? document.querySelector('.view-article') : document.querySelector('.view-article-template');
     document.querySelector('.view-container').insertBefore(template, node);
   });
+
+  const block = document.querySelector('.view-block');
+  if (block && res.geoJSON.features.length !== 0) {
+    block.style.display = 'block';
+  }
   return res;
 };
 

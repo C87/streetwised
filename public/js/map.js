@@ -5,6 +5,13 @@ const data = {};
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
 
+data.block = (res) => {
+  const block = document.querySelector('.view-block');
+  if (block && res.features.length !== 0) {
+    block.style.display = 'block';
+  }
+};
+
 data.canvas = (res) => {
   const layer = map.element.getLayer('users');
   if (layer) {
@@ -35,10 +42,10 @@ data.canvas = (res) => {
 };
 
 data.info = (res) => {
-  const question = res.features.length === 1 ? 'question' : 'questions';
-  const sentence = res.features.length === 0 ? 'nearby, zoom out.' : 'nearby';
-  document.querySelector('.info-question-count').textContent = `${res.features.length} ${question} ${sentence}`;
-  return res;
+  const question = res.length === 1 ? 'question' : 'questions';
+  const sentence = res.length === 0 ? 'nearby, zoom out.' : 'nearby';
+  document.querySelector('.info-question-count').textContent = `${res.length} ${question} ${sentence}`;
+  return res.geoJSON;
 };
 
 data.insight = (res) => {
@@ -153,6 +160,8 @@ data.formData = () => {
 };
 
 data.dbQuery = () => {
+  const block = document.querySelector('.view-block');
+  if (block) block.style.display = 'none';
   const fd = data.formData();
 
   fetch('/db-query', {
@@ -164,6 +173,7 @@ data.dbQuery = () => {
     .then(res => data.preview(res))
     .then(res => data.insight(res))
     .then(res => data.canvas(res))
+    .then(res => data.block(res))
     .catch(err => console.log(err));
 };
 

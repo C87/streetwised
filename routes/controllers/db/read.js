@@ -17,7 +17,7 @@ module.exports.all = (req, res, next) => {
     .sort({
       'properties.date': '-1',
     })
-    .limit(100)
+    // .limit(100)
     .populate('properties.user', 'name username avatar')
     .lean()
     .then((doc) => {

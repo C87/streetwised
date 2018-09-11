@@ -13,13 +13,31 @@ module.exports.location = (req, res, next) => {
 
 module.exports.points = (req, res, next) => {
   if (!res.locals.data) return next();
-  const geoJSON = {
-    type: 'FeatureCollection',
-    features: res.locals.data,
+
+  const data = {
+    length: res.locals.data.length,
+    geoJSON: {
+      type: 'FeatureCollection',
+    }
   };
 
+  if (req.session.userId) {
+    data.geoJSON.features = res.locals.data;
+  } else {
+    data.geoJSON.features = res.locals.data.slice(0, 10);
+  }
+  // console.log(res.locals.data.length);
+  // const data = {
+  //   length: res.locals.data.length
+  // }
+  // if (!res.locals.data) return next();
+  // const geoJSON = {
+  //   type: 'FeatureCollection',
+  //   features: res.locals.data,
+  // };
+  //
   res
-    .json(geoJSON);
+    .json(data);
 };
 
 module.exports.post = (req, res, next) => {

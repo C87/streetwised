@@ -36,13 +36,15 @@
     <main class="main">
       {% include "_partials/home/map.html" %}
       <div class="controller">
-        <section class="ask">
-          {% include partial %}
-        </section>
-        <section class="info">
-          <h2 class="info-question-count"></h2>
-          <p class="info-tagline"></p>
-        </section>
+        <div class="controller-header">
+          {% if ask %}
+            {% include ask %}
+          {% endif %}
+          <section class="info">
+            <h2 class="info-question-count"></h2>
+            <p class="info-tagline"></p>
+          </section>
+        </div>
         {% include "_partials/view.html" %}
         {% include "_partials/home/insight.html" %}
         <section class="menu">

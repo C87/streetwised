@@ -262,7 +262,55 @@ appearance: none;
   width: 25px;
 }
 
+/* -------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------- */
 
+.view-block {
+  display: none;
+  height: 200px;
+  position: relative;
+  width: 100%;
+}
+
+.view-block::before {
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgb(255, 255, 255));
+  height: 300px;
+  position: absolute;
+  display: block;
+  content: "";
+  top: -300px;
+  left: 0;
+  right: 0;
+}
+
+.view-block-tagline {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.5;
+  margin-top: 50px;
+  text-align: center;
+}
+
+.view-block-icon {
+  background-image: url(../assets/icons/sign-in-alt-light.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  display: inline-block;
+  height: 25px;
+  width: 25px;
+  vertical-align: middle
+}
+
+.view-block-icon:link,
+.view-block-icon:visited,
+.view-block-icon:hover,
+.view-block-icon:active {
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+}
 
 /* -------------------------------------------------------------------------- */
 /* -------------------------------------------------------------------------- */
@@ -336,3 +384,6 @@ appearance: none;
   background-color: rgb(31, 152, 172);
   color: rgb(255, 255, 255);
 }
+
+/* -------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------- */
