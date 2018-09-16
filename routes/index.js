@@ -60,7 +60,7 @@ router
   .get(render.account);
 
 router
-  .route('/ask')
+  .route('/shoutout')
   .get(render.ask);
 
 router
@@ -68,7 +68,7 @@ router
   .get(redirect.logout);
 
 router
-  .route('/questions')
+  .route('/shoutouts')
   .get(validate.location, render.questions);
 
 router
