@@ -1,4 +1,5 @@
 const fetch = require('node-fetch');
+const turf = require('@turf/turf');
 
 const bbox = [-3.21270, 53.16401, -2.65632, 53.58125];
 
@@ -17,6 +18,34 @@ module.exports.currentPosition = (req, res, next) => {
     err.code = 400;
     return next(err);
   }
+
+  next();
+};
+
+module.exports.distances = (req, res, next) => {
+  if (!res.locals.data) return next();
+
+  const from = turf.point(req.session.coordinates);
+
+  res.locals.data.forEach((el) => {
+    const to = turf.point(el.geometry.coordinates);
+    let distance = turf.distance(from, to);
+    let measurement = 'km';
+
+    if (distance < 0.1) {
+      distance *= 1000;
+      distance = Math.floor(distance);
+      measurement = 'm';
+    } else if (distance >= 0.1 && distance < 1) {
+      distance = Math.round(distance * 10) / 10;
+      distance *= 1000;
+      measurement = 'm';
+    } else {
+      distance = Math.round(distance * 10) / 10;
+    }
+
+    el.properties.distance = `${distance}${measurement} away`;
+  });
 
   next();
 };

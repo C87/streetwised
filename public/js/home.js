@@ -19,6 +19,7 @@ const app = {
   insight: {
     comments: document.querySelector('.insight-route-text'),
     content: document.querySelector('.insight-question'),
+    distance: document.querySelector('.insight-distance'),
     element: document.querySelector('.insight'),
     icon: document.querySelector('.insight-icon'),
     image: document.querySelector('.insight-image'),
@@ -62,13 +63,11 @@ const app = {
 // -----------------------------------------------------------------------------
 function insight(e) {
   const el = this;
-  app.insight.name.textContent = el.querySelector('.view-article-title').textContent;
+  app.insight.name.textContent = el.querySelector('.view-article-name').textContent;
+  app.insight.distance.textContent = `· ${el.querySelector('.view-article-distance').textContent} ·`;
   app.insight.content.textContent = el.querySelector('.view-article-content-text').textContent;
   app.insight.image.src = el.querySelector('.view-article-image').src;
   app.insight.link.href = el.querySelector('.view-article-link').href;
-  app.insight.icon.onclick = app.insight.fly;
-  app.insight.icon.dataset.lng = el.querySelector('.view-article-distance').dataset.lng;
-  app.insight.icon.dataset.lat = el.querySelector('.view-article-distance').dataset.lat;
   app.insight.comments.textContent = el.querySelector('.view-article-link-text').textContent;
 }
 

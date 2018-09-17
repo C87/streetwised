@@ -53,10 +53,8 @@ data.insight = (res) => {
     const i = res.features.length - 1;
     document.querySelector('.insight-image').src = res.features[i].properties.user.avatar;
     document.querySelector('.insight-name').textContent = res.features[i].properties.user.username;
+    document.querySelector('.insight-distance').textContent = `· ${res.features[i].properties.distance} ·`;
     document.querySelector('.insight-question').textContent = res.features[i].properties.text;
-    document.querySelector('.insight-icon').dataset.lng = res.features[i].geometry.coordinates[0];
-    document.querySelector('.insight-icon').dataset.lat = res.features[i].geometry.coordinates[1];
-    document.querySelector('.insight-icon').onclick = app.insight.fly;
     document.querySelector('.insight-route').href = `/${res.features[i].properties.user.username}/posts/${res.features[i]._id}`;
     document.querySelector('.insight-route-text').textContent = res.features[i].properties.comments.length;
     document.querySelector('.insight-content').style.display = 'block';
@@ -78,10 +76,9 @@ data.preview = (res) => {
     template.classList.remove('view-article-template');
     template.classList.add('view-article');
     template.querySelector('.view-article-image').src = el.properties.user.avatar;
-    template.querySelector('.view-article-title').textContent = el.properties.user.username;
+    template.querySelector('.view-article-name').textContent = el.properties.user.username;
+    template.querySelector('.view-article-distance').textContent = el.properties.distance;
     template.querySelector('.view-article-content-text').textContent = el.properties.text;
-    template.querySelector('.view-article-distance').dataset.lng = el.geometry.coordinates[0];
-    template.querySelector('.view-article-distance').dataset.lat = el.geometry.coordinates[1];
     template.querySelector('.view-article-link').href = `/${el.properties.user.username}/posts/${el._id}`;
     template.querySelector('.view-article-link-text').textContent = el.properties.comments.length;
     if (el.properties.tag) {

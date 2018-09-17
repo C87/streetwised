@@ -530,6 +530,14 @@ appearance: none;
   vertical-align: middle;
 }
 
+.insight-distance {
+  font-family: inherit;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 25px;
+  vertical-align: middle;
+}
+
 .insight-icon,
 .insight-route-icon {
   background-position: center;

@@ -595,6 +595,15 @@ appearance: none;
   width: calc(100% - 110px);
 }
 
+.view-article-distance {
+  display: inline-block;
+  font-family: inherit;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 40px;
+  vertical-align: middle;
+}
+
 .view-article-content-tag {
   background-color: rgb(31, 152, 172);
   color: rgb(255, 255, 255);
@@ -620,9 +629,9 @@ appearance: none;
   width: 50px;
 }
 
-.view-article-distance {
+/* .view-article-distance {
   display: none;
-}
+} */
 
 .view-article-link:link,
 .view-article-link:visited,

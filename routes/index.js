@@ -80,7 +80,7 @@ router
 
 router
   .route('/db-query')
-  .post(aws.none, location.params, read.all, res.points);
+  .post(aws.none, location.params, read.all, location.distances, res.points);
 
 router
   .route('/reverse-geo')

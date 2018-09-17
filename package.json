@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@turf/turf": "^5.1.6",
     "aws-sdk": "^2.286.2",
     "bcrypt": "^3.0.0",
     "body-parser": "^1.18.3",
