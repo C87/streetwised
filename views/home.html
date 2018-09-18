@@ -15,8 +15,12 @@
     <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.46.0/mapbox-gl.css' rel='stylesheet' />
     <link rel="manifest" href="/manifest.json">
-    <link rel="stylesheet" media="(max-width: 767px)" href="/css/home-min.css">
-		<link rel="stylesheet" media="(min-width: 768px)" href="/css/home-max.css">
+    <!-- <link rel="stylesheet" media="(min-width: 768px)" href="/css/home-max.css">
+    <link rel="stylesheet" media="(max-width: 767px)" href="/css/home-med.css">
+    <link rel="stylesheet" media="(max-width: 374px)" href="/css/home-min.css"> -->
+    <link rel="stylesheet" media="(max-width: 374px)" href="/css/home-min.css">
+    <link rel="stylesheet" media="(min-width: 375px) and (max-width: 767px)" href="/css/home-med.css">
+    <link rel="stylesheet" media="(min-width: 768px)" href="/css/home-max.css">
   </head>
   <body>
     {% if intro %}

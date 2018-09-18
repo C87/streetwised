@@ -41,13 +41,13 @@ appearance: none;
 
 :root {
   --header-height: 50px;
-  --mapboxgl-section-height: calc(100% - 200px);
-  --controller-height: 250px;
-  /* ------- 250px ---------- */
-  --info-height: 30px;
-  --menu-section-height: 30px;
-  --view-section-height: 90px;
-  --insight-height: 100px;
+  --mapboxgl-section-height: calc(100% - 300px);
+  --controller-height: 350px;
+  /* ------- 350px ---------- */
+  --info-height: 50px;
+  --menu-section-height: 50px;
+  --view-section-height: 125px;
+  --insight-height: 125px;
   /* ------- Spinner ---------- */
   --spinner-height: 130px;
   /* ------------------------- */
@@ -345,15 +345,15 @@ appearance: none;
 
 .info {
   height: var(--info-height);
-  padding: 0px 5px 0 2px;
+  padding: 3px 5px 0 5px;
 }
 
 .info-question-count {
   color: rgb(37, 39, 43);
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
-  font-size: 16px;
-  height: 16px;
+  font-size: 20px;
+  height: 25px;
   text-align: center;
 }
 
@@ -361,8 +361,8 @@ appearance: none;
   color: rgb(37, 39, 43);
   font-family: 'Quicksand', sans-serif;
   font-weight: 300;
-  font-size: 14px;
-  height: 16px;
+  font-size: 16px;
+  height: 25px;
   text-align: center;
 }
 
@@ -375,7 +375,7 @@ appearance: none;
   overflow-x: scroll;
   overflow-y: hidden;
   margin: auto;
-  padding-top: 5px;
+  padding-top: 10px;
   width: calc(100% - 10px);
   -webkit-overflow-scrolling: touch;
 }
@@ -389,15 +389,15 @@ appearance: none;
   height: 100%;
   margin-right: 10px;
   position: relative;
-  width: 60px;
+  width: 80px;
 }
 
 .view-article-image {
   border: 1px solid rgb(230, 230, 230);
   border-radius: 50%;
-  height: 60px;
-  width: 60px;
-  margin-top: 25px;
+  height: 80px;
+  width: 80px;
+  margin-top: 30px;
 }
 
 .view-article-content-tag {
@@ -407,7 +407,7 @@ appearance: none;
   display: block;
   font-family: 'Quicksand', sans-serif;
   font-weight: 200;
-  font-size: 14px;
+  font-size: 16px;
   margin: auto;
   padding: 2px 3px;
   position: absolute;
@@ -470,7 +470,7 @@ appearance: none;
   font-weight: 300;
   font-size: 16px;
   line-height: 25px;
-  margin-top: 5px;
+  margin-top: 20px;
   text-align: center;
 }
 
@@ -507,7 +507,7 @@ appearance: none;
   display: none;
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
-  font-size: 18px;
+  font-size: 20px;
   height: calc(100%);
   width: calc(100%);
 }
@@ -533,7 +533,7 @@ appearance: none;
 .insight-distance {
   font-family: inherit;
   font-weight: 300;
-  font-size: 18px;
+  font-size: 20px;
   line-height: 25px;
   vertical-align: middle;
 }
@@ -544,7 +544,7 @@ appearance: none;
   background-repeat: no-repeat;
   background-size: 20px 20px;
   display: inline-block;
-  height: 18px;
+  height: 25px;
   line-height: 25px;
   width: 20px;
   vertical-align: middle;
@@ -557,7 +557,7 @@ appearance: none;
 
 .insight-question {
   font-family: inherit;
-  font-size: 17px;
+  font-size: 20px;
   font-weight: 300;
   line-height: 25px;
   vertical-align: middle;
@@ -566,7 +566,7 @@ appearance: none;
 .insight-route {
   color: rgb(37, 39, 43);
   font-family: inherit;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 300;
   display: inline-block;
   line-height: 25px;
@@ -614,8 +614,8 @@ appearance: none;
   border: 1px solid rgb(31, 152, 172);
   display: block;
   font-family: 'Quicksand', sans-serif;
-  font-size: 14px;
-  line-height: 25px;
+  font-size: 16px;
+  line-height: 30px;
   margin: auto;
   margin-top: 0;
   text-align: center;
@@ -756,7 +756,7 @@ appearance: none;
   border-bottom: none;
   border-radius: 25px 25px 0 0;
   height: var(--controller-height);
-  padding: 15px;
+  padding: 20px;
   position: absolute;
   width: 100%;
 }
@@ -765,18 +765,18 @@ appearance: none;
   color: rgb(3, 21, 13);
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
-  font-size: 20px;
-  line-height: 1.3;
+  font-size: 23px;
+  line-height: 1.5;
   text-align: left;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
 .intro-section-subtitle-text {
   color: rgb(3, 21, 13);
   font-family: 'Quicksand', sans-serif;
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 300;
-  line-height: 30px;
+  line-height: 35px;
   vertical-align: middle;
 }
 
@@ -787,8 +787,8 @@ appearance: none;
   background-repeat: no-repeat;
   background-size: 18px 18px;
   display: inline-block;
-  height: 30px;
-  width: 30px;
+  height: 35px;
+  width: 35px;
   vertical-align: middle;
 }
 
@@ -811,7 +811,7 @@ appearance: none;
 .intro-section-button {
   /* background-color: rgb(31, 152, 172); */
   background-color: rgb(255, 142, 22);
-  bottom: 10px;
+  bottom: 20px;
   color: rgb(255, 255, 255);
   cursor: pointer;
   border-radius: 10px;
