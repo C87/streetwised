@@ -46,8 +46,8 @@ appearance: none;
   /* ------- 350px ---------- */
   --info-height: 50px;
   --menu-section-height: 50px;
-  --view-section-height: 125px;
-  --insight-height: 125px;
+  --view-section-height: 145px;
+  --insight-height: 105px;
   /* ------- Spinner ---------- */
   --spinner-height: 130px;
   /* ------------------------- */
@@ -416,6 +416,37 @@ appearance: none;
   width: 100%;
 }
 
+.view-article-travel-mode {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 18px 18px;
+  display: inline-block;
+  height: 20px;
+  line-height: 20px;
+  margin-top: -10px;
+  margin-left: 8px;
+  width: 20px;
+  vertical-align: middle;
+}
+
+.car {
+  background-image: url(../assets/icons/car-light.svg);
+}
+
+.walk {
+  background-image: url(../assets/icons/walking-light.svg);
+}
+
+.view-article-travel-distance {
+  display: inline-block;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 200;
+  font-size: 16px;
+  line-height: 20px;
+  margin-top: -10px;
+  vertical-align: middle;
+}
+
 .view-article-content-text {
   display: none;
 }
@@ -507,7 +538,7 @@ appearance: none;
   display: none;
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
-  font-size: 20px;
+  font-size: 18px;
   height: calc(100%);
   width: calc(100%);
 }
@@ -516,9 +547,9 @@ appearance: none;
   border: 1px solid rgb(230, 230, 230);
   border-radius: 50%;
   display: inline-block;
-  height: 25px;
-  line-height: 25px;
-  width: 25px;
+  height: 20px;
+  line-height: 20px;
+  width: 20px;
   vertical-align: middle;
 }
 
@@ -526,15 +557,7 @@ appearance: none;
   font-family: inherit;
   font-weight: inherit;
   font-size: inherit;
-  line-height: 25px;
-  vertical-align: middle;
-}
-
-.insight-distance {
-  font-family: inherit;
-  font-weight: 300;
-  font-size: 20px;
-  line-height: 25px;
+  line-height: 20px;
   vertical-align: middle;
 }
 
@@ -542,11 +565,11 @@ appearance: none;
 .insight-route-icon {
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 20px 20px;
+  background-size: 16px 16px;
   display: inline-block;
-  height: 25px;
-  line-height: 25px;
-  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  width: 16px;
   vertical-align: middle;
 }
 
@@ -557,19 +580,19 @@ appearance: none;
 
 .insight-question {
   font-family: inherit;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 300;
-  line-height: 25px;
+  line-height: 20px;
   vertical-align: middle;
 }
 
 .insight-route {
   color: rgb(37, 39, 43);
   font-family: inherit;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 300;
   display: inline-block;
-  line-height: 25px;
+  line-height: 20px;
   margin-left: 5px;
   vertical-align: middle;
 }
@@ -583,9 +606,9 @@ appearance: none;
   font-family: inherit;
   font-weight: inherit;
   font-size: inherit;
-  line-height: 25px;
+  line-height: 20px;
   vertical-align: middle;
-  width: 23px;
+  width: 20px;
 }
 
 .insight-route:link,

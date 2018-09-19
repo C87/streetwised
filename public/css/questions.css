@@ -198,22 +198,40 @@ appearance: none;
   padding: 2px 0;
 }
 
-/* .view-article-options {
-  display: none;
-  width: 130px;
-  margin: auto;
-} */
+.view-article-travel-mode::before {
+  content: "\00b7";
+  margin-left: -12px;
+  margin-top: -2px;
+  position: absolute;
+}
 
-.view-article-distance,
+.view-article-travel-mode {
+  background-image: url(../assets/icons/car-light.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  display: inline-block;
+  height: 25px;
+  line-height: 25px;
+  margin-left: 15px;
+  position: relative;
+  width: 20px;
+  vertical-align: middle;
+}
+
+.car {
+  background-image: url(../assets/icons/car-light.svg);
+}
+
+.walk {
+  background-image: url(../assets/icons/walking-light.svg);
+}
+
 .view-article-link {
   display: inline-block;
   line-height: 25px;
   margin: auto;
   width: 50px;
-}
-
-.view-article-distance {
-  display: none;
 }
 
 .view-article-link:link,
@@ -225,12 +243,6 @@ appearance: none;
   text-decoration: none;
 }
 
-/* .view-article-distance {
-  margin-left: calc(100% - 130px);
-} */
-
-
-.view-article-distance-icon,
 .view-article-link-icon {
   background-position: center;
   background-repeat: no-repeat;
@@ -242,16 +254,10 @@ appearance: none;
   vertical-align: middle;
 }
 
-.view-article-distance-icon {
-  background-image: url(../assets/icons/location-arrow-light.svg);
-  margin: 0 5px 0 2px;
-}
-
 .view-article-link-icon {
   background-image: url(../assets/icons/comment-light.svg);
 }
 
-.view-article-distance-text,
 .view-article-link-text {
   display: inline-block;
   font-family: 'Quicksand', sans-serif;

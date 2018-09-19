@@ -46,7 +46,7 @@ router
 
 router
   .route('/questions.json')
-  .get(read.all, res.points);
+  .get(read.all, location.distances, res.points);
 
 router
   .route('/:username/posts/:postId.json')

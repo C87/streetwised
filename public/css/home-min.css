@@ -416,6 +416,15 @@ appearance: none;
   width: 100%;
 }
 
+
+.view-article-travel-mode {
+  display: none;
+}
+
+.view-article-travel-distance {
+  display: none;
+}
+
 .view-article-content-text {
   display: none;
 }

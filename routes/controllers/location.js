@@ -24,29 +24,37 @@ module.exports.currentPosition = (req, res, next) => {
 
 module.exports.distances = (req, res, next) => {
   if (!res.locals.data) return next();
-
   const from = turf.point(req.session.coordinates);
 
   res.locals.data.forEach((el) => {
     const to = turf.point(el.geometry.coordinates);
     let distance = turf.distance(from, to);
-    let measurement = 'km';
-
-    if (distance < 0.1) {
-      distance *= 1000;
-      distance = Math.floor(distance);
-      measurement = 'm';
-    } else if (distance >= 0.1 && distance < 1) {
-      distance = Math.round(distance * 10) / 10;
-      distance *= 1000;
-      measurement = 'm';
+    // convert default km to metres
+    distance *= 1000;
+    let transport;
+    // 1,680 metres takes approx 20 mins to walk.
+    // If distance is greater than 1,680 drive.
+    if (distance > 1680) {
+      transport = 'car';
+      // A car at traveling 30mph travels 13.4112m per second.
+      // So distance in metres divided by 13.4112 is equal to distance in seconds.
+      distance /= 13.4112;
     } else {
-      distance = Math.round(distance * 10) / 10;
+      transport = 'walk';
+      // Average walking speed is 1.4m per second,
+      // So distance in metres divided by 1.4 is equal to distance in seconds.
+      distance /= 1.4;
     }
+    // Divide total distance in seconds by 60 to calculate distance in minutes.
+    distance /= 60;
+    // Round up
+    distance = Math.ceil(distance);
 
-    el.properties.distance = `${distance}${measurement} away`;
+    el.properties.travel = {
+      mode: transport,
+      distance: `${distance}min`,
+    };
   });
-
   next();
 };
 

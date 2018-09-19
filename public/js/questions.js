@@ -22,6 +22,8 @@ app.view = (res) => {
     template.classList.add('view-article');
     template.querySelector('.view-article-image').src = el.properties.user.avatar;
     template.querySelector('.view-article-title').textContent = el.properties.user.username;
+    template.querySelector('.view-article-travel-mode').classList.add(el.properties.travel.mode);
+    template.querySelector('.view-article-travel-distance').textContent = el.properties.travel.distance;
     template.querySelector('.view-article-content-text').textContent = el.properties.text;
     template.querySelector('.view-article-link').href = `/${el.properties.user.username}/posts/${el._id}`;
     template.querySelector('.view-article-link-text').textContent = el.properties.comments.length;
