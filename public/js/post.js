@@ -36,6 +36,7 @@ app.comments = (comments) => {
 
 
 app.post = (data) => {
+  let tag = null;
   const template = app.questionTemplate.cloneNode(true);
   template.classList.remove('question-template');
   template.classList.add('question');
@@ -46,10 +47,12 @@ app.post = (data) => {
   if (data.properties.tag) {
     template.querySelector('.content-tag').textContent = data.properties.tag;
     app.t = data.properties.tag;
+    tag = app.t;
   } else {
     template.querySelector('.content-tag').style.display = 'none';
   }
   app.main.insertBefore(template, app.responseContainer);
+  analytics.post(tag);
   return data.properties.comments;
 };
 

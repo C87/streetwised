@@ -18,6 +18,12 @@ analytics.home = () => {
   mixpanel.track('View Home Page');
 };
 
+analytics.post = (t) => {
+  mixpanel.track('Question Viewed', {
+    Tag: t,
+  });
+};
+
 analytics.signup = (user, name, email) => {
   mixpanel.identify(user);
   mixpanel.track('User Signup');
