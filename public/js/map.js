@@ -42,7 +42,7 @@ data.canvas = (res) => {
 };
 
 data.info = (res) => {
-  const question = res.length === 1 ? 'shoutout' : 'shoutouts';
+  const question = res.length === 1 ? 'question' : 'questions';
   const sentence = res.length === 0 ? 'nearby, zoom out.' : 'nearby';
   document.querySelector('.info-question-count').textContent = `${res.length} ${question} ${sentence}`;
   return res.geoJSON;
