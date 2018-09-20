@@ -12,5 +12,6 @@ module.exports = {
         'no-param-reassign': 'off',
         'comma-dangle': 'off',
         'func-names': 'off',
+        'space-infix-ops': 'off',
     },
 };

@@ -11,6 +11,7 @@ const aws = require('./controllers/aws.js');
 const bcrypt = require('./controllers/bcrypt.js');
 const create = require('./controllers/db/create.js');
 const location = require('./controllers/location.js');
+const mailer = require('./controllers/mailer.js');
 const read = require('./controllers/db/read.js');
 const render = require('./controllers/render.js');
 const res = require('./controllers/response.js');
@@ -95,13 +96,13 @@ router
 
 router
   .route('/new-comment')
-  .post(aws.none, validate.session, validate.comment, create.comment, res.comment);
+  .post(aws.none, validate.session, validate.comment, create.comment, mailer.response, res.comment);
 
 router
   .route('/new-post')
   .post(
     aws.none, validate.session, location.question,
-    validate.question, create.post, res.redirect
+    validate.question, create.post, mailer.post, res.redirect
   );
 
 // -----------------------------------------------------------------------------
