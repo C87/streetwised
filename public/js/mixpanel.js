@@ -47,6 +47,10 @@ analytics.question = (t, ql, tl) => {
   });
 };
 
+analytics.questions = () => {
+  mixpanel.track('See All Questions Viewed');
+};
+
 analytics.response = (t, ql, rl) => {
   mixpanel.track('Question Response', {
     Tag: t,
