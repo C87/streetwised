@@ -65,7 +65,7 @@ module.exports.home = (req, res) => {
     block = null;
     intro = null;
     header = 'auth';
-    route = '/shoutout';
+    route = '/ask';
   }
 
   res.status(200).render('home.html', {
@@ -94,7 +94,7 @@ module.exports.questions = (req, res) => {
   if (req.session.userId) {
     block = null;
     header = 'auth';
-    route = '/shoutout';
+    route = '/ask';
   }
 
   console.log('RENDER: questions.html,', req.session.geoBoundBox);
