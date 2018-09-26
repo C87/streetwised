@@ -35,7 +35,7 @@ router
   .post(
     aws.none, validate.email, validate.reservedUsernames, validate.password, validate.username,
     validate.name, query.email, query.username, bcrypt.hash,
-    create.user, validate.checkbox, redirect.avatar
+    create.user, validate.checkbox, mailer.signup, redirect.avatar
   );
 
 // -----------------------------------------------------------------------------
