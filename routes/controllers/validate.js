@@ -208,16 +208,30 @@ module.exports.username = (req, res, next) => {
 
   const usr = req.body.username.toLowerCase();
 
+  // const valid = [
+  //   'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i',
+  //   'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r',
+  //   's', 't', 'u', 'v', 'w', 'x', 'z', 'y', '_',
+  //   '1', '2', '3', '4', '5', '6', '7', '8', '9', '0',
+  // ];
+  //
+  // usr.split('').forEach((el) => {
+  //   if (!valid.includes(el)) {
+  //     const err = new Error(`Username cannot contain '${el}' only 'a-z', '0-9', '_' are valid`);
+  //     err.code = 400;
+  //     return next(err);
+  //   }
+  // });
+
   const valid = [
     'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i',
     'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r',
-    's', 't', 'u', 'v', 'w', 'x', 'z', 'y', '_',
-    '1', '2', '3', '4', '5', '6', '7', '8', '9', '0',
+    's', 't', 'u', 'v', 'w', 'x', 'z', 'y',
   ];
 
   usr.split('').forEach((el) => {
     if (!valid.includes(el)) {
-      const err = new Error(`Username cannot contain '${el}' only 'a-z', '0-9', '_' are valid`);
+      const err = new Error(`Username cannot contain '${el}' only 'a-z' are valid`);
       err.code = 400;
       return next(err);
     }
