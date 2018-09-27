@@ -34,7 +34,7 @@ router
   .route('/session-signup')
   .post(
     aws.none, validate.email, validate.reservedUsernames, validate.password, validate.username,
-    validate.name, query.email, query.username, bcrypt.hash,
+    validate.name, query.email, query.username, bcrypt.hash, aws.generic,
     create.user, validate.checkbox, mailer.signup, redirect.avatar
   );
 

@@ -80,3 +80,23 @@ module.exports.avatar = (req, res, next) => {
         });
     });
 };
+
+module.exports.generic = (req, res, next) => {
+  res.locals.url = 'https://streetwised.ams3.digitaloceanspaces.com/streetwised/avatars/generic-avatar.jpeg';
+
+  const valid = [
+    'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i',
+    'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r',
+    's', 't', 'u', 'v', 'w', 'x', 'z', 'y',
+  ];
+
+  const letter = req.body.username.slice(0, 1);
+
+  valid.forEach((el) => {
+    if (el === letter) {
+      res.locals.url = `https://streetwised.ams3.digitaloceanspaces.com/streetwised/avatars/${el}.jpeg`;
+    }
+  });
+
+  next();
+};
