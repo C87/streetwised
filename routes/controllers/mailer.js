@@ -14,8 +14,8 @@ module.exports.post = (req, res, next) => {
 
   // Message object
   const message = {
-    from: 'streetwised@outlook.com',
-    to: 'shaun@streetwised.com',
+    from: process.env.OUTLOOK_ADDRESS,
+    to: process.env.GMAIL_ADDRESS,
     subject: 'New Question!',
     text: req.body.question
   };
@@ -44,8 +44,8 @@ module.exports.response = (req, res, next) => {
 
   // Message object
   const message = {
-    from: 'streetwised@outlook.com',
-    to: 'shaun@streetwised.com',
+    from: process.env.OUTLOOK_ADDRESS,
+    to: process.env.GMAIL_ADDRESS,
     subject: 'New Response!',
     text: req.body.text
   };
@@ -74,8 +74,8 @@ module.exports.signup = (req, res, next) => {
 
   // Message object
   const message = {
-    from: 'streetwised@outlook.com',
-    to: 'shaun@streetwised.com',
+    from: process.env.OUTLOOK_ADDRESS,
+    to: process.env.GMAIL_ADDRESS,
     subject: 'New Signup!',
     text: req.body.email
   };

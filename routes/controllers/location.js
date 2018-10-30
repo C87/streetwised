@@ -72,7 +72,8 @@ module.exports.params = (req, res, next) => {
 };
 
 module.exports.reverseGeo = (req, res, next) => {
-  const url = `https://geocoder.tilehosting.com/gb/q/${req.body.text}.js?key=Rgbg05zBqK0dhML5dNJi`;
+  const key = process.env.TILEHOSTING_KEY;
+  const url = `https://geocoder.tilehosting.com/gb/q/${req.body.text}.js?key=${key}`;
   fetch(url)
     .then(geo => geo.json())
     .then((geo) => {

@@ -1,12 +1,22 @@
 const tabBar = 'Streetwised';
 
-module.exports.account = (req, res) => {
-  let google = null;
-  let mixpanel = '_partials/analytics/dev/mixpanel.html';
+const googlePartial = (req) => {
   if (req.headers.host === 'streetwised.com' || req.headers.host === 'www.streetwised.com') {
-    mixpanel = '_partials/analytics/production/mixpanel.html';
-    google = '_partials/analytics/production/google.html';
+    return '_partials/analytics/production/google.html';
   }
+  return null;
+};
+
+const mixpanelPartial = (req) => {
+  if (req.headers.host === 'streetwised.com' || req.headers.host === 'www.streetwised.com') {
+    return '_partials/analytics/production/mixpanel.html';
+  }
+  return '_partials/analytics/dev/mixpanel.html';
+};
+
+module.exports.account = (req, res) => {
+  const google = googlePartial(req);
+  const mixpanel = mixpanelPartial(req);
 
   if (!req.session.userId) {
     return res.status(200).render('unauth/account.html', {
@@ -26,12 +36,8 @@ module.exports.account = (req, res) => {
 };
 
 module.exports.ask = (req, res) => {
-  let google = null;
-  let mixpanel = '_partials/analytics/dev/mixpanel.html';
-  if (req.headers.host === 'streetwised.com' || req.headers.host === 'www.streetwised.com') {
-    mixpanel = '_partials/analytics/production/mixpanel.html';
-    google = '_partials/analytics/production/google.html';
-  }
+  const google = googlePartial(req);
+  const mixpanel = mixpanelPartial(req);
 
   if (!req.session.userId) {
     return res.redirect('/account');
@@ -48,12 +54,8 @@ module.exports.ask = (req, res) => {
 };
 
 module.exports.home = (req, res) => {
-  let google = null;
-  let mixpanel = '_partials/analytics/dev/mixpanel.html';
-  if (req.headers.host === 'streetwised.com' || req.headers.host === 'www.streetwised.com') {
-    mixpanel = '_partials/analytics/production/mixpanel.html';
-    google = '_partials/analytics/production/google.html';
-  }
+  const google = googlePartial(req);
+  const mixpanel = mixpanelPartial(req);
 
   let ask = null;
   let block = '_partials/block.html';
@@ -81,12 +83,8 @@ module.exports.home = (req, res) => {
 };
 
 module.exports.questions = (req, res) => {
-  let google = null;
-  let mixpanel = '_partials/analytics/dev/mixpanel.html';
-  if (req.headers.host === 'streetwised.com' || req.headers.host === 'www.streetwised.com') {
-    mixpanel = '_partials/analytics/production/mixpanel.html';
-    google = '_partials/analytics/production/google.html';
-  }
+  const google = googlePartial(req);
+  const mixpanel = mixpanelPartial(req);
 
   let block = '_partials/block.html';
   let header = 'unauth';
@@ -112,12 +110,8 @@ module.exports.questions = (req, res) => {
 };
 
 module.exports.post = (req, res) => {
-  let google = null;
-  let mixpanel = '_partials/analytics/dev/mixpanel.html';
-  if (req.headers.host === 'streetwised.com' || req.headers.host === 'www.streetwised.com') {
-    mixpanel = '_partials/analytics/production/mixpanel.html';
-    google = '_partials/analytics/production/google.html';
-  }
+  const google = googlePartial(req);
+  const mixpanel = mixpanelPartial(req);
 
   let controller = '_partials/post/unauth/controller.html';
   let src = null;

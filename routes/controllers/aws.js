@@ -10,7 +10,7 @@ const spacesEndpoint = new AWS.Endpoint('ams3.digitaloceanspaces.com');
 
 const s3 = new AWS.S3({
   endpoint: spacesEndpoint,
-  accessKeyId: 'FMEKUZ7SAV2FQUO4PYQ4',
+  accessKeyId: process.env.SPACES_ACCESS_KEY_ID,
   secretAccessKey: process.env.SPACES_KEY_SECRET,
 });
 

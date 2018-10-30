@@ -58,7 +58,7 @@ const send = (file, rotate) => {
         }, 5000);
         return;
       }
-      // form.alert.textContent = res.body; Abs positioned alert textContent is equal to res body.
+      form.alert.textContent = res.body;
     })
     .catch((err) => {
       document.querySelector('.spinner').style.display = 'none';
