@@ -4,25 +4,7 @@ Hyperlocal Q&A Prototype.
 
 ## Description
 
-A Node application with Express and Mongoose.
-
-## Prerequisites
-
-`.env` username, password, host, port and database name for dbUrl
-`babel-cli` npm compiling scripts
-`gulp-cli` npm task scripts
-
-
-## Getting Started
-
-  $ git clone
-	$ cd boilerplate
-	npm install
-  npm install babel-cli -g
-  npm install gulp-cli -g
-  npm run mongo or mongod
-  npm run redis or sudo redis-server /etc/redis/redis.conf
-  node start
+Location-based community where users ask question and locals provide answers, questions are stored in MongoDB as a geoJSON feature. When users explore a map of the city the event initialises a Fetch API request to the controller to validate the location and query the database for questions within the map boundary, the JSON response then populates the DOM and map canvas. For profile pictures, the canvas element from HTML 5 optimises images locally for uploading to the controller, the buffer is cropped, rotated, then stored in Digital Ocean object storage using Multer streaming storage engine for AWS S3.
 
 ## License
 
