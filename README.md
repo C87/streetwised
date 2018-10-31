@@ -1,6 +1,6 @@
-# PWA
+# Streetwised
 
-Progressive Web Application.
+Hyperlocal Q&A Prototype.
 
 ## Description
 
